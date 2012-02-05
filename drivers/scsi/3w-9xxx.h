@@ -379,7 +379,7 @@ static twa_message_type twa_error_table[] = {
 #define TW_MAX_SENSE_LENGTH                   256
 #define TW_EVENT_SOURCE_AEN                   0x1000
 #define TW_EVENT_SOURCE_COMMAND               0x1001
-#define TW_EVENT_SOURCE_PCHIP                 0x1007
+#define TW_EVENT_SOURCE_PCHIP                 0x1002
 #define TW_EVENT_SOURCE_DRIVER                0x1003
 #define TW_IOCTL_GET_COMPATIBILITY_INFO	      0x101
 #define TW_IOCTL_GET_LAST_EVENT               0x102
@@ -390,7 +390,7 @@ static twa_message_type twa_error_table[] = {
 #define TW_IOCTL_RELEASE_LOCK                 0x107
 #define TW_IOCTL_FIRMWARE_PASS_THROUGH        0x108
 #define TW_IOCTL_ERROR_STATUS_NOT_LOCKED      0x1001 // Not locked
-#define TW_IOCTL_ERROR_STATUS_LOCKED          0x1007 // Already locked
+#define TW_IOCTL_ERROR_STATUS_LOCKED          0x1002 // Already locked
 #define TW_IOCTL_ERROR_STATUS_NO_MORE_EVENTS  0x1003 // No more events
 #define TW_IOCTL_ERROR_STATUS_AEN_CLOBBER     0x1004 // AEN clobber occurred
 #define TW_IOCTL_ERROR_OS_EFAULT	      -EFAULT // Bad address
@@ -413,7 +413,7 @@ static twa_message_type twa_error_table[] = {
 #define TW_MESSAGE_SOURCE_LINUX_OS            9
 #define TW_OS TW_MESSAGE_SOURCE_LINUX_OS
 #ifndef PCI_DEVICE_ID_3WARE_9000
-#define PCI_DEVICE_ID_3WARE_9000 0x1007
+#define PCI_DEVICE_ID_3WARE_9000 0x1002
 #endif
 #ifndef PCI_DEVICE_ID_3WARE_9550SX
 #define PCI_DEVICE_ID_3WARE_9550SX 0x1003

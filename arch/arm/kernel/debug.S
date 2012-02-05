@@ -42,11 +42,11 @@
 		mov	\rd, #0x2000000
 1001:
 		subs	\rd, \rd, #1
-		bmi	1007f
+		bmi	1002f
 		mrc	p14, 0, \rx, c0, c1, 0
 		tst	\rx, #0x20000000
 		bne	1001b
-1007:
+1002:
 		.endm
 
 #elif defined(CONFIG_CPU_XSCALE)
@@ -66,11 +66,11 @@
 		mov	\rd, #0x10000000
 1001:
 		subs	\rd, \rd, #1
-		bmi	1007f
+		bmi	1002f
 		mrc	p14, 0, \rx, c14, c0, 0
 		tst	\rx, #0x10000000
 		bne	1001b
-1007:
+1002:
 		.endm
 
 #else
@@ -91,11 +91,11 @@
 		mov	\rd, #0x2000000
 1001:
 		subs	\rd, \rd, #1
-		bmi	1007f
+		bmi	1002f
 		mrc	p14, 0, \rx, c0, c0, 0
 		tst	\rx, #2
 		bne	1001b
-1007:
+1002:
 		.endm
 
 #endif	/* CONFIG_CPU_V6 */

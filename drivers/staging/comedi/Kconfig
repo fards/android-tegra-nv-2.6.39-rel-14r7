@@ -909,7 +909,7 @@ config COMEDI_CB_PCIDAS
 	  Enable support for ComputerBoards/MeasurementComputing PCI-DAS with
 	  AMCC S5933 PCIcontroller: PCI-DAS1602/16, PCI-DAS1602/16jr,
 	  PCI-DAS1602/12, PCI-DAS1200, PCI-DAS1200jr, PCI-DAS1000, PCI-DAS1001
-	  and PCI_DAS1007.
+	  and PCI_DAS1002.
 
 	  To compile this driver as a module, choose M here: the module will be
 	  called cb_pcidas.

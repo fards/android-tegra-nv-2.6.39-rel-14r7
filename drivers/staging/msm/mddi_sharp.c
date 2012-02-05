@@ -317,7 +317,7 @@ static void mddi_sharp_prim_lcd_init(void)
 
 	if (mddi_sharp_vsync_wake) {
 		mddi_queue_register_write(REG_VBLKS, 0x1001, TRUE, 0);
-		mddi_queue_register_write(REG_VBLKE, 0x1007, TRUE, 0);
+		mddi_queue_register_write(REG_VBLKE, 0x1002, TRUE, 0);
 	}
 
 	/* Set the MDP pixel data attributes for Primary Display */

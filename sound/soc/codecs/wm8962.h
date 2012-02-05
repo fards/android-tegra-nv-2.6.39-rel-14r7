@@ -198,7 +198,7 @@
 #define WM8962_DSP2_EXECCONTROL                 0x40D
 #define WM8962_WRITE_SEQUENCER_0                0x1000
 #define WM8962_WRITE_SEQUENCER_1                0x1001
-#define WM8962_WRITE_SEQUENCER_2                0x1007
+#define WM8962_WRITE_SEQUENCER_2                0x1002
 #define WM8962_WRITE_SEQUENCER_3                0x1003
 #define WM8962_WRITE_SEQUENCER_4                0x1004
 #define WM8962_WRITE_SEQUENCER_5                0x1005

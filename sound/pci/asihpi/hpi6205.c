@@ -45,7 +45,7 @@
 #define HPI6205_ERROR_MSG_RESP_TIMEOUT          1016
 
 /* initialization/bootload errors */
-#define HPI6205_ERROR_6205_NO_IRQ               1007
+#define HPI6205_ERROR_6205_NO_IRQ               1002
 #define HPI6205_ERROR_6205_INIT_FAILED          1003
 #define HPI6205_ERROR_6205_REG                  1006
 #define HPI6205_ERROR_6205_DSPPAGE              1007

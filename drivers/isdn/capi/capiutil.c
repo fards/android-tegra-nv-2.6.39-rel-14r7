@@ -43,7 +43,7 @@ char *capi_info2str(u16 reason)
 /*-- error information concerning CAPI_REGISTER -----*/
 	case 0x1001:
 	   return "Too many applications";
-	case 0x1007:
+	case 0x1002:
 	   return "Logical block size too small, must be at least 128 Bytes";
 	case 0x1003:
 	   return "Buffer exceeds 64 kByte";

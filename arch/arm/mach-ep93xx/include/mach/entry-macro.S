@@ -31,7 +31,7 @@
 		eor	\base, \base, #0x00070000
 		ldr	\irqstat, [\base]		@ upper 32 interrupts
 		cmp	\irqstat, #0
-		beq	1007f
+		beq	1002f
 		mov	\irqnr, #0x20
 
 1001:
@@ -55,5 +55,5 @@
 		addeq	\irqnr, \irqnr, #1
 		orrs	\base, \base, #1
 
-1007:
+1002:
 		.endm

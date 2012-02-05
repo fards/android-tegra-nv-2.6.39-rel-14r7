@@ -200,7 +200,7 @@ static struct snd_ca0106_details ca0106_chip_details[] = {
 	   .i2c_adc = 1 } ,
 	 /* New Dell Sound Blaster Live! 7.1 24bit. This does not have an AC97.  */
 	 /* AudigyLS[SB0310] */
-	 { .serial = 0x10071102,
+	 { .serial = 0x10021102,
 	   .name   = "AudigyLS [SB0310]",
 	   .ac97   = 1 } , 
 	 /* Unknown AudigyLS that also says SB0310 on it */

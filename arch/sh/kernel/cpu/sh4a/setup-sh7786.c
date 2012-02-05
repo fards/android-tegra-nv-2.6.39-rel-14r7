@@ -905,7 +905,7 @@ static struct intc_sense_reg sh7786_sense_registers[] __initdata = {
 };
 
 static struct intc_mask_reg sh7786_ack_registers[] __initdata = {
-	{ 0xfe410074, 0, 32, /* INTREQ */
+	{ 0xfe410024, 0, 32, /* INTREQ */
 	  { IRQ0, IRQ1, IRQ2, IRQ3, IRQ4, IRQ5, IRQ6, IRQ7 } },
 };
 

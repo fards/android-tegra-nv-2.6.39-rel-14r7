@@ -149,7 +149,7 @@ static struct platform_device nand_flash_device = {
 };
 
 #define FPGA_LCDREG	0xB4100180
-#define FPGA_BKLREG	0xB4100712
+#define FPGA_BKLREG	0xB4100212
 #define FPGA_LCDREG_VAL	0x0018
 #define PORT_MSELCRB	0xA4050182
 #define PORT_HIZCRC	0xA405015C

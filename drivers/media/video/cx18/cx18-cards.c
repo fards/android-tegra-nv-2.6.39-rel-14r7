@@ -400,10 +400,10 @@ static const struct cx18_card cx18_card_cnxt_raptor_pal = {
 		.tune_lane = 0,
 		.initial_emrs = 0,
 	},
-	.gpio_init.initial_value = 0x1007,
+	.gpio_init.initial_value = 0x1002,
 	.gpio_init.direction = 0xf002,
 	.gpio_audio_input = { .mask   = 0xf002,
-			      .tuner  = 0x1007,   /* LED D1  Tuner AF  */
+			      .tuner  = 0x1002,   /* LED D1  Tuner AF  */
 			      .linein = 0x2000,   /* LED D2  Line In 1 */
 			      .radio  = 0x4002 }, /* LED D3  Tuner AF  */
 	.pci_list = cx18_pci_cnxt_raptor_pal,

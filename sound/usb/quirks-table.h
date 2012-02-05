@@ -178,7 +178,7 @@
 }
 YAMAHA_DEVICE(0x1000, "UX256"),
 YAMAHA_DEVICE(0x1001, "MU1000"),
-YAMAHA_DEVICE(0x1007, "MU2000"),
+YAMAHA_DEVICE(0x1002, "MU2000"),
 YAMAHA_DEVICE(0x1003, "MU500"),
 YAMAHA_INTERFACE(0x1004, 3, "UW500"),
 YAMAHA_DEVICE(0x1005, "MOTIF6"),
@@ -1675,7 +1675,7 @@ YAMAHA_DEVICE(0x7010, "UB99"),
 
 /* Midiman/M-Audio devices */
 {
-	USB_DEVICE_VENDOR_SPEC(0x0763, 0x1007),
+	USB_DEVICE_VENDOR_SPEC(0x0763, 0x1002),
 	.driver_info = (unsigned long) & (const struct snd_usb_audio_quirk) {
 		.vendor_name = "M-Audio",
 		.product_name = "MidiSport 2x2",

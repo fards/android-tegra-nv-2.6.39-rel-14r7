@@ -14,10 +14,10 @@
 		.endm
 
 		.macro	busyuart,rd,rx
-1007:		ldrb	\rd, [\rx, #UART_LSR << UART_SHIFT]
+1002:		ldrb	\rd, [\rx, #UART_LSR << UART_SHIFT]
 		and	\rd, \rd, #UART_LSR_TEMT | UART_LSR_THRE
 		teq	\rd, #UART_LSR_TEMT | UART_LSR_THRE
-		bne	1007b
+		bne	1002b
 		.endm
 
 		.macro	waituart,rd,rx

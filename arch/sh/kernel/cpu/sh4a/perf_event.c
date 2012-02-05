@@ -37,7 +37,7 @@
  * undocumented counters, so this will need to be revisited at a later
  * point in time.
  */
-#define PPC_PMCAT	0xfc100740
+#define PPC_PMCAT	0xfc100240
 #else
 #define PPC_PMCAT	0xfc100080
 #endif

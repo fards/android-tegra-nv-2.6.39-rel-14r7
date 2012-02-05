@@ -2116,7 +2116,7 @@ static int frontend_init(struct av7110 *av7110)
 		switch(av7110->dev->pci->subsystem_device) {
 		case 0x0000: // Hauppauge/TT WinTV DVB-S rev1.X
 		case 0x0003: // Hauppauge/TT WinTV Nexus-S Rev 2.X
-		case 0x1007: // Hauppauge/TT WinTV DVB-S rev1.3SE
+		case 0x1002: // Hauppauge/TT WinTV DVB-S rev1.3SE
 
 			// try the ALPS BSRV2 first of all
 			av7110->fe = dvb_attach(ves1x93_attach, &alps_bsrv2_config, &av7110->i2c_adap);
@@ -2871,7 +2871,7 @@ static struct pci_device_id pci_tbl[] = {
 	MAKE_EXTENSION_PCI(ttt,         0x13c2, 0x0008),
 	MAKE_EXTENSION_PCI(ttc_1_X,     0x13c2, 0x000a),
 	MAKE_EXTENSION_PCI(tts_2_3,     0x13c2, 0x000e),
-	MAKE_EXTENSION_PCI(tts_1_3se,   0x13c2, 0x1007),
+	MAKE_EXTENSION_PCI(tts_1_3se,   0x13c2, 0x1002),
 
 /*	MAKE_EXTENSION_PCI(???, 0x13c2, 0x0005), UNDEFINED CARD */ // Technisat SkyStar1
 /*	MAKE_EXTENSION_PCI(???, 0x13c2, 0x0009), UNDEFINED CARD */ // TT/Hauppauge WinTV Nexus-CA v????

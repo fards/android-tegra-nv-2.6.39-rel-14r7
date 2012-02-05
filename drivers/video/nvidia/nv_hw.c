@@ -1312,7 +1312,7 @@ void NVLoadStateExt(struct nvidia_par *par, RIVA_HW_STATE * state)
 				NV_WR32(par->PGRAPH, 0x008C, 0xf00e0431);
 				NV_WR32(par->PGRAPH, 0x0090, 0x00008000);
 				NV_WR32(par->PGRAPH, 0x0610, 0xf04b1f36);
-				NV_WR32(par->PGRAPH, 0x0B80, 0x1007d888);
+				NV_WR32(par->PGRAPH, 0x0B80, 0x1002d888);
 				NV_WR32(par->PGRAPH, 0x0B88, 0x62ff007f);
 			} else {
 				NV_WR32(par->PGRAPH, 0x0084, 0x00118700);

@@ -67,7 +67,7 @@ for_each_frame:	tst	frame, mask		@ Check for address exceptions
 		bne	no_frame
 
 1001:		ldr	sv_pc, [frame, #0]	@ get saved pc
-1007:		ldr	sv_fp, [frame, #-12]	@ get saved fp
+1002:		ldr	sv_fp, [frame, #-12]	@ get saved fp
 
 		sub	sv_pc, sv_pc, offset	@ Correct PC for prefetching
 		bic	sv_pc, sv_pc, mask	@ mask PC/LR for the mode
@@ -113,7 +113,7 @@ ENDPROC(c_backtrace)
 		.pushsection __ex_table,"a"
 		.align	3
 		.long	1001b, 1006b
-		.long	1007b, 1006b
+		.long	1002b, 1006b
 		.long	1003b, 1006b
 		.long	1004b, 1006b
 		.popsection

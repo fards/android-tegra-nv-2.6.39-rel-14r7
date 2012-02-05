@@ -156,7 +156,7 @@
 	    </row>
 	    <row id="V4L2-MBUS-FMT-RGB444-2X8-PADHI-LE">
 	      <entry>V4L2_MBUS_FMT_RGB444_2X8_PADHI_LE</entry>
-	      <entry>0x1007</entry>
+	      <entry>0x1002</entry>
 	      <entry></entry>
 	      <entry>g<subscript>3</subscript></entry>
 	      <entry>g<subscript>2</subscript></entry>

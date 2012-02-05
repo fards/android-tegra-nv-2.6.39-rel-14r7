@@ -143,7 +143,7 @@ static unsigned int spu_save_code[]  __attribute__((__aligned__(128))) = {
 0x40848002,
 0x21a00982,
 0x21a00a06,
-0x40801007,
+0x40801002,
 0x21a00a82,
 0x21a00a06,
 0x40806602,

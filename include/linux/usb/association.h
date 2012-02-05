@@ -37,7 +37,7 @@ struct wusb_am_attr {
 #define WUSB_AR_HostFriendlyName	{ .id = cpu_to_le16(0x000c), .len = cpu_to_le16(64) } /* max */
 #define WUSB_AR_CHID			{ .id = cpu_to_le16(0x1000), .len = cpu_to_le16(16) }
 #define WUSB_AR_CDID			{ .id = cpu_to_le16(0x1001), .len = cpu_to_le16(16) }
-#define WUSB_AR_ConnectionContext	{ .id = cpu_to_le16(0x1007), .len = cpu_to_le16(48) }
+#define WUSB_AR_ConnectionContext	{ .id = cpu_to_le16(0x1002), .len = cpu_to_le16(48) }
 #define WUSB_AR_BandGroups		{ .id = cpu_to_le16(0x1004), .len = cpu_to_le16(2) }
 
 /* CBAF Control Requests (AMS1.0[T4-1] */

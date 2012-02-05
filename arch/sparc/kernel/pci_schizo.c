@@ -808,7 +808,7 @@ static irqreturn_t schizo_safarierr_intr(int irq, void *dev_id)
 }
 
 /* Nearly identical to PSYCHO equivalents... */
-#define SCHIZO_ECC_CTRL		0x10070UL
+#define SCHIZO_ECC_CTRL		0x10020UL
 #define  SCHIZO_ECCCTRL_EE	 0x8000000000000000UL /* Enable ECC Checking */
 #define  SCHIZO_ECCCTRL_UE	 0x4000000000000000UL /* Enable UE Interrupts */
 #define  SCHIZO_ECCCTRL_CE	 0x2000000000000000UL /* Enable CE INterrupts */

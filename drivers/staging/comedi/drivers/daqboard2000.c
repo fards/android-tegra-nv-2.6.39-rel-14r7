@@ -124,7 +124,7 @@ Configuration options:
 #define DAQBOARD2000_SUBSYSTEM_IDS2 	0x00021616	/* Daqboard/2000 - 2 Dacs */
 #define DAQBOARD2000_SUBSYSTEM_IDS4 	0x00041616	/* Daqboard/2000 - 4 Dacs */
 
-#define DAQBOARD2000_DAQ_SIZE 		0x1007
+#define DAQBOARD2000_DAQ_SIZE 		0x1002
 #define DAQBOARD2000_PLX_SIZE 		0x100
 
 /* Initialization bits for the Serial EEPROM Control Register */

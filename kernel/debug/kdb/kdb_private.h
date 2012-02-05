@@ -17,7 +17,7 @@
 
 /* Kernel Debugger Command codes.  Must not overlap with error codes. */
 #define KDB_CMD_GO	(-1001)
-#define KDB_CMD_CPU	(-1007)
+#define KDB_CMD_CPU	(-1002)
 #define KDB_CMD_SS	(-1003)
 #define KDB_CMD_SSB	(-1004)
 #define KDB_CMD_KGDB (-1005)

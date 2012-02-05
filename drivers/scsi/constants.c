@@ -521,7 +521,7 @@ static const struct error_info additional[] =
 
 	{0x1000, "Id CRC or ECC error"},
 	{0x1001, "Logical block guard check failed"},
-	{0x1007, "Logical block application tag check failed"},
+	{0x1002, "Logical block application tag check failed"},
 	{0x1003, "Logical block reference tag check failed"},
 
 	{0x1100, "Unrecovered read error"},

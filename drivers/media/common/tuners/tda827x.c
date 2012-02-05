@@ -388,7 +388,7 @@ static struct tda827xa_data tda827xa_dvbc[] = {
 	{ .lomax =  69250000, .svco = 0, .spd = 3, .scr = 2, .sbs = 0, .gc3 = 3},
 	{ .lomax =  83625000, .svco = 1, .spd = 3, .scr = 2, .sbs = 0, .gc3 = 3},
 	{ .lomax =  97500000, .svco = 2, .spd = 3, .scr = 2, .sbs = 0, .gc3 = 3},
-	{ .lomax = 100750000, .svco = 2, .spd = 3, .scr = 2, .sbs = 1, .gc3 = 1},
+	{ .lomax = 100250000, .svco = 2, .spd = 3, .scr = 2, .sbs = 1, .gc3 = 1},
 	{ .lomax = 117000000, .svco = 3, .spd = 3, .scr = 2, .sbs = 1, .gc3 = 1},
 	{ .lomax = 138500000, .svco = 0, .spd = 2, .scr = 2, .sbs = 1, .gc3 = 1},
 	{ .lomax = 167250000, .svco = 1, .spd = 2, .scr = 2, .sbs = 1, .gc3 = 1},

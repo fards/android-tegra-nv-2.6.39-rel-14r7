@@ -191,7 +191,7 @@ enum sync_dimension {
 #define EDMA_CHANNEL_ANY		-1	/* for edma_alloc_channel() */
 #define EDMA_SLOT_ANY			-1	/* for edma_alloc_slot() */
 #define EDMA_CONT_PARAMS_ANY		 1001
-#define EDMA_CONT_PARAMS_FIXED_EXACT	 1007
+#define EDMA_CONT_PARAMS_FIXED_EXACT	 1002
 #define EDMA_CONT_PARAMS_FIXED_NOT_EXACT 1003
 
 #define EDMA_MAX_CC               2

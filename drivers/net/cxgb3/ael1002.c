@@ -34,10 +34,10 @@
 
 enum {
 	AEL100X_TX_CONFIG1 = 0xc002,
-	AEL1007_PWR_DOWN_HI = 0xc011,
-	AEL1007_PWR_DOWN_LO = 0xc012,
-	AEL1007_XFI_EQL = 0xc015,
-	AEL1007_LB_EN = 0xc017,
+	AEL1002_PWR_DOWN_HI = 0xc011,
+	AEL1002_PWR_DOWN_LO = 0xc012,
+	AEL1002_XFI_EQL = 0xc015,
+	AEL1002_LB_EN = 0xc017,
 	AEL_OPT_SETTINGS = 0xc017,
 	AEL_I2C_CTRL = 0xc30a,
 	AEL_I2C_DATA = 0xc30b,
@@ -138,7 +138,7 @@ static int ael_i2c_rd(struct cphy *phy, int dev_addr, int word_addr)
 	return -ETIMEDOUT;
 }
 
-static int ael1007_power_down(struct cphy *phy, int enable)
+static int ael1002_power_down(struct cphy *phy, int enable)
 {
 	int err;
 
@@ -150,22 +150,22 @@ static int ael1007_power_down(struct cphy *phy, int enable)
 	return err;
 }
 
-static int ael1007_reset(struct cphy *phy, int wait)
+static int ael1002_reset(struct cphy *phy, int wait)
 {
 	int err;
 
-	if ((err = ael1007_power_down(phy, 0)) ||
+	if ((err = ael1002_power_down(phy, 0)) ||
 	    (err = t3_mdio_write(phy, MDIO_MMD_PMAPMD, AEL100X_TX_CONFIG1, 1)) ||
-	    (err = t3_mdio_write(phy, MDIO_MMD_PMAPMD, AEL1007_PWR_DOWN_HI, 0)) ||
-	    (err = t3_mdio_write(phy, MDIO_MMD_PMAPMD, AEL1007_PWR_DOWN_LO, 0)) ||
-	    (err = t3_mdio_write(phy, MDIO_MMD_PMAPMD, AEL1007_XFI_EQL, 0x18)) ||
-	    (err = t3_mdio_change_bits(phy, MDIO_MMD_PMAPMD, AEL1007_LB_EN,
+	    (err = t3_mdio_write(phy, MDIO_MMD_PMAPMD, AEL1002_PWR_DOWN_HI, 0)) ||
+	    (err = t3_mdio_write(phy, MDIO_MMD_PMAPMD, AEL1002_PWR_DOWN_LO, 0)) ||
+	    (err = t3_mdio_write(phy, MDIO_MMD_PMAPMD, AEL1002_XFI_EQL, 0x18)) ||
+	    (err = t3_mdio_change_bits(phy, MDIO_MMD_PMAPMD, AEL1002_LB_EN,
 				       0, 1 << 5)))
 		return err;
 	return 0;
 }
 
-static int ael1007_intr_noop(struct cphy *phy)
+static int ael1002_intr_noop(struct cphy *phy)
 {
 	return 0;
 }
@@ -198,21 +198,21 @@ static int get_link_status_r(struct cphy *phy, int *link_ok, int *speed,
 	return 0;
 }
 
-static struct cphy_ops ael1007_ops = {
-	.reset = ael1007_reset,
-	.intr_enable = ael1007_intr_noop,
-	.intr_disable = ael1007_intr_noop,
-	.intr_clear = ael1007_intr_noop,
-	.intr_handler = ael1007_intr_noop,
+static struct cphy_ops ael1002_ops = {
+	.reset = ael1002_reset,
+	.intr_enable = ael1002_intr_noop,
+	.intr_disable = ael1002_intr_noop,
+	.intr_clear = ael1002_intr_noop,
+	.intr_handler = ael1002_intr_noop,
 	.get_link_status = get_link_status_r,
-	.power_down = ael1007_power_down,
+	.power_down = ael1002_power_down,
 	.mmds = MDIO_DEVS_PMAPMD | MDIO_DEVS_PCS | MDIO_DEVS_PHYXS,
 };
 
-int t3_ael1007_phy_prep(struct cphy *phy, struct adapter *adapter,
+int t3_ael1002_phy_prep(struct cphy *phy, struct adapter *adapter,
 			int phy_addr, const struct mdio_ops *mdio_ops)
 {
-	cphy_init(phy, adapter, phy_addr, &ael1007_ops, mdio_ops,
+	cphy_init(phy, adapter, phy_addr, &ael1002_ops, mdio_ops,
 		  SUPPORTED_10000baseT_Full | SUPPORTED_AUI | SUPPORTED_FIBRE,
 		   "10GBASE-R");
 	ael100x_txon(phy);
@@ -231,7 +231,7 @@ static struct cphy_ops ael1006_ops = {
 	.intr_clear = t3_phy_lasi_intr_clear,
 	.intr_handler = t3_phy_lasi_intr_handler,
 	.get_link_status = get_link_status_r,
-	.power_down = ael1007_power_down,
+	.power_down = ael1002_power_down,
 	.mmds = MDIO_DEVS_PMAPMD | MDIO_DEVS_PCS | MDIO_DEVS_PHYXS,
 };
 
@@ -502,7 +502,7 @@ static struct cphy_ops ael2005_ops = {
 	.intr_clear      = ael2005_intr_clear,
 	.intr_handler    = ael2005_intr_handler,
 	.get_link_status = get_link_status_r,
-	.power_down      = ael1007_power_down,
+	.power_down      = ael1002_power_down,
 	.mmds            = MDIO_DEVS_PMAPMD | MDIO_DEVS_PCS | MDIO_DEVS_PHYXS,
 };
 
@@ -808,7 +808,7 @@ static struct cphy_ops ael2020_ops = {
 	.intr_clear      = ael2020_intr_clear,
 	.intr_handler    = ael2020_intr_handler,
 	.get_link_status = get_link_status_r,
-	.power_down      = ael1007_power_down,
+	.power_down      = ael1002_power_down,
 	.mmds		 = MDIO_DEVS_PMAPMD | MDIO_DEVS_PCS | MDIO_DEVS_PHYXS,
 };
 
@@ -863,7 +863,7 @@ static struct cphy_ops qt2045_ops = {
 	.intr_clear = t3_phy_lasi_intr_clear,
 	.intr_handler = t3_phy_lasi_intr_handler,
 	.get_link_status = get_link_status_x,
-	.power_down = ael1007_power_down,
+	.power_down = ael1002_power_down,
 	.mmds = MDIO_DEVS_PMAPMD | MDIO_DEVS_PCS | MDIO_DEVS_PHYXS,
 };
 
@@ -923,10 +923,10 @@ static int xaui_direct_power_down(struct cphy *phy, int enable)
 
 static struct cphy_ops xaui_direct_ops = {
 	.reset = xaui_direct_reset,
-	.intr_enable = ael1007_intr_noop,
-	.intr_disable = ael1007_intr_noop,
-	.intr_clear = ael1007_intr_noop,
-	.intr_handler = ael1007_intr_noop,
+	.intr_enable = ael1002_intr_noop,
+	.intr_disable = ael1002_intr_noop,
+	.intr_clear = ael1002_intr_noop,
+	.intr_handler = ael1002_intr_noop,
 	.get_link_status = xaui_direct_get_link_status,
 	.power_down = xaui_direct_power_down,
 };

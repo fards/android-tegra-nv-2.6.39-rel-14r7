@@ -1539,7 +1539,7 @@ printk("sba_hw_init(): mem_boot 0x%x 0x%x 0x%x 0x%x\n", PAGE0->mem_boot.hpa,
 	**	to PDC about which device to shutdown.
 	**
 	** Netbooting, j6k v5.0 firmware says:
-	** 	mem_boot hpa 0xf4008000 sba 0x0 pad 0x0 cl_class 0x1007
+	** 	mem_boot hpa 0xf4008000 sba 0x0 pad 0x0 cl_class 0x1002
 	** ARGH! invalid class.
 	*/
 	if ((PAGE0->mem_boot.cl_class != CL_RANDOM)

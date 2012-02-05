@@ -86,7 +86,7 @@ int unregister_capictr_notifier(struct notifier_block *nb);
 #define CAPI_NOERROR                      0x0000
 
 #define CAPI_TOOMANYAPPLS		  0x1001
-#define CAPI_LOGBLKSIZETOSMALL	          0x1007
+#define CAPI_LOGBLKSIZETOSMALL	          0x1002
 #define CAPI_BUFFEXECEEDS64K 	          0x1003
 #define CAPI_MSGBUFSIZETOOSMALL	          0x1004
 #define CAPI_ANZLOGCONNNOTSUPPORTED	  0x1005

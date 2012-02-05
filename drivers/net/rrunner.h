@@ -314,7 +314,7 @@ struct rr_regs {
 
 /* Host Error Codes - values of fail1 */
 #define ERR_UNKNOWN_MBOX	0x1001
-#define ERR_UNKNOWN_CMD		0x1007
+#define ERR_UNKNOWN_CMD		0x1002
 #define ERR_MAX_RING		0x1003
 #define ERR_RING_CLOSED		0x1004
 #define ERR_RING_OPEN		0x1005

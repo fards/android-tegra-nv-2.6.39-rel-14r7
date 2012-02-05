@@ -161,7 +161,7 @@ static unsigned long __user *create_aout_tables(char __user *p, struct linux_bin
 		put_user(0, --sp);
 		put_user(1003, --sp);
 		put_user(bprm->loader, --sp);
-		put_user(1007, --sp);
+		put_user(1002, --sp);
 	}
 	put_user(bprm->exec, --sp);
 	put_user(1001, --sp);

@@ -1080,7 +1080,7 @@ static int stir421x_patch_device(struct irda_usb_cb *self)
 
         /*
          * Known firmware patch file names for STIR421x dongles
-         * are "42101001.sb" or "42101007.sb"
+         * are "42101001.sb" or "42101002.sb"
          */
         sprintf(stir421x_fw_name, "4210%4X.sb",
                 self->usbdev->descriptor.bcdDevice);

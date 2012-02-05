@@ -240,9 +240,9 @@ static int nv50_display_disable(struct drm_device *dev)
 
 		nv_wr32(dev, NV50_PDISPLAY_INTR_1, mask);
 		if (!nv_wait(dev, NV50_PDISPLAY_INTR_1, mask, mask)) {
-			NV_ERROR(dev, "timeout: (0x610074 & 0x%08x) == "
+			NV_ERROR(dev, "timeout: (0x610024 & 0x%08x) == "
 				      "0x%08x\n", mask, mask);
-			NV_ERROR(dev, "0x610074 = 0x%08x\n",
+			NV_ERROR(dev, "0x610024 = 0x%08x\n",
 				 nv_rd32(dev, NV50_PDISPLAY_INTR_1));
 		}
 	}
@@ -442,7 +442,7 @@ nv50_display_flip_next(struct drm_crtc *crtc, struct drm_framebuffer *fb,
 			OUT_RING  (chan, upper_32_bits(offset));
 			OUT_RING  (chan, lower_32_bits(offset));
 			OUT_RING  (chan, 0xf00d0000 | dispc->sem.value);
-			OUT_RING  (chan, 0x1007);
+			OUT_RING  (chan, 0x1002);
 			BEGIN_NVC0(chan, 2, NvSubM2MF, 0x0010, 4);
 			OUT_RING  (chan, upper_32_bits(offset));
 			OUT_RING  (chan, lower_32_bits(offset ^ 0x10));

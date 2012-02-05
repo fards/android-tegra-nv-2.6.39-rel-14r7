@@ -70,7 +70,7 @@ static struct usb_device_id carl9170_usb_ids[] = {
 	/* Atheros TG121N */
 	{ USB_DEVICE(0x0cf3, 0x1001) },
 	/* TP-Link TL-WN821N v2 */
-	{ USB_DEVICE(0x0cf3, 0x1007), .driver_info = CARL9170_WPS_BUTTON |
+	{ USB_DEVICE(0x0cf3, 0x1002), .driver_info = CARL9170_WPS_BUTTON |
 		 CARL9170_ONE_LED },
 	/* 3Com Dual Band 802.11n USB Adapter */
 	{ USB_DEVICE(0x0cf3, 0x1010) },

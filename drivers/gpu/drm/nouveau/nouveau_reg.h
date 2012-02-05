@@ -26,24 +26,24 @@
 #	define NV04_PFB_DEBUG_0_CKE_INVERT			0x10000000
 #	define NV04_PFB_DEBUG_0_REFINC				0x20000000
 #	define NV04_PFB_DEBUG_0_SAVE_POWER_OFF			0x40000000
-#define NV04_PFB_CFG0						0x00100700
+#define NV04_PFB_CFG0						0x00100200
 #	define NV04_PFB_CFG0_SCRAMBLE				0x20000000
-#define NV04_PFB_CFG1						0x00100704
-#define NV04_PFB_FIFO_DATA					0x0010070c
+#define NV04_PFB_CFG1						0x00100204
+#define NV04_PFB_FIFO_DATA					0x0010020c
 #	define NV10_PFB_FIFO_DATA_RAM_AMOUNT_MB_MASK		0xfff00000
 #	define NV10_PFB_FIFO_DATA_RAM_AMOUNT_MB_SHIFT		20
-#define NV10_PFB_REFCTRL					0x00100710
+#define NV10_PFB_REFCTRL					0x00100210
 #	define NV10_PFB_REFCTRL_VALID_1				(1 << 31)
-#define NV04_PFB_PAD						0x0010071c
+#define NV04_PFB_PAD						0x0010021c
 #	define NV04_PFB_PAD_CKE_NORMAL				(1 << 0)
-#define NV10_PFB_TILE(i)                              (0x00100740 + (i*16))
+#define NV10_PFB_TILE(i)                              (0x00100240 + (i*16))
 #define NV10_PFB_TILE__SIZE					8
-#define NV10_PFB_TLIMIT(i)                            (0x00100744 + (i*16))
-#define NV10_PFB_TSIZE(i)                             (0x00100748 + (i*16))
-#define NV10_PFB_TSTATUS(i)                           (0x0010074c + (i*16))
-#define NV04_PFB_REF						0x001007d0
+#define NV10_PFB_TLIMIT(i)                            (0x00100244 + (i*16))
+#define NV10_PFB_TSIZE(i)                             (0x00100248 + (i*16))
+#define NV10_PFB_TSTATUS(i)                           (0x0010024c + (i*16))
+#define NV04_PFB_REF						0x001002d0
 #	define NV04_PFB_REF_CMD_REFRESH				(1 << 0)
-#define NV04_PFB_PRE						0x001007d4
+#define NV04_PFB_PRE						0x001002d4
 #	define NV04_PFB_PRE_CMD_PRECHARGE			(1 << 0)
 #define NV20_PFB_ZCOMP(i)                              (0x00100300 + 4*(i))
 #	define NV20_PFB_ZCOMP_MODE_32				(4 << 24)
@@ -700,8 +700,8 @@
 
 #define NV50_PDISPLAY                                                0x00610000
 #define NV50_PDISPLAY_OBJECTS                                        0x00610010
-#define NV50_PDISPLAY_INTR_0                                         0x00610070
-#define NV50_PDISPLAY_INTR_1                                         0x00610074
+#define NV50_PDISPLAY_INTR_0                                         0x00610020
+#define NV50_PDISPLAY_INTR_1                                         0x00610024
 #define NV50_PDISPLAY_INTR_1_VBLANK_CRTC                             0x0000000c
 #define NV50_PDISPLAY_INTR_1_VBLANK_CRTC_SHIFT                                2
 #define NV50_PDISPLAY_INTR_1_VBLANK_CRTC_(n)                   (1 << ((n) + 2))
@@ -710,8 +710,8 @@
 #define NV50_PDISPLAY_INTR_1_CLK_UNK10                               0x00000010
 #define NV50_PDISPLAY_INTR_1_CLK_UNK20                               0x00000020
 #define NV50_PDISPLAY_INTR_1_CLK_UNK40                               0x00000040
-#define NV50_PDISPLAY_INTR_EN_0                                      0x00610078
-#define NV50_PDISPLAY_INTR_EN_1                                      0x0061007c
+#define NV50_PDISPLAY_INTR_EN_0                                      0x00610028
+#define NV50_PDISPLAY_INTR_EN_1                                      0x0061002c
 #define NV50_PDISPLAY_INTR_EN_1_VBLANK_CRTC                          0x0000000c
 #define NV50_PDISPLAY_INTR_EN_1_VBLANK_CRTC_(n)                 (1 << ((n) + 2))
 #define NV50_PDISPLAY_INTR_EN_1_VBLANK_CRTC_0                        0x00000004

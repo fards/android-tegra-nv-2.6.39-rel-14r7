@@ -49,7 +49,7 @@ enum sst_card_states {
 enum sst_controls {
 	SST_SND_ALLOC =			0x1000,
 	SST_SND_PAUSE =			0x1001,
-	SST_SND_RESUME =		0x1007,
+	SST_SND_RESUME =		0x1002,
 	SST_SND_DROP =			0x1003,
 	SST_SND_FREE =			0x1004,
 	SST_SND_BUFFER_POINTER =	0x1005,

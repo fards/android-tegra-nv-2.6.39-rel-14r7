@@ -32,7 +32,7 @@
  */
 
 #include "anysee.h"
-#include "tda1007x.h"
+#include "tda1002x.h"
 #include "mt352.h"
 #include "mt352_priv.h"
 #include "zl10353.h"
@@ -223,14 +223,14 @@ static int anysee_mt352_demod_init(struct dvb_frontend *fe)
 }
 
 /* Callbacks for DVB USB */
-static struct tda10073_config anysee_tda10073_config = {
+static struct tda10023_config anysee_tda10023_config = {
 	.demod_address = 0x1a,
 	.invert = 0,
 	.xtal   = 16000000,
 	.pll_m  = 11,
 	.pll_p  = 3,
 	.pll_n  = 1,
-	.output_mode = TDA10073_OUTPUT_MODE_PARALLEL_C,
+	.output_mode = TDA10023_OUTPUT_MODE_PARALLEL_C,
 	.deltaf = 0xfeeb,
 };
 
@@ -277,9 +277,9 @@ static int anysee_frontend_attach(struct dvb_usb_adapter *adap)
 	   2. E30        ZL10353   02  0.2.1
 	   3. E30 Combo  ZL10353   0f  0.1.2    DVB-T/C combo
 	   4. E30 Plus   ZL10353   06  0.1.0
-	   5. E30C Plus  TDA10073  0a  0.1.0    rev 0.2
-	      E30C Plus  TDA10073  0f  0.1.2    rev 0.4
-	      E30 Combo  TDA10073  0f  0.1.2    DVB-T/C combo
+	   5. E30C Plus  TDA10023  0a  0.1.0    rev 0.2
+	      E30C Plus  TDA10023  0f  0.1.2    rev 0.4
+	      E30 Combo  TDA10023  0f  0.1.2    DVB-T/C combo
 	*/
 
 	/* Zarlink MT352 DVB-T demod inside of Samsung DNOS404ZH102A NIM */
@@ -313,7 +313,7 @@ static int anysee_frontend_attach(struct dvb_usb_adapter *adap)
 		}
 	}
 
-	/* connect demod on IO port D for TDA10073 & ZL10353 */
+	/* connect demod on IO port D for TDA10023 & ZL10353 */
 	ret = anysee_write_reg(adap->dev, 0xb0, 0x25);
 	if (ret)
 		return ret;
@@ -331,8 +331,8 @@ static int anysee_frontend_attach(struct dvb_usb_adapter *adap)
 	if (ret)
 		return ret;
 
-	/* Philips TDA10073 DVB-C demod */
-	adap->fe = dvb_attach(tda10073_attach, &anysee_tda10073_config,
+	/* Philips TDA10023 DVB-C demod */
+	adap->fe = dvb_attach(tda10023_attach, &anysee_tda10023_config,
 			      &adap->dev->i2c_adap, 0x48);
 	if (adap->fe != NULL) {
 		state->tuner = DVB_PLL_SAMSUNG_DTOS403IH102A;

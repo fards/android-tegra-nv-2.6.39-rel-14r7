@@ -124,7 +124,7 @@ Table of contents
 
    1000 Another process is currently bootng the card
    1001 Invalid firmware header
-   1007 Boards dual-port RAM test failed
+   1002 Boards dual-port RAM test failed
    1003 Internal firmware handler error
    1004 Boot image size invalid
    1005 First boot stage (bootstrap loader) failed

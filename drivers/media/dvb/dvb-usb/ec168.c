@@ -339,7 +339,7 @@ error:
 #define E3C_EC168_FFFA                          1
 #define E3C_EC168_FFFB                          2
 #define E3C_EC168_1001                          3
-#define E3C_EC168_1007                          4
+#define E3C_EC168_1002                          4
 
 static struct usb_device_id ec168_id[] = {
 	[E3C_EC168_1689] =
@@ -350,7 +350,7 @@ static struct usb_device_id ec168_id[] = {
 		{USB_DEVICE(USB_VID_E3C, USB_PID_E3C_EC168_3)},
 	[E3C_EC168_1001] =
 		{USB_DEVICE(USB_VID_E3C, USB_PID_E3C_EC168_4)},
-	[E3C_EC168_1007] =
+	[E3C_EC168_1002] =
 		{USB_DEVICE(USB_VID_E3C, USB_PID_E3C_EC168_5)},
 	{} /* terminating entry */
 };
@@ -399,7 +399,7 @@ static struct dvb_usb_device_properties ec168_properties = {
 				&ec168_id[E3C_EC168_FFFA],
 				&ec168_id[E3C_EC168_FFFB],
 				&ec168_id[E3C_EC168_1001],
-				&ec168_id[E3C_EC168_1007],
+				&ec168_id[E3C_EC168_1002],
 				NULL},
 			.warm_ids = {NULL},
 		},

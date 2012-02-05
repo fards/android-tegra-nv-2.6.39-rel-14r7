@@ -1731,7 +1731,7 @@ struct em28xx_board em28xx_boards[] = {
 			.gpio     = evga_indtube_analog,
 		} },
 	},
-	/* eb1a:2868 Empia EM2870 + Philips CU1216L NIM (Philips TDA10073 +
+	/* eb1a:2868 Empia EM2870 + Philips CU1216L NIM (Philips TDA10023 +
 	   Infineon TUA6034) */
 	[EM2870_BOARD_REDDO_DVB_C_USB_BOX] = {
 		.name          = "Reddo DVB-C USB TV Box",

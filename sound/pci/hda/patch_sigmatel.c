@@ -1433,37 +1433,37 @@ static unsigned int ref925x_pin_configs[8] = {
 
 static unsigned int stac925xM1_pin_configs[8] = {
 	0x40c003f4, 0x424503f2, 0x400000f3, 0x02a19020,
-	0x40a000f0, 0x90100710, 0x400003f1, 0x9033032e,
+	0x40a000f0, 0x90100210, 0x400003f1, 0x9033032e,
 };
 
 static unsigned int stac925xM1_2_pin_configs[8] = {
 	0x40c003f4, 0x424503f2, 0x400000f3, 0x02a19020,
-	0x40a000f0, 0x90100710, 0x400003f1, 0x9033032e,
+	0x40a000f0, 0x90100210, 0x400003f1, 0x9033032e,
 };
 
 static unsigned int stac925xM2_pin_configs[8] = {
 	0x40c003f4, 0x424503f2, 0x400000f3, 0x02a19020,
-	0x40a000f0, 0x90100710, 0x400003f1, 0x9033032e,
+	0x40a000f0, 0x90100210, 0x400003f1, 0x9033032e,
 };
 
 static unsigned int stac925xM2_2_pin_configs[8] = {
 	0x40c003f4, 0x424503f2, 0x400000f3, 0x02a19020,
-	0x40a000f0, 0x90100710, 0x400003f1, 0x9033032e,
+	0x40a000f0, 0x90100210, 0x400003f1, 0x9033032e,
 };
 
 static unsigned int stac925xM3_pin_configs[8] = {
 	0x40c003f4, 0x424503f2, 0x400000f3, 0x02a19020,
-	0x40a000f0, 0x90100710, 0x400003f1, 0x503303f3,
+	0x40a000f0, 0x90100210, 0x400003f1, 0x503303f3,
 };
 
 static unsigned int stac925xM5_pin_configs[8] = {
 	0x40c003f4, 0x424503f2, 0x400000f3, 0x02a19020,
-	0x40a000f0, 0x90100710, 0x400003f1, 0x9033032e,
+	0x40a000f0, 0x90100210, 0x400003f1, 0x9033032e,
 };
 
 static unsigned int stac925xM6_pin_configs[8] = {
 	0x40c003f4, 0x424503f2, 0x400000f3, 0x02a19020,
-	0x40a000f0, 0x90100710, 0x400003f1, 0x90330320,
+	0x40a000f0, 0x90100210, 0x400003f1, 0x90330320,
 };
 
 static unsigned int *stac925x_brd_tbl[STAC_925x_MODELS] = {
@@ -1510,7 +1510,7 @@ static struct snd_pci_quirk stac925x_cfg_tbl[] = {
 	SND_PCI_QUIRK(0x8384, 0x7632, "Stac9202 Reference Board", STAC_REF),
 
 	/* Default table for unknown ID */
-	SND_PCI_QUIRK(0x1007, 0x437b, "Gateway mobile", STAC_M2_2),
+	SND_PCI_QUIRK(0x1002, 0x437b, "Gateway mobile", STAC_M2_2),
 
 	{} /* terminator */
 };

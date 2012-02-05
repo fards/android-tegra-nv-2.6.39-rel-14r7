@@ -598,7 +598,7 @@ nouveau_mem_timing_init(struct drm_device *dev)
 	/* Get "some number" from the timing reg for NV_40
 	 * Used in calculations later */
 	if(dev_priv->card_type == NV_40) {
-		magic_number = (nv_rd32(dev,0x100728) & 0x0f000000) >> 24;
+		magic_number = (nv_rd32(dev,0x100228) & 0x0f000000) >> 24;
 	}
 
 	entry = mem + mem[1];
@@ -636,63 +636,63 @@ nouveau_mem_timing_init(struct drm_device *dev)
 			break;
 		}
 
-		timing->reg_100720 = (tRC << 24 | tRFC << 16 | tRAS << 8 | tRP);
+		timing->reg_100220 = (tRC << 24 | tRFC << 16 | tRAS << 8 | tRP);
 
 		/* XXX: I don't trust the -1's and +1's... they must come
 		 *      from somewhere! */
-		timing->reg_100724 = (tUNK_0 + tUNK_19 + 1 + magic_number) << 24 |
+		timing->reg_100224 = (tUNK_0 + tUNK_19 + 1 + magic_number) << 24 |
 				      tUNK_18 << 16 |
 				      (tUNK_1 + tUNK_19 + 1 + magic_number) << 8;
 		if(dev_priv->chipset == 0xa8) {
-			timing->reg_100724 |= (tUNK_2 - 1);
+			timing->reg_100224 |= (tUNK_2 - 1);
 		} else {
-			timing->reg_100724 |= (tUNK_2 + 2 - magic_number);
+			timing->reg_100224 |= (tUNK_2 + 2 - magic_number);
 		}
 
-		timing->reg_100728 = (tUNK_12 << 16 | tUNK_11 << 8 | tUNK_10);
+		timing->reg_100228 = (tUNK_12 << 16 | tUNK_11 << 8 | tUNK_10);
 		if(dev_priv->chipset >= 0xa3 && dev_priv->chipset < 0xaa) {
-			timing->reg_100728 |= (tUNK_19 - 1) << 24;
+			timing->reg_100228 |= (tUNK_19 - 1) << 24;
 		}
 
 		if(dev_priv->card_type == NV_40) {
 			/* NV40: don't know what the rest of the regs are..
 			 * And don't need to know either */
-			timing->reg_100728 |= 0x20200000 | magic_number << 24;
+			timing->reg_100228 |= 0x20200000 | magic_number << 24;
 		} else if(dev_priv->card_type >= NV_50) {
-			/* XXX: reg_10072c */
-			timing->reg_10072c = tUNK_2 - 1;
+			/* XXX: reg_10022c */
+			timing->reg_10022c = tUNK_2 - 1;
 
-			timing->reg_100730 = (tUNK_20 << 24 | tUNK_21 << 16 |
+			timing->reg_100230 = (tUNK_20 << 24 | tUNK_21 << 16 |
 						  tUNK_13 << 8  | tUNK_13);
 
-			timing->reg_100734 = (tRAS << 24 | tRC);
-			timing->reg_100734 += max(tUNK_10,tUNK_11) << 16;
+			timing->reg_100234 = (tRAS << 24 | tRC);
+			timing->reg_100234 += max(tUNK_10,tUNK_11) << 16;
 
 			if(dev_priv->chipset < 0xa3) {
-				timing->reg_100734 |= (tUNK_2 + 2) << 8;
+				timing->reg_100234 |= (tUNK_2 + 2) << 8;
 			} else {
 				/* XXX: +6? */
-				timing->reg_100734 |= (tUNK_19 + 6) << 8;
+				timing->reg_100234 |= (tUNK_19 + 6) << 8;
 			}
 
-			/* XXX; reg_100738, reg_10073c
-			 * reg_100738: 0x00??????
-			 * reg_10073c: 0x!!??0202 for NV50+ cards (empirical evidence) */
-			timing->reg_10073c = 0x202;
+			/* XXX; reg_100238, reg_10023c
+			 * reg_100238: 0x00??????
+			 * reg_10023c: 0x!!??0202 for NV50+ cards (empirical evidence) */
+			timing->reg_10023c = 0x202;
 			if(dev_priv->chipset < 0xa3) {
-				timing->reg_10073c |= 0x4000000 | (tUNK_2 - 1) << 16;
+				timing->reg_10023c |= 0x4000000 | (tUNK_2 - 1) << 16;
 			} else {
 				/* currently unknown
-				 * 10073c seen as 06xxxxxx, 0bxxxxxx or 0fxxxxxx */
+				 * 10023c seen as 06xxxxxx, 0bxxxxxx or 0fxxxxxx */
 			}
 		}
 
 		NV_DEBUG(dev, "Entry %d: 220: %08x %08x %08x %08x\n", i,
-			 timing->reg_100720, timing->reg_100724,
-			 timing->reg_100728, timing->reg_10072c);
+			 timing->reg_100220, timing->reg_100224,
+			 timing->reg_100228, timing->reg_10022c);
 		NV_DEBUG(dev, "         230: %08x %08x %08x %08x\n",
-			 timing->reg_100730, timing->reg_100734,
-			 timing->reg_100738, timing->reg_10073c);
+			 timing->reg_100230, timing->reg_100234,
+			 timing->reg_100238, timing->reg_10023c);
 	}
 
 	memtimings->nr_timing = entries;

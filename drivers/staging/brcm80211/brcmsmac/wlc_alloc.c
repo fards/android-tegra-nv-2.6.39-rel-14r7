@@ -165,7 +165,7 @@ struct wlc_info *wlc_attach_malloc(uint unit, uint *err, uint devid)
 
 	wlc = (struct wlc_info *) wlc_calloc(unit, sizeof(struct wlc_info));
 	if (wlc == NULL) {
-		*err = 1007;
+		*err = 1002;
 		goto fail;
 	}
 

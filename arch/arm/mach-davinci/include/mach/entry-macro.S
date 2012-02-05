@@ -33,7 +33,7 @@
 		ldr \tmp, [\base, #0x14]
 		movs \tmp, \tmp, lsr #2
 		sub \irqnr, \tmp, #1
-		b 1007f
+		b 1002f
 #endif
 #if defined(CONFIG_CP_INTC)
 1001:		ldr \irqnr, [\base, #0x80] /* get irq number */
@@ -44,7 +44,7 @@
 		ldr \irqstat, [\base, \tmp] /* get the intc status */
 		cmp \irqstat, #0x0
 #endif
-1007:
+1002:
 		.endm
 
 		.macro	irq_prio_table

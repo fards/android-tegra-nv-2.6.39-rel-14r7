@@ -24,7 +24,7 @@
 /* Variants of the 5200(B) */
 #define MPC5200_SVR		0x80110010
 #define MPC5200_SVR_MASK	0xfffffff0
-#define MPC5200B_SVR		0x80110070
+#define MPC5200B_SVR		0x80110020
 #define MPC5200B_SVR_MASK	0xfffffff0
 
 /* ======================================================================== */

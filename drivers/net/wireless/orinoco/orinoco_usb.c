@@ -169,7 +169,7 @@ MODULE_FIRMWARE("orinoco_ezusb_fw");
 #define USB_IGATE_IGATE_11M_ID   0x0012 /* I-GATE 11M USB Card */
 
 #define USB_FUJITSU_VENDOR_ID    0x0BF8
-#define USB_FUJITSU_E1100_ID     0x1007 /* connect2AIR WLAN E-1100 USB */
+#define USB_FUJITSU_E1100_ID     0x1002 /* connect2AIR WLAN E-1100 USB */
 
 #define USB_2WIRE_VENDOR_ID      0x1630
 #define USB_2WIRE_WIRELESS_ID    0xff81 /* 2Wire Wireless USB adapter */

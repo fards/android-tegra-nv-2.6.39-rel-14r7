@@ -15,7 +15,7 @@
 #define SO_OOBINLINE	0x0100
 /* To add :#define SO_REUSEPORT 0x0200 */
 #define SO_SNDBUF	0x1001
-#define SO_RCVBUF	0x1007
+#define SO_RCVBUF	0x1002
 #define SO_SNDBUFFORCE	0x100a
 #define SO_RCVBUFFORCE	0x100b
 #define SO_SNDLOWAT	0x1003

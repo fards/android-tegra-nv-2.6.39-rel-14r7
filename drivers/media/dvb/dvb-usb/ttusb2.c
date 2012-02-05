@@ -29,7 +29,7 @@
 
 #include "tda826x.h"
 #include "tda10086.h"
-#include "tda1007x.h"
+#include "tda1002x.h"
 #include "tda827x.h"
 #include "lnbp21.h"
 
@@ -180,7 +180,7 @@ static struct tda10086_config tda10086_config = {
 	.xtal_freq = TDA10086_XTAL_16M,
 };
 
-static struct tda10073_config tda10073_config = {
+static struct tda10023_config tda10023_config = {
 	.demod_address = 0x0c,
 	.invert = 0,
 	.xtal = 16000000,
@@ -203,12 +203,12 @@ static int ttusb2_frontend_tda10086_attach(struct dvb_usb_adapter *adap)
 	return 0;
 }
 
-static int ttusb2_frontend_tda10073_attach(struct dvb_usb_adapter *adap)
+static int ttusb2_frontend_tda10023_attach(struct dvb_usb_adapter *adap)
 {
 	if (usb_set_interface(adap->dev->udev, 0, 3) < 0)
 		err("set interface to alts=3 failed");
-	if ((adap->fe = dvb_attach(tda10073_attach, &tda10073_config, &adap->dev->i2c_adap, 0x48)) == NULL) {
-		deb_info("TDA10073 attach failed\n");
+	if ((adap->fe = dvb_attach(tda10023_attach, &tda10023_config, &adap->dev->i2c_adap, 0x48)) == NULL) {
+		deb_info("TDA10023 attach failed\n");
 		return -ENODEV;
 	}
 	return 0;
@@ -385,7 +385,7 @@ static struct dvb_usb_device_properties ttusb2_properties_ct3650 = {
 		{
 			.streaming_ctrl   = NULL,
 
-			.frontend_attach  = ttusb2_frontend_tda10073_attach,
+			.frontend_attach  = ttusb2_frontend_tda10023_attach,
 			.tuner_attach = ttusb2_tuner_tda827x_attach,
 
 			/* parameter for the MPEG2-data transfer */

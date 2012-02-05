@@ -83,7 +83,7 @@
 /* For definitions see hdlc.h */
 #define IF_IFACE_V35	0x1000		/* V.35 serial interface	*/
 #define IF_IFACE_V24	0x1001		/* V.24 serial interface	*/
-#define IF_IFACE_X21	0x1007		/* X.21 serial interface	*/
+#define IF_IFACE_X21	0x1002		/* X.21 serial interface	*/
 #define IF_IFACE_T1	0x1003		/* T1 telco serial interface	*/
 #define IF_IFACE_E1	0x1004		/* E1 telco serial interface	*/
 #define IF_IFACE_SYNC_SERIAL 0x1005	/* can't be set by software	*/

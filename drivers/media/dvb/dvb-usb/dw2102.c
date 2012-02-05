@@ -19,7 +19,7 @@
 #include "stb6000.h"
 #include "eds1547.h"
 #include "cx24116.h"
-#include "tda1007x.h"
+#include "tda1002x.h"
 #include "mt312.h"
 #include "zl10039.h"
 #include "ds3000.h"
@@ -917,7 +917,7 @@ static struct si21xx_config serit_sp1511lhb_config = {
 
 };
 
-static struct tda10073_config dw3101_tda10073_config = {
+static struct tda10023_config dw3101_tda10023_config = {
 	.demod_address = 0x0c,
 	.invert = 1,
 };
@@ -1084,10 +1084,10 @@ static int dw2102_frontend_attach(struct dvb_usb_adapter *d)
 
 static int dw3101_frontend_attach(struct dvb_usb_adapter *d)
 {
-	d->fe = dvb_attach(tda10073_attach, &dw3101_tda10073_config,
+	d->fe = dvb_attach(tda10023_attach, &dw3101_tda10023_config,
 				&d->dev->i2c_adap, 0x48);
 	if (d->fe != NULL) {
-		info("Attached tda10073!\n");
+		info("Attached tda10023!\n");
 		return 0;
 	}
 	return -EIO;

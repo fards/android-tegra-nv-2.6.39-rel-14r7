@@ -1157,7 +1157,7 @@ static int __devinit r6040_init_one(struct pci_dev *pdev,
 	lp->dev = dev;
 
 	/* Init RDC private data */
-	lp->mcr0 = 0x1007;
+	lp->mcr0 = 0x1002;
 	lp->phy_addr = phy_table[card_idx];
 
 	/* The RDC-specific entries in the device structure. */

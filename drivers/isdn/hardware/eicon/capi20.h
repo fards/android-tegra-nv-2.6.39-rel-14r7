@@ -434,7 +434,7 @@ struct _API_MSG {
 /*------------------------------------------------------------------*/
 #define GOOD                            0x0000
 #define _TOO_MANY_APPLICATIONS          0x1001
-#define _BLOCK_TOO_SMALL                0x1007
+#define _BLOCK_TOO_SMALL                0x1002
 #define _BUFFER_TOO_BIG                 0x1003
 #define _MSG_BUFFER_TOO_SMALL           0x1004
 #define _TOO_MANY_CONNECTIONS           0x1005

@@ -77,7 +77,7 @@ Scott Hill shill@gtcocalcomp.com
 #define PID_401               0x401
 #define PID_1000              0x1000
 #define PID_1001              0x1001
-#define PID_1007              0x1007
+#define PID_1002              0x1002
 
 /* Max size of a single report */
 #define REPORT_MAX_SIZE       10
@@ -97,7 +97,7 @@ static const struct usb_device_id gtco_usbid_table[] = {
 	{ USB_DEVICE(VENDOR_ID_GTCO, PID_401) },
 	{ USB_DEVICE(VENDOR_ID_GTCO, PID_1000) },
 	{ USB_DEVICE(VENDOR_ID_GTCO, PID_1001) },
-	{ USB_DEVICE(VENDOR_ID_GTCO, PID_1007) },
+	{ USB_DEVICE(VENDOR_ID_GTCO, PID_1002) },
 	{ }
 };
 MODULE_DEVICE_TABLE (usb, gtco_usbid_table);
@@ -644,7 +644,7 @@ static void gtco_urb_callback(struct urb *urbinfo)
 	/* PID dependent when we interpret the report */
 	if (inputdev->id.product == PID_1000 ||
 	    inputdev->id.product == PID_1001 ||
-	    inputdev->id.product == PID_1007) {
+	    inputdev->id.product == PID_1002) {
 
 		/*
 		 * Switch on the report ID

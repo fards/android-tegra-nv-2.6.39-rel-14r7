@@ -471,7 +471,7 @@ struct uac_format_type_i_ext_descriptor {
 /* Formats - Audio Data Format Type I Codes */
 
 #define UAC_FORMAT_TYPE_II_MPEG	0x1001
-#define UAC_FORMAT_TYPE_II_AC3	0x1007
+#define UAC_FORMAT_TYPE_II_AC3	0x1002
 
 struct uac_format_type_ii_discrete_descriptor {
 	__u8 bLength;

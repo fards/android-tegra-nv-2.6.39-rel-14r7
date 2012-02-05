@@ -39,7 +39,7 @@
 
 		ldr	\irqstat, [\base, #0x00000094]	@ upper 32 interrupts
 		cmp	\irqstat, #0
-		beq	1007f
+		beq	1002f
 		mov	\irqnr, #0x20
 
 1001:
@@ -62,7 +62,7 @@
 		movs	\tmp, \irqstat, lsl #1
 		addeq	\irqnr, \irqnr, #1
 		orrs	\base, \base, #1
-1007:
+1002:
 		@@ exit here, Z flag unset if IRQ
 
 	.endm

@@ -40,7 +40,7 @@
 #include "stb0899_cfg.h"
 #include "tda8261.h"
 #include "tda8261_cfg.h"
-#include "tda1007x.h"
+#include "tda1002x.h"
 #include "tda1004x.h"
 #include "tua6100.h"
 #include "dvb-pll.h"
@@ -664,17 +664,17 @@ static int philips_cu1216_tuner_set_params(struct dvb_frontend *fe, struct dvb_f
 	return 0;
 }
 
-static struct tda1007x_config philips_cu1216_config = {
+static struct tda1002x_config philips_cu1216_config = {
 	.demod_address = 0x0c,
 	.invert = 1,
 };
 
-static struct tda1007x_config philips_cu1216_config_altaddress = {
+static struct tda1002x_config philips_cu1216_config_altaddress = {
 	.demod_address = 0x0d,
 	.invert = 0,
 };
 
-static struct tda10073_config philips_cu1216_tda10073_config = {
+static struct tda10023_config philips_cu1216_tda10023_config = {
 	.demod_address = 0x0c,
 	.invert = 1,
 };
@@ -1301,11 +1301,11 @@ static void frontend_init(struct budget_av *budget_av)
 	case SUBID_DVBC_EASYWATCH:
 		budget_av->reinitialise_demod = 1;
 		budget_av->budget.dev->i2c_bitrate = SAA7146_I2C_BUS_BIT_RATE_240;
-		fe = dvb_attach(tda10071_attach, &philips_cu1216_config,
+		fe = dvb_attach(tda10021_attach, &philips_cu1216_config,
 				     &budget_av->budget.i2c_adap,
 				     read_pwm(budget_av));
 		if (fe == NULL)
-			fe = dvb_attach(tda10071_attach, &philips_cu1216_config_altaddress,
+			fe = dvb_attach(tda10021_attach, &philips_cu1216_config_altaddress,
 					     &budget_av->budget.i2c_adap,
 					     read_pwm(budget_av));
 		if (fe) {
@@ -1319,8 +1319,8 @@ static void frontend_init(struct budget_av *budget_av)
 	case SUBID_DVBC_KNC1_PLUS_MK3:
 		budget_av->reinitialise_demod = 1;
 		budget_av->budget.dev->i2c_bitrate = SAA7146_I2C_BUS_BIT_RATE_240;
-		fe = dvb_attach(tda10073_attach,
-			&philips_cu1216_tda10073_config,
+		fe = dvb_attach(tda10023_attach,
+			&philips_cu1216_tda10023_config,
 			&budget_av->budget.i2c_adap,
 			read_pwm(budget_av));
 		if (fe) {

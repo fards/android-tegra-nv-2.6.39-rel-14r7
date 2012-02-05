@@ -2107,7 +2107,7 @@ static void __init flatten_device_tree(void)
 static void __init fixup_device_tree_maple(void)
 {
 	phandle isa;
-	u32 rloc = 0x01007000; /* IO space; PCI device = 4 */
+	u32 rloc = 0x01002000; /* IO space; PCI device = 4 */
 	u32 isa_ranges[6];
 	char *name;
 

@@ -23,7 +23,7 @@ const u16 wm8350_mode0_defaults[] = {
 	0x17FF,     /* R0   - Reset/ID */
 	0x1000,     /* R1   - ID */
 	0x0000,     /* R2 */
-	0x1007,     /* R3   - System Control 1 */
+	0x1002,     /* R3   - System Control 1 */
 	0x0004,     /* R4   - System Control 2 */
 	0x0000,     /* R5   - System Hibernate */
 	0x8A00,     /* R6   - Interface Control */
@@ -288,7 +288,7 @@ const u16 wm8350_mode1_defaults[] = {
 	0x17FF,     /* R0   - Reset/ID */
 	0x1000,     /* R1   - ID */
 	0x0000,     /* R2 */
-	0x1007,     /* R3   - System Control 1 */
+	0x1002,     /* R3   - System Control 1 */
 	0x0014,     /* R4   - System Control 2 */
 	0x0000,     /* R5   - System Hibernate */
 	0x8A00,     /* R6   - Interface Control */
@@ -553,7 +553,7 @@ const u16 wm8350_mode2_defaults[] = {
 	0x17FF,     /* R0   - Reset/ID */
 	0x1000,     /* R1   - ID */
 	0x0000,     /* R2 */
-	0x1007,     /* R3   - System Control 1 */
+	0x1002,     /* R3   - System Control 1 */
 	0x0014,     /* R4   - System Control 2 */
 	0x0000,     /* R5   - System Hibernate */
 	0x8A00,     /* R6   - Interface Control */

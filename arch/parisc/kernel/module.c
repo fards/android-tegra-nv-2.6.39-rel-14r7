@@ -504,14 +504,14 @@ static Elf_Addr get_stub(struct module *me, unsigned long value, long addend,
 			stub->insns[0] = 0x537b0000; /* ldd 0(%dp),%dp	*/
 			stub->insns[0] |= reassemble_16a(d);
 		}
-		stub->insns[1] = 0x53610070;	/* ldd 10(%dp),%r1	*/
+		stub->insns[1] = 0x53610020;	/* ldd 10(%dp),%r1	*/
 		stub->insns[2] = 0xe820d000;	/* bve (%r1)		*/
 		stub->insns[3] = 0x537b0030;	/* ldd 18(%dp),%dp	*/
 		break;
 	case ELF_STUB_MILLI:
 		stub->insns[0] = 0x20200000;	/* ldil 0,%r1		*/
 		stub->insns[1] = 0x34210000;	/* ldo 0(%r1), %r1	*/
-		stub->insns[2] = 0x50210070;	/* ldd 10(%r1),%r1	*/
+		stub->insns[2] = 0x50210020;	/* ldd 10(%r1),%r1	*/
 		stub->insns[3] = 0xe820d002;	/* bve,n (%r1)		*/
 
 		stub->insns[0] |= reassemble_21(lrsel(value, addend));

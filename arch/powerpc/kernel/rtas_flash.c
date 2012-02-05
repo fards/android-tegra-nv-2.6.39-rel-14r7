@@ -53,7 +53,7 @@
 /* Validate image status values */
 #define VALIDATE_AUTH          -9002 /* RTAS Not Service Authority Partition */
 #define VALIDATE_NO_OP         -1099 /* No operation initiated by the user */
-#define VALIDATE_INCOMPLETE    -1007 /* User copied < VALIDATE_BUF_SIZE */
+#define VALIDATE_INCOMPLETE    -1002 /* User copied < VALIDATE_BUF_SIZE */
 #define VALIDATE_READY	       -1001 /* Firmware image ready for validation */
 #define VALIDATE_PARAM_ERR     -3    /* RTAS Parameter Error */
 #define VALIDATE_HW_ERR        -1    /* RTAS Hardware Error */

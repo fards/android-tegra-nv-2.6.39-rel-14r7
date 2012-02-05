@@ -260,8 +260,8 @@ static struct isapnp_device_id teles_ids[] __devinitdata = {
 	{ ISAPNP_VENDOR('C', 'T', 'X'), ISAPNP_FUNCTION(0x0),
 	  ISAPNP_VENDOR('C', 'T', 'X'), ISAPNP_FUNCTION(0x0), 
 	  (unsigned long) "Creatix 16.3 PnP" },
-	{ ISAPNP_VENDOR('C', 'P', 'Q'), ISAPNP_FUNCTION(0x1007),
-	  ISAPNP_VENDOR('C', 'P', 'Q'), ISAPNP_FUNCTION(0x1007), 
+	{ ISAPNP_VENDOR('C', 'P', 'Q'), ISAPNP_FUNCTION(0x1002),
+	  ISAPNP_VENDOR('C', 'P', 'Q'), ISAPNP_FUNCTION(0x1002), 
 	  (unsigned long) "Compaq ISDN S0" },
 	{ 0, }
 };

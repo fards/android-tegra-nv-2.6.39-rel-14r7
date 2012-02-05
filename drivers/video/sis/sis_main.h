@@ -506,7 +506,7 @@ static struct _chswtable {
 	char *vendorName;
 	char *cardName;
 } mychswtable[] __devinitdata = {
-	{ 0x1631, 0x1007, "Mitachi", "0x1007" },
+	{ 0x1631, 0x1002, "Mitachi", "0x1002" },
 	{ 0x1071, 0x7521, "Mitac"  , "7521P"  },
 	{ 0,      0,      ""       , ""       }
 };

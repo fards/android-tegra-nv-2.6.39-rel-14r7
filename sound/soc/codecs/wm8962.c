@@ -651,7 +651,7 @@ static const u16 wm8962_reg[WM8962_MAX_REGISTER + 1] = {
 	[20999] = 0x7D00,     /* R20999 - VSS_XHN2_0 */
 	[21000] = 0x003A,     /* R21000 - VSS_XHN3_1 */
 	[21001] = 0x4100,     /* R21001 - VSS_XHN3_0 */
-	[21007] = 0x008C,     /* R21007 - VSS_XLA_1 */
+	[21002] = 0x008C,     /* R21002 - VSS_XLA_1 */
 	[21003] = 0xFEE8,     /* R21003 - VSS_XLA_0 */
 	[21004] = 0x0078,     /* R21004 - VSS_XLB_1 */
 	[21005] = 0x0000,     /* R21005 - VSS_XLB_0 */
@@ -1798,7 +1798,7 @@ static const struct wm8962_reg_access {
 	[20999] = { 0xFFFF, 0xFFFF, 0x0000 }, /* R20999 - VSS_XHN2_0 */
 	[21000] = { 0x00FF, 0x00FF, 0x0000 }, /* R21000 - VSS_XHN3_1 */
 	[21001] = { 0xFFFF, 0xFFFF, 0x0000 }, /* R21001 - VSS_XHN3_0 */
-	[21007] = { 0x00FF, 0x00FF, 0x0000 }, /* R21007 - VSS_XLA_1 */
+	[21002] = { 0x00FF, 0x00FF, 0x0000 }, /* R21002 - VSS_XLA_1 */
 	[21003] = { 0xFFFF, 0xFFFF, 0x0000 }, /* R21003 - VSS_XLA_0 */
 	[21004] = { 0x00FF, 0x00FF, 0x0000 }, /* R21004 - VSS_XLB_1 */
 	[21005] = { 0xFFFF, 0xFFFF, 0x0000 }, /* R21005 - VSS_XLB_0 */

@@ -169,7 +169,7 @@ static int leaf_copy_boundary_item(struct buffer_info *dest_bi,
 			    && is_indirect_le_ih(ih))
 				if (get_ih_free_space(ih))
 					reiserfs_panic(sb_from_bi(dest_bi),
-						       "vs-10070",
+						       "vs-10020",
 						       "last unformatted node "
 						       "must be filled "
 						       "entirely (%h)", ih);

@@ -65,7 +65,7 @@ ENDPROC(v7_flush_icache_all)
 	clz	r5, r4				@ find bit position of way size increment
 	ldr	r7, =0x7fff
 	ands	r7, r7, r1, lsr #13		@ extract max number of the index size
-1007:
+1002:
 	mov	r9, r4				@ create working copy of max way size
 1003:
  ARM(	orr	r11, r10, r9, lsl r5	)	@ factor way and cache number into r11
@@ -78,7 +78,7 @@ ENDPROC(v7_flush_icache_all)
 	subs	r9, r9, #1			@ decrement the way
 	bge	1003b
 	subs	r7, r7, #1			@ decrement the index
-	bge	1007b
+	bge	1002b
 1004:
 	add	r10, r10, #2			@ increment cache number
 	cmp	r3, r10

@@ -1432,7 +1432,7 @@ unsigned char XGIInitNew(struct xgi_hw_device_info *HwDeviceExtension)
 			outl(0x8000002C, 0xcf8);
 			VendorID = inl(0x0cfc);
 			VendorID &= 0x0000FFFF;
-			outl(0x8001007C, 0xcf8);
+			outl(0x8001002C, 0xcf8);
 			GraphicVendorID = inl(0x0cfc);
 			GraphicVendorID &= 0x0000FFFF;
 

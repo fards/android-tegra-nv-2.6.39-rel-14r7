@@ -151,7 +151,7 @@ __ftrace_make_nop(struct module *mod,
 	/* verify that this is what we expect it to be */
 	if (((jmp[0] & 0xffff0000) != 0x3d820000) ||
 	    ((jmp[1] & 0xffff0000) != 0x398c0000) ||
-	    (jmp[2] != 0xf8410078) ||
+	    (jmp[2] != 0xf8410028) ||
 	    (jmp[3] != 0xe96c0020) ||
 	    (jmp[4] != 0xe84c0028)) {
 		printk(KERN_ERR "Not a trampoline\n");
@@ -191,7 +191,7 @@ __ftrace_make_nop(struct module *mod,
 	if (probe_kernel_read(&op, (void *)(ip+4), MCOUNT_INSN_SIZE))
 		return -EFAULT;
 
-	if (op != 0xe8410078) {
+	if (op != 0xe8410028) {
 		printk(KERN_ERR "Next line is not ld! (%08x)\n", op);
 		return -EINVAL;
 	}
@@ -360,7 +360,7 @@ __ftrace_make_call(struct dyn_ftrace *rec, unsigned long addr)
 	 * It should be pointing to two nops or
 	 *  b +8; ld r2,40(r1)
 	 */
-	if (((op[0] != 0x48000008) || (op[1] != 0xe8410078)) &&
+	if (((op[0] != 0x48000008) || (op[1] != 0xe8410028)) &&
 	    ((op[0] != PPC_INST_NOP) || (op[1] != PPC_INST_NOP))) {
 		printk(KERN_ERR "Expected NOPs but have %x %x\n", op[0], op[1]);
 		return -EINVAL;
@@ -381,7 +381,7 @@ __ftrace_make_call(struct dyn_ftrace *rec, unsigned long addr)
 	}
 
 	/* ld r2,40(r1) */
-	op[1] = 0xe8410078;
+	op[1] = 0xe8410028;
 
 	pr_devel("write to %lx\n", rec->ip);
 

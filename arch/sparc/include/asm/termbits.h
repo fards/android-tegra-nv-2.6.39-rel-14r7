@@ -178,7 +178,7 @@ struct ktermios {
 /* We'll never see these speeds with the Zilogs, but for completeness... */
 #define  BOTHER   0x00001000
 #define  B57600   0x00001001
-#define  B115200  0x00001007
+#define  B115200  0x00001002
 #define  B230400  0x00001003
 #define  B460800  0x00001004
 /* This is what we can do with the Zilogs. */

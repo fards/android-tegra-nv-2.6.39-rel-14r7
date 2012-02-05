@@ -1,7 +1,7 @@
 /*
- *   fs/cifs/rfc1007pdu.h
+ *   fs/cifs/rfc1002pdu.h
  *
- *   Protocol Data Unit definitions for RFC 1001/1007 support
+ *   Protocol Data Unit definitions for RFC 1001/1002 support
  *
  *   Copyright (c) International Business Machines  Corp., 2004
  *   Author(s): Steve French (sfrench@us.ibm.com)
@@ -21,20 +21,20 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-/* NB: unlike smb/cifs packets, the RFC1007 structures are big endian */
+/* NB: unlike smb/cifs packets, the RFC1002 structures are big endian */
 
-	/* RFC 1007 session packet types */
-#define RFC1007_SESSION_MESSAGE 0x00
-#define RFC1007_SESSION_REQUEST  0x81
-#define RFC1007_POSITIVE_SESSION_RESPONSE 0x82
-#define RFC1007_NEGATIVE_SESSION_RESPONSE 0x83
-#define RFC1007_RETARGET_SESSION_RESPONSE 0x84
-#define RFC1007_SESSION_KEEP_ALIVE 0x85
+	/* RFC 1002 session packet types */
+#define RFC1002_SESSION_MESSAGE 0x00
+#define RFC1002_SESSION_REQUEST  0x81
+#define RFC1002_POSITIVE_SESSION_RESPONSE 0x82
+#define RFC1002_NEGATIVE_SESSION_RESPONSE 0x83
+#define RFC1002_RETARGET_SESSION_RESPONSE 0x84
+#define RFC1002_SESSION_KEEP_ALIVE 0x85
 
-	/* RFC 1007 flags (only one defined */
-#define RFC1007_LENGTH_EXTEND 0x80 /* high order bit of length (ie +64K) */
+	/* RFC 1002 flags (only one defined */
+#define RFC1002_LENGTH_EXTEND 0x80 /* high order bit of length (ie +64K) */
 
-struct rfc1007_session_packet {
+struct rfc1002_session_packet {
 	__u8	type;
 	__u8	flags;
 	__u16	length;
@@ -59,13 +59,13 @@ struct rfc1007_session_packet {
 } __attribute__((packed));
 
 /* Negative Session Response error codes */
-#define RFC1007_NOT_LISTENING_CALLED  0x80 /* not listening on called name */
-#define RFC1007_NOT_LISTENING_CALLING 0x81 /* not listening on calling name */
-#define RFC1007_NOT_PRESENT           0x82 /* called name not present */
-#define RFC1007_INSUFFICIENT_RESOURCE 0x83
-#define RFC1007_UNSPECIFIED_ERROR     0x8F
+#define RFC1002_NOT_LISTENING_CALLED  0x80 /* not listening on called name */
+#define RFC1002_NOT_LISTENING_CALLING 0x81 /* not listening on calling name */
+#define RFC1002_NOT_PRESENT           0x82 /* called name not present */
+#define RFC1002_INSUFFICIENT_RESOURCE 0x83
+#define RFC1002_UNSPECIFIED_ERROR     0x8F
 
-/* RFC 1007 Datagram service packets are not defined here as they
+/* RFC 1002 Datagram service packets are not defined here as they
 are not needed for the network filesystem client unless we plan on
 implementing broadcast resolution of the server ip address (from
 server netbios name). Currently server names are resolved only via DNS

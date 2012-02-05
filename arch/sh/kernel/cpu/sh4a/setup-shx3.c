@@ -140,8 +140,8 @@ static struct sh_timer_config tmu2_platform_data = {
 
 static struct resource tmu2_resources[] = {
 	[0] = {
-		.start	= 0xffc10070,
-		.end	= 0xffc1007f,
+		.start	= 0xffc10020,
+		.end	= 0xffc1002f,
 		.flags	= IORESOURCE_MEM,
 	},
 	[1] = {

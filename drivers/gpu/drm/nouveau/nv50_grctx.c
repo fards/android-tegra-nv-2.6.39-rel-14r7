@@ -669,7 +669,7 @@ nv50_graph_construct_mmio(struct nouveau_grctx *ctx)
 			gr_def(ctx, offset + 0x0, 0x00120407);
 			gr_def(ctx, offset + 0x4, 0x05091507);
 			if (dev_priv->chipset == 0x84)
-				gr_def(ctx, offset + 0x8, 0x05100702);
+				gr_def(ctx, offset + 0x8, 0x05100202);
 			else
 				gr_def(ctx, offset + 0x8, 0x05010202);
 			gr_def(ctx, offset + 0xc, 0x00030201);

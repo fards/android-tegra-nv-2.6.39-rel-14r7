@@ -512,7 +512,7 @@
 #define AR5K_CCFG_CCU_CREDIT	0x00000002	/* CCU Credit (field) */
 #define AR5K_CCFG_CCU_CD_THRES	0x00000080	/* CCU Cyc(lic?) debt threshold (field) */
 #define AR5K_CCFG_CCU_CUP_LCNT	0x00010000	/* CCU Catchup lit(?) count */
-#define	AR5K_CCFG_CCU_INIT	0x00100700	/* Initial value during reset */
+#define	AR5K_CCFG_CCU_INIT	0x00100200	/* Initial value during reset */
 
 /*
  * Compression performance counter registers [5212+]

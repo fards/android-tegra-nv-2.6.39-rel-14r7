@@ -875,7 +875,7 @@ set_tuner:
 		rc = WR16(s, 0x1c10062, v20);
 		if (rc < 0)
 			goto exit_rc;
-		rc = WR16(s, 0x1c1007a, v1C);
+		rc = WR16(s, 0x1c1002a, v1C);
 		if (rc < 0)
 			goto exit_rc;
 		rc = WR16(s, 0x1c10015, v16);
@@ -908,7 +908,7 @@ set_tuner:
 		rc = WR16(s, 0x1c10062, v1E);
 		if (rc < 0)
 			goto exit_rc;
-		rc = WR16(s, 0x1c1007a, v1A);
+		rc = WR16(s, 0x1c1002a, v1A);
 		if (rc < 0)
 			goto exit_rc;
 		rc = WR16(s, 0x1c10015, v14);
@@ -938,7 +938,7 @@ set_tuner:
 		rc = WR16(s, 0x1c10062, ebx);
 		if (rc < 0)
 			goto exit_rc;
-		rc = WR16(s, 0x1c1007a, v18);
+		rc = WR16(s, 0x1c1002a, v18);
 		if (rc < 0)
 			goto exit_rc;
 		rc = WR16(s, 0x1c10015, ebp);

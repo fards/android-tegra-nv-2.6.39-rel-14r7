@@ -230,7 +230,7 @@ struct prov_record {
 
 #define FT1000_DPRAM_BASE		0x1000	//  0x0000 to 0x07FF	DPRAM	2Kx16 - R/W from PCMCIA or DSP
 
-#define FT1000_DPRAM_TX_BASE	0x1007	//  TX AREA (SlowQ)
+#define FT1000_DPRAM_TX_BASE	0x1002	//  TX AREA (SlowQ)
 
 #define FT1000_DPRAM_RX_BASE	0x1800	//  RX AREA (SlowQ)
 
@@ -258,7 +258,7 @@ struct prov_record {
 
 
 
-#define FT1000_DPRAM_FEFE    	0x1007	// Dsp Downloader handshake location
+#define FT1000_DPRAM_FEFE    	0x1002	// Dsp Downloader handshake location
 
 
 

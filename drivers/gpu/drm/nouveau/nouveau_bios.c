@@ -2494,7 +2494,7 @@ init_compute_mem(struct nvbios *bios, uint16_t offset, struct init_exec *iexec)
 	 * This opcode is meant to set the PFB memory config registers
 	 * appropriately so that we can correctly calculate how much VRAM it
 	 * has (on nv10 and better chipsets the amount of installed VRAM is
-	 * subsequently reported in NV_PFB_CSTATUS (0x10070C)).
+	 * subsequently reported in NV_PFB_CSTATUS (0x10020C)).
 	 *
 	 * The implementation of this opcode in general consists of several
 	 * parts:

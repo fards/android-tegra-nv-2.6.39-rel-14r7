@@ -26,7 +26,7 @@
  *   in form:
  *      xd_geo=<cyl_xda>,<head_xda>,<sec_xda>[,<cyl_xdb>,<head_xdb>,<sec_xdb>]
  *   Recovered DMA access. Abridged messages. Added support for DTC5051CX,
- *   WD1007-27X & XEBEC controllers. Driver uses now some jumper settings.
+ *   WD1002-27X & XEBEC controllers. Driver uses now some jumper settings.
  *   Extended ioctl() support.
  *
  * Bugfix: 15/02/01, Paul G. - inform queue layer of tiny xd_maxsect.
@@ -107,14 +107,14 @@ static XD_SIGNATURE xd_sigs[] __initdata = {
 	{ 0x0008,"[BXD06 (C) DTC 17-MAY-1985]",xd_dtc_init_controller,xd_dtc5150cx_init_drive," DTC 5150CX" }, /* Andrzej Krzysztofowicz, ankry@mif.pg.gda.pl */
 	{ 0x000B,"CRD18A   Not an IBM rom. (C) Copyright Data Technology Corp. 05/31/88",xd_dtc_init_controller,xd_dtc_init_drive," DTC 5150X" }, /* Todd Fries, tfries@umr.edu */
 	{ 0x000B,"CXD23A Not an IBM ROM (C)Copyright Data Technology Corp 12/03/88",xd_dtc_init_controller,xd_dtc_init_drive," DTC 5150X" }, /* Pat Mackinlay, pat@it.com.au */
-	{ 0x0008,"07/15/86(C) Copyright 1986 Western Digital Corp.",xd_wd_init_controller,xd_wd_init_drive," Western Dig. 1007-27X" }, /* Andrzej Krzysztofowicz, ankry@mif.pg.gda.pl */
+	{ 0x0008,"07/15/86(C) Copyright 1986 Western Digital Corp.",xd_wd_init_controller,xd_wd_init_drive," Western Dig. 1002-27X" }, /* Andrzej Krzysztofowicz, ankry@mif.pg.gda.pl */
 	{ 0x0008,"06/24/88(C) Copyright 1988 Western Digital Corp.",xd_wd_init_controller,xd_wd_init_drive," Western Dig. WDXT-GEN2" }, /* Dan Newcombe, newcombe@aa.csc.peachnet.edu */
 	{ 0x0015,"SEAGATE ST11 BIOS REVISION",xd_seagate_init_controller,xd_seagate_init_drive," Seagate ST11M/R" }, /* Salvador Abreu, spa@fct.unl.pt */
 	{ 0x0010,"ST11R BIOS",xd_seagate_init_controller,xd_seagate_init_drive," Seagate ST11M/R" }, /* Risto Kankkunen, risto.kankkunen@cs.helsinki.fi */
 	{ 0x0010,"ST11 BIOS v1.7",xd_seagate_init_controller,xd_seagate_init_drive," Seagate ST11R" }, /* Alan Hourihane, alanh@fairlite.demon.co.uk */
 	{ 0x1000,"(c)Copyright 1987 SMS",xd_omti_init_controller,xd_omti_init_drive,"n OMTI 5520" }, /* Dirk Melchers, dirk@merlin.nbg.sub.org */
 	{ 0x0006,"COPYRIGHT XEBEC (C) 1984",xd_xebec_init_controller,xd_xebec_init_drive," XEBEC" }, /* Andrzej Krzysztofowicz, ankry@mif.pg.gda.pl */
-	{ 0x0008,"(C) Copyright 1984 Western Digital Corp", xd_wd_init_controller, xd_wd_init_drive," Western Dig. 1007s-wx2" },
+	{ 0x0008,"(C) Copyright 1984 Western Digital Corp", xd_wd_init_controller, xd_wd_init_drive," Western Dig. 1002s-wx2" },
 	{ 0x0008,"(C) Copyright 1986 Western Digital Corporation", xd_wd_init_controller, xd_wd_init_drive," 1986 Western Digital" }, /* jfree@sovereign.org */
 };
 
@@ -792,19 +792,19 @@ static void __init xd_wd_init_drive (u_char drive)
 		{0x30E,2,0x30F,0x30F},
 		{0x267,4,0x268,0x268},
 
-		{0x3D5,5,0x3D6,0x3D6},   /* 1007 series RLL */
+		{0x3D5,5,0x3D6,0x3D6},   /* 1002 series RLL */
 		{0x3DB,7,0x3DC,0x3DC},
 		{0x264,4,0x265,0x265},
 		{0x267,4,0x268,0x268}};
 
 	u_char cmdblk[6],buf[0x200];
 	u_char n = 0,rll,jumper_state,use_jumper_geo;
-	u_char wd_1007 = (xd_sigs[xd_type].string[7] == '6');
+	u_char wd_1002 = (xd_sigs[xd_type].string[7] == '6');
 	
 	jumper_state = ~(inb(0x322));
 	if (jumper_state & 0x40)
 		xd_irq = 9;
-	rll = (jumper_state & 0x30) ? (0x04 << wd_1007) : 0;
+	rll = (jumper_state & 0x30) ? (0x04 << wd_1002) : 0;
 	xd_build(cmdblk,CMD_READ,drive,0,0,0,1,0);
 	if (!xd_command(cmdblk,PIO_MODE,buf,NULL,NULL,XD_TIMEOUT * 2)) {
 		xd_info[drive].heads = buf[0x1AF];				/* heads */
@@ -834,7 +834,7 @@ static void __init xd_wd_init_drive (u_char drive)
 			xd_info[drive].ecc = 0x0B;
 #endif /* 0 */
 		}
-		if (!wd_1007) {
+		if (!wd_1002) {
 			if (use_jumper_geo)
 				xd_setparam(CMD_WDSETPARAM,drive,xd_info[drive].heads,xd_info[drive].cylinders,
 					geometry_table[n][2],geometry_table[n][3],0x0B);
@@ -842,10 +842,10 @@ static void __init xd_wd_init_drive (u_char drive)
 				xd_setparam(CMD_WDSETPARAM,drive,xd_info[drive].heads,xd_info[drive].cylinders,
 					((u_short *) (buf))[0xD8],((u_short *) (buf))[0xDA],buf[0x1B4]);
 		}
-	/* 1007 based RLL controller requests converted addressing, but reports physical 
+	/* 1002 based RLL controller requests converted addressing, but reports physical 
 	   (physical 26 sec., logical 17 sec.) 
 	   1004 based ???? */
-		if (rll & wd_1007) {
+		if (rll & wd_1002) {
 			if ((xd_info[drive].cylinders *= 26,
 			     xd_info[drive].cylinders /= 17) > 1023)
 				xd_info[drive].cylinders = 1023;  /* 1024 ? */

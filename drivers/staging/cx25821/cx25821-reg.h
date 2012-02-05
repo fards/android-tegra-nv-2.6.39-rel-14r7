@@ -930,12 +930,12 @@
 #define  FLD_PECOS_SOFT_RESET      0x00000001
 
 /* ***************************************************************************** */
-#define  MC416_RWD                 0x110070	/* MC416 GPIO[18:3] pin */
-#define  MC416_OEN                 0x110074	/* Output enable of GPIO[18:3] */
-#define  MC416_CTL                 0x110078
+#define  MC416_RWD                 0x110020	/* MC416 GPIO[18:3] pin */
+#define  MC416_OEN                 0x110024	/* Output enable of GPIO[18:3] */
+#define  MC416_CTL                 0x110028
 
 /* ***************************************************************************** */
-#define  ALT_PIN_OUT_SEL           0x11007C	/* Alternate GPIO output select */
+#define  ALT_PIN_OUT_SEL           0x11002C	/* Alternate GPIO output select */
 
 #define  FLD_ALT_GPIO_OUT_SEL      0xF0000000
 /* 0          Disabled <-- default */
@@ -1082,7 +1082,7 @@
 #define  PLL_D_INT_FRAC            0x1100A0
 #define  PLL_D_POST_STAT_BIST      0x1100A4
 
-#define  CLK_RST                   0x11007C
+#define  CLK_RST                   0x11002C
 #define  FLD_VID_I_CLK_NOE         0x00001000
 #define  FLD_VID_J_CLK_NOE         0x00002000
 #define  FLD_USE_ALT_PLL_REF       0x00004000

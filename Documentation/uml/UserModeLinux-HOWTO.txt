@@ -3640,7 +3640,7 @@
        (gdb) p (void *)$6
        $7 = (void *) 0x5006ec10
        (gdb) p *((void **)$7)
-       $8 = (void *) 0x50100700
+       $8 = (void *) 0x50100200
 
 
 
@@ -3650,15 +3650,15 @@
   what its b_data field contains:
 
 
-       (gdb) p *((struct buffer_head *)0x50100700)
+       (gdb) p *((struct buffer_head *)0x50100200)
        $13 = {b_next = 0x50289380, b_blocknr = 49405, b_size = 1024, b_list = 0,
          b_dev = 15872, b_count = {counter = 1}, b_rdev = 15872, b_state = 24,
-         b_flushtime = 0, b_next_free = 0x501001a0, b_prev_free = 0x50100760,
+         b_flushtime = 0, b_next_free = 0x501001a0, b_prev_free = 0x50100260,
          b_this_page = 0x501001a0, b_reqnext = 0x0, b_pprev = 0x507fcf58,
          b_data = 0x50000800 "", b_page = 0x50004000,
          b_end_io = 0x10017f60 <end_buffer_io_sync>, b_dev_id = 0x0,
          b_rsector = 98810, b_wait = {lock = <optimized out or zero length>,
-           task_list = {next = 0x50100748, prev = 0x50100748}, __magic = 1343226448,
+           task_list = {next = 0x50100248, prev = 0x50100248}, __magic = 1343226448,
            __creator = 0}, b_kiobuf = 0x0}
 
 
@@ -3682,7 +3682,7 @@
       next = 0x50008460, prev = 0x50019350}, wait = {
       lock = <optimized out or zero length>, task_list = {next = 0x50004024,
         prev = 0x50004024}, __magic = 1342193708, __creator = 0},
-    pprev_hash = 0x0, buffers = 0x501007c0, virtual = 1342177280,
+    pprev_hash = 0x0, buffers = 0x501002c0, virtual = 1342177280,
     zone = 0x100c5160}
 
 
