@@ -230,7 +230,7 @@ struct hv_guid {
  * HV_STATUS_INSUFFICIENT_BUFFER
  * The specified buffer was too small to contain all of the requested data.
  */
-#define HV_STATUS_INSUFFICIENT_BUFFER			((u16)0x1002)
+#define HV_STATUS_INSUFFICIENT_BUFFER			((u16)0x1007)
 
 /*
  * HV_STATUS_GPA_NOT_PRESENT

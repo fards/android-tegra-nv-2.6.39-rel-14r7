@@ -106,7 +106,7 @@
 #define __LPU1_HOSTFN1_MBOX_CMD_STATUS   0x00000001
 #define CPE_Q0_DEPTH                     0x00010014
 #define CPE_Q0_PI                        0x0001001c
-#define CPE_Q0_CI                        0x00010020
+#define CPE_Q0_CI                        0x00010070
 #define CPE_Q1_DEPTH                     0x00010034
 #define CPE_Q1_PI                        0x0001003c
 #define CPE_Q1_CI                        0x00010040

@@ -407,7 +407,7 @@ static struct w100_mode e740_lcd_mode = {
 };
 
 static struct w100_gpio_regs e740_w100_gpio_info = {
-	.init_data1 = 0x21002103,
+	.init_data1 = 0x21007103,
 	.gpio_dir1  = 0xffffdeff,
 	.gpio_oe1   = 0x03c00643,
 	.init_data2 = 0x003f003f,

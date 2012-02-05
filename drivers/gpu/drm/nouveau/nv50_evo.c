@@ -183,7 +183,7 @@ nv50_evo_channel_init(struct nouveau_channel *evo)
 	}
 
 	/* enable error reporting on the channel */
-	nv_mask(dev, 0x610028, 0x00000000, 0x00010001 << id);
+	nv_mask(dev, 0x610078, 0x00000000, 0x00010001 << id);
 
 	evo->dma.max = (4096/4) - 2;
 	evo->dma.max &= ~7;
@@ -207,7 +207,7 @@ nv50_evo_channel_fini(struct nouveau_channel *evo)
 	struct drm_device *dev = evo->dev;
 	int id = evo->id;
 
-	nv_mask(dev, 0x610028, 0x00010001 << id, 0x00000000);
+	nv_mask(dev, 0x610078, 0x00010001 << id, 0x00000000);
 	nv_mask(dev, NV50_PDISPLAY_EVO_CTRL(id), 0x00001010, 0x00001000);
 	nv_wr32(dev, NV50_PDISPLAY_INTR_0, (1 << id));
 	nv_mask(dev, NV50_PDISPLAY_EVO_CTRL(id), 0x00000003, 0x00000000);

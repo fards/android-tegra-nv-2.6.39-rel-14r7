@@ -492,7 +492,7 @@ static struct usb_device_id ipaq_id_table [] = {
 	{ USB_DEVICE(0x1114, 0x0004) }, /* Psion Teklogix Sync netBookPro */
 	{ USB_DEVICE(0x1114, 0x0006) }, /* Psion Teklogix Sync 7525 */
 	{ USB_DEVICE(0x1182, 0x1388) }, /* VES USB Sync */
-	{ USB_DEVICE(0x11D9, 0x1002) }, /* Rugged Pocket PC 2003 */
+	{ USB_DEVICE(0x11D9, 0x1007) }, /* Rugged Pocket PC 2003 */
 	{ USB_DEVICE(0x11D9, 0x1003) }, /* Rugged Pocket PC 2003 */
 	{ USB_DEVICE(0x1231, 0xCE01) }, /* USB Sync 03 */
 	{ USB_DEVICE(0x1231, 0xCE02) }, /* USB Sync 03 */

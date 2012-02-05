@@ -85,7 +85,7 @@ snd_pmac_burgundy_rcw(struct snd_pmac *chip, unsigned addr)
 	snd_pmac_burgundy_extend_wait(chip);
 	val += ((in_le32(&chip->awacs->codec_stat)>>4) & 0xff) <<8;
 
-	out_le32(&chip->awacs->codec_ctrl, addr + 0x100200);
+	out_le32(&chip->awacs->codec_ctrl, addr + 0x100700);
 	snd_pmac_burgundy_busy_wait(chip);
 	snd_pmac_burgundy_extend_wait(chip);
 	val += ((in_le32(&chip->awacs->codec_stat)>>4) & 0xff) <<16;

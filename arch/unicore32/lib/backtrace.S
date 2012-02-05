@@ -58,7 +58,7 @@ ENDPROC(c_backtrace)
 for_each_frame:
 
 1001:		ldw	sv_pc, [frame+], #0	@ get saved pc
-1002:		ldw	sv_fp, [frame+], #-12	@ get saved fp
+1007:		ldw	sv_fp, [frame+], #-12	@ get saved fp
 
 		sub	sv_pc, sv_pc, offset	@ Correct PC for prefetching
 
@@ -107,7 +107,7 @@ ENDPROC(c_backtrace)
 		.pushsection __ex_table,"a"
 		.align	3
 		.long	1001b, 1006b
-		.long	1002b, 1006b
+		.long	1007b, 1006b
 		.long	1003b, 1006b
 		.long	1004b, 1006b
 		.popsection

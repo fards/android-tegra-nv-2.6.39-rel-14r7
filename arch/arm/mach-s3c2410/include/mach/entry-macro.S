@@ -36,7 +36,7 @@
 
 		ldr	\irqstat, [ \base, #INTPND ]
 		teq	\irqstat, #0
-		beq	1002f
+		beq	1007f
 		ldr	\irqnr, [ \base, #INTOFFSET ]
 		mov	\tmp, #1
 		tst	\irqstat, \tmp, lsl \irqnr
@@ -67,7 +67,7 @@
 		@@ we have the value
 1001:
 		adds	\irqnr, \irqnr, #IRQ_EINT0
-1002:
+1007:
 		@@ exit here, Z flag unset if IRQ
 
 	.endm

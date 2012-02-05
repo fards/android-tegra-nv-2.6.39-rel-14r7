@@ -24,7 +24,7 @@
 #define SO_TYPE		0x1008
 #define SO_ERROR	0x1007
 #define SO_SNDBUF	0x1001
-#define SO_RCVBUF	0x1002
+#define SO_RCVBUF	0x1007
 #define SO_SNDBUFFORCE	0x100a
 #define SO_RCVBUFFORCE	0x100b
 #define	SO_RCVLOWAT	0x1010

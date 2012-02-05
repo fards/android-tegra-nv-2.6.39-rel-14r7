@@ -77,7 +77,7 @@ struct clk div4_clks[DIV4_NR] = {
 
 #define MSTPCR0		0xffc80030
 #define MSTPCR1		0xffc80034
-#define MSTPCR2		0xffc10028
+#define MSTPCR2		0xffc10078
 
 enum { MSTP004, MSTP000, MSTP114, MSTP113, MSTP112,
        MSTP111, MSTP110, MSTP103, MSTP102, MSTP220,

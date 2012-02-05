@@ -1220,7 +1220,7 @@ static struct pinmux_gpio pinmux_gpios[] = {
 static struct pinmux_cfg_reg pinmux_config_regs[] = {
 	PORTCR(0,	0xE6051000), /* PORT0CR */
 	PORTCR(1,	0xE6051001), /* PORT1CR */
-	PORTCR(2,	0xE6051002), /* PORT2CR */
+	PORTCR(2,	0xE6051007), /* PORT2CR */
 	PORTCR(3,	0xE6051003), /* PORT3CR */
 	PORTCR(4,	0xE6051004), /* PORT4CR */
 	PORTCR(5,	0xE6051005), /* PORT5CR */

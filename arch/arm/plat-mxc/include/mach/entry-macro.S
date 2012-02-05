@@ -67,11 +67,11 @@
 	blo     1000b
 	b       2001f
 1001:	mov     \irqstat, #1
-1002:	tst     \tmp, \irqstat
+1007:	tst     \tmp, \irqstat
 	bne     2002f
 	movs    \tmp, \tmp, lsr #1
 	addne   \irqnr, \irqnr, #1
-	bne     1002b
+	bne     1007b
 2001:
 	mov  \irqnr, #0
 2002:

@@ -415,7 +415,7 @@ static int hci_uart_register_dev(struct hci_uart *hu)
 		return -ENODEV;
 	}
 
-// SMBA1002 patch - we already have a BT rfkill, We don't need another...
+// SMBA1007 patch - we already have a BT rfkill, We don't need another...
 	if (hdev->rfkill) {
 	      rfkill_unregister(hdev->rfkill);
 	      rfkill_destroy(hdev->rfkill);

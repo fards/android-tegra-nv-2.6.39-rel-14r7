@@ -69,7 +69,7 @@ static inline void flush(void)
  * status and packet data scribbled over the uncompressed kernel image.
  * Work around this by resetting the ethernet MAC before we uncompress.
  */
-#define PHYS_ETH_SELF_CTL		0x80010020
+#define PHYS_ETH_SELF_CTL		0x80010070
 #define ETH_SELF_CTL_RESET		0x00000001
 
 static void ethernet_reset(void)

@@ -24,9 +24,9 @@
 		.endm
 
 		.macro	busyuart,rd,rx
-1002:		ldr	\rd, [\rx, #0x18]
+1007:		ldr	\rd, [\rx, #0x18]
 		tst	\rd, #(1 << 3)
-		bne	1002b
+		bne	1007b
 		.endm
 
 		.macro	waituart,rd,rx

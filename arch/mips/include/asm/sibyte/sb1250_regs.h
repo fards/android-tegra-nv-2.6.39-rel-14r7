@@ -606,8 +606,8 @@
  * Watchdog timers
  */
 
-#define A_SCD_WDOG_0		    0x0010020050
-#define A_SCD_WDOG_1                0x0010020150
+#define A_SCD_WDOG_0		    0x0010070050
+#define A_SCD_WDOG_1                0x0010070150
 #define SCD_WDOG_SPACING            0x100
 #define SCD_NUM_WDOGS		    2
 #define A_SCD_WDOG_BASE(w)          (A_SCD_WDOG_0+SCD_WDOG_SPACING*(w))
@@ -617,22 +617,22 @@
 #define R_SCD_WDOG_CNT		    0x0000000008
 #define R_SCD_WDOG_CFG		    0x0000000010
 
-#define A_SCD_WDOG_INIT_0           0x0010020050
-#define A_SCD_WDOG_CNT_0            0x0010020058
-#define A_SCD_WDOG_CFG_0            0x0010020060
+#define A_SCD_WDOG_INIT_0           0x0010070050
+#define A_SCD_WDOG_CNT_0            0x0010070058
+#define A_SCD_WDOG_CFG_0            0x0010070060
 
-#define A_SCD_WDOG_INIT_1           0x0010020150
-#define A_SCD_WDOG_CNT_1            0x0010020158
-#define A_SCD_WDOG_CFG_1            0x0010020160
+#define A_SCD_WDOG_INIT_1           0x0010070150
+#define A_SCD_WDOG_CNT_1            0x0010070158
+#define A_SCD_WDOG_CFG_1            0x0010070160
 
 /*
  * Generic timers
  */
 
-#define A_SCD_TIMER_0		    0x0010020070
-#define A_SCD_TIMER_1               0x0010020078
-#define A_SCD_TIMER_2		    0x0010020170
-#define A_SCD_TIMER_3               0x0010020178
+#define A_SCD_TIMER_0		    0x0010070070
+#define A_SCD_TIMER_1               0x0010070078
+#define A_SCD_TIMER_2		    0x0010070170
+#define A_SCD_TIMER_3               0x0010070178
 #define SCD_NUM_TIMERS		    4
 #define A_SCD_TIMER_BASE(w)         (A_SCD_TIMER_0+0x08*((w)&1)+0x100*(((w)&2)>>1))
 #define A_SCD_TIMER_REGISTER(w, r)  (A_SCD_TIMER_BASE(w) + (r))
@@ -641,60 +641,60 @@
 #define R_SCD_TIMER_CNT		    0x0000000010
 #define R_SCD_TIMER_CFG		    0x0000000020
 
-#define A_SCD_TIMER_INIT_0          0x0010020070
-#define A_SCD_TIMER_CNT_0           0x0010020080
-#define A_SCD_TIMER_CFG_0           0x0010020090
+#define A_SCD_TIMER_INIT_0          0x0010070070
+#define A_SCD_TIMER_CNT_0           0x0010070080
+#define A_SCD_TIMER_CFG_0           0x0010070090
 
-#define A_SCD_TIMER_INIT_1          0x0010020078
-#define A_SCD_TIMER_CNT_1           0x0010020088
-#define A_SCD_TIMER_CFG_1           0x0010020098
+#define A_SCD_TIMER_INIT_1          0x0010070078
+#define A_SCD_TIMER_CNT_1           0x0010070088
+#define A_SCD_TIMER_CFG_1           0x0010070098
 
-#define A_SCD_TIMER_INIT_2          0x0010020170
-#define A_SCD_TIMER_CNT_2           0x0010020180
-#define A_SCD_TIMER_CFG_2           0x0010020190
+#define A_SCD_TIMER_INIT_2          0x0010070170
+#define A_SCD_TIMER_CNT_2           0x0010070180
+#define A_SCD_TIMER_CFG_2           0x0010070190
 
-#define A_SCD_TIMER_INIT_3          0x0010020178
-#define A_SCD_TIMER_CNT_3           0x0010020188
-#define A_SCD_TIMER_CFG_3           0x0010020198
+#define A_SCD_TIMER_INIT_3          0x0010070178
+#define A_SCD_TIMER_CNT_3           0x0010070188
+#define A_SCD_TIMER_CFG_3           0x0010070198
 
 #if SIBYTE_HDR_FEATURE(1250, PASS2) || SIBYTE_HDR_FEATURE(112x, PASS1)
-#define A_SCD_SCRATCH		   0x0010020C10
+#define A_SCD_SCRATCH		   0x0010070C10
 #endif /* 1250 PASS2 || 112x PASS1 */
 
 #if SIBYTE_HDR_FEATURE(1250, PASS2) || SIBYTE_HDR_FEATURE(112x, PASS1) || SIBYTE_HDR_FEATURE_CHIP(1480)
 #define A_SCD_ZBBUS_CYCLE_COUNT	   0x0010030000
-#define A_SCD_ZBBUS_CYCLE_CP0	   0x0010020C00
-#define A_SCD_ZBBUS_CYCLE_CP1	   0x0010020C08
+#define A_SCD_ZBBUS_CYCLE_CP0	   0x0010070C00
+#define A_SCD_ZBBUS_CYCLE_CP1	   0x0010070C08
 #endif
 
 /*  *********************************************************************
     * System Control Registers
     ********************************************************************* */
 
-#define A_SCD_SYSTEM_REVISION       0x0010020000
-#define A_SCD_SYSTEM_CFG            0x0010020008
+#define A_SCD_SYSTEM_REVISION       0x0010070000
+#define A_SCD_SYSTEM_CFG            0x0010070008
 #define A_SCD_SYSTEM_MANUF          0x0010038000
 
 /*  *********************************************************************
     * System Address Trap Registers
     ********************************************************************* */
 
-#define A_ADDR_TRAP_INDEX           0x00100200B0
-#define A_ADDR_TRAP_REG             0x00100200B8
-#define A_ADDR_TRAP_UP_0            0x0010020400
-#define A_ADDR_TRAP_UP_1            0x0010020408
-#define A_ADDR_TRAP_UP_2            0x0010020410
-#define A_ADDR_TRAP_UP_3            0x0010020418
-#define A_ADDR_TRAP_DOWN_0          0x0010020420
-#define A_ADDR_TRAP_DOWN_1          0x0010020428
-#define A_ADDR_TRAP_DOWN_2          0x0010020430
-#define A_ADDR_TRAP_DOWN_3          0x0010020438
-#define A_ADDR_TRAP_CFG_0           0x0010020440
-#define A_ADDR_TRAP_CFG_1           0x0010020448
-#define A_ADDR_TRAP_CFG_2           0x0010020450
-#define A_ADDR_TRAP_CFG_3           0x0010020458
+#define A_ADDR_TRAP_INDEX           0x00100700B0
+#define A_ADDR_TRAP_REG             0x00100700B8
+#define A_ADDR_TRAP_UP_0            0x0010070400
+#define A_ADDR_TRAP_UP_1            0x0010070408
+#define A_ADDR_TRAP_UP_2            0x0010070410
+#define A_ADDR_TRAP_UP_3            0x0010070418
+#define A_ADDR_TRAP_DOWN_0          0x0010070420
+#define A_ADDR_TRAP_DOWN_1          0x0010070428
+#define A_ADDR_TRAP_DOWN_2          0x0010070430
+#define A_ADDR_TRAP_DOWN_3          0x0010070438
+#define A_ADDR_TRAP_CFG_0           0x0010070440
+#define A_ADDR_TRAP_CFG_1           0x0010070448
+#define A_ADDR_TRAP_CFG_2           0x0010070450
+#define A_ADDR_TRAP_CFG_3           0x0010070458
 #if SIBYTE_HDR_FEATURE(1250, PASS2) || SIBYTE_HDR_FEATURE(112x, PASS1) || SIBYTE_HDR_FEATURE_CHIP(1480)
-#define A_ADDR_TRAP_REG_DEBUG	    0x0010020460
+#define A_ADDR_TRAP_REG_DEBUG	    0x0010070460
 #endif /* 1250 PASS2 || 112x PASS1 || 1480 */
 
 #define ADDR_TRAP_SPACING 8
@@ -708,8 +708,8 @@
     * System Interrupt Mapper Registers
     ********************************************************************* */
 
-#define A_IMR_CPU0_BASE                 0x0010020000
-#define A_IMR_CPU1_BASE                 0x0010022000
+#define A_IMR_CPU0_BASE                 0x0010070000
+#define A_IMR_CPU1_BASE                 0x0010072000
 #define IMR_REGISTER_SPACING            0x2000
 #define IMR_REGISTER_SPACING_SHIFT      13
 
@@ -737,7 +737,7 @@
 /*
  * these macros work together to build the address of a mailbox
  * register, e.g., A_MAILBOX_REGISTER(R_IMR_MAILBOX_SET_CPU,1)
- * for mbox_0_set_cpu2 returns 0x00100240C8
+ * for mbox_0_set_cpu2 returns 0x00100740C8
  */
 #define A_MAILBOX_REGISTER(reg,cpu) \
     (A_IMR_CPU0_BASE + (cpu * IMR_REGISTER_SPACING) + reg)
@@ -746,11 +746,11 @@
     * System Performance Counter Registers
     ********************************************************************* */
 
-#define A_SCD_PERF_CNT_CFG          0x00100204C0
-#define A_SCD_PERF_CNT_0            0x00100204D0
-#define A_SCD_PERF_CNT_1            0x00100204D8
-#define A_SCD_PERF_CNT_2            0x00100204E0
-#define A_SCD_PERF_CNT_3            0x00100204E8
+#define A_SCD_PERF_CNT_CFG          0x00100704C0
+#define A_SCD_PERF_CNT_0            0x00100704D0
+#define A_SCD_PERF_CNT_1            0x00100704D8
+#define A_SCD_PERF_CNT_2            0x00100704E0
+#define A_SCD_PERF_CNT_3            0x00100704E8
 
 #define SCD_NUM_PERF_CNT 4
 #define SCD_PERF_CNT_SPACING 8
@@ -760,17 +760,17 @@
     * System Bus Watcher Registers
     ********************************************************************* */
 
-#define A_SCD_BUS_ERR_STATUS        0x0010020880
+#define A_SCD_BUS_ERR_STATUS        0x0010070880
 #if SIBYTE_HDR_FEATURE(1250, PASS2) || SIBYTE_HDR_FEATURE(112x, PASS1)
-#define A_SCD_BUS_ERR_STATUS_DEBUG  0x00100208D0
-#define A_BUS_ERR_STATUS_DEBUG  0x00100208D0
+#define A_SCD_BUS_ERR_STATUS_DEBUG  0x00100708D0
+#define A_BUS_ERR_STATUS_DEBUG  0x00100708D0
 #endif /* 1250 PASS2 || 112x PASS1 */
-#define A_BUS_ERR_DATA_0            0x00100208A0
-#define A_BUS_ERR_DATA_1            0x00100208A8
-#define A_BUS_ERR_DATA_2            0x00100208B0
-#define A_BUS_ERR_DATA_3            0x00100208B8
-#define A_BUS_L2_ERRORS             0x00100208C0
-#define A_BUS_MEM_IO_ERRORS         0x00100208C8
+#define A_BUS_ERR_DATA_0            0x00100708A0
+#define A_BUS_ERR_DATA_1            0x00100708A8
+#define A_BUS_ERR_DATA_2            0x00100708B0
+#define A_BUS_ERR_DATA_3            0x00100708B8
+#define A_BUS_L2_ERRORS             0x00100708C0
+#define A_BUS_MEM_IO_ERRORS         0x00100708C8
 
 /*  *********************************************************************
     * System Debug Controller Registers
@@ -782,24 +782,24 @@
     * System Trace Buffer Registers
     ********************************************************************* */
 
-#define A_SCD_TRACE_CFG             0x0010020A00
-#define A_SCD_TRACE_READ            0x0010020A08
-#define A_SCD_TRACE_EVENT_0         0x0010020A20
-#define A_SCD_TRACE_EVENT_1         0x0010020A28
-#define A_SCD_TRACE_EVENT_2         0x0010020A30
-#define A_SCD_TRACE_EVENT_3         0x0010020A38
-#define A_SCD_TRACE_SEQUENCE_0      0x0010020A40
-#define A_SCD_TRACE_SEQUENCE_1      0x0010020A48
-#define A_SCD_TRACE_SEQUENCE_2      0x0010020A50
-#define A_SCD_TRACE_SEQUENCE_3      0x0010020A58
-#define A_SCD_TRACE_EVENT_4         0x0010020A60
-#define A_SCD_TRACE_EVENT_5         0x0010020A68
-#define A_SCD_TRACE_EVENT_6         0x0010020A70
-#define A_SCD_TRACE_EVENT_7         0x0010020A78
-#define A_SCD_TRACE_SEQUENCE_4      0x0010020A80
-#define A_SCD_TRACE_SEQUENCE_5      0x0010020A88
-#define A_SCD_TRACE_SEQUENCE_6      0x0010020A90
-#define A_SCD_TRACE_SEQUENCE_7      0x0010020A98
+#define A_SCD_TRACE_CFG             0x0010070A00
+#define A_SCD_TRACE_READ            0x0010070A08
+#define A_SCD_TRACE_EVENT_0         0x0010070A20
+#define A_SCD_TRACE_EVENT_1         0x0010070A28
+#define A_SCD_TRACE_EVENT_2         0x0010070A30
+#define A_SCD_TRACE_EVENT_3         0x0010070A38
+#define A_SCD_TRACE_SEQUENCE_0      0x0010070A40
+#define A_SCD_TRACE_SEQUENCE_1      0x0010070A48
+#define A_SCD_TRACE_SEQUENCE_2      0x0010070A50
+#define A_SCD_TRACE_SEQUENCE_3      0x0010070A58
+#define A_SCD_TRACE_EVENT_4         0x0010070A60
+#define A_SCD_TRACE_EVENT_5         0x0010070A68
+#define A_SCD_TRACE_EVENT_6         0x0010070A70
+#define A_SCD_TRACE_EVENT_7         0x0010070A78
+#define A_SCD_TRACE_SEQUENCE_4      0x0010070A80
+#define A_SCD_TRACE_SEQUENCE_5      0x0010070A88
+#define A_SCD_TRACE_SEQUENCE_6      0x0010070A90
+#define A_SCD_TRACE_SEQUENCE_7      0x0010070A98
 
 #define TRACE_REGISTER_SPACING 8
 #define TRACE_NUM_REGISTERS    8
@@ -814,10 +814,10 @@
     * System Generic DMA Registers
     ********************************************************************* */
 
-#define A_DM_0		  	    0x0010020B00
-#define A_DM_1		  	    0x0010020B20
-#define A_DM_2			    0x0010020B40
-#define A_DM_3			    0x0010020B60
+#define A_DM_0		  	    0x0010070B00
+#define A_DM_1		  	    0x0010070B20
+#define A_DM_2			    0x0010070B40
+#define A_DM_3			    0x0010070B60
 #define DM_REGISTER_SPACING	    0x20
 #define DM_NUM_CHANNELS		    4
 #define A_DM_BASE(idx) (A_DM_0 + ((idx) * DM_REGISTER_SPACING))
@@ -829,17 +829,17 @@
 #define R_DM_DSCR_BASE_DEBUG	    0x0000000018
 
 #if SIBYTE_HDR_FEATURE(1250, PASS3) || SIBYTE_HDR_FEATURE(112x, PASS1)
-#define A_DM_PARTIAL_0		    0x0010020ba0
-#define A_DM_PARTIAL_1		    0x0010020ba8
-#define A_DM_PARTIAL_2		    0x0010020bb0
-#define A_DM_PARTIAL_3		    0x0010020bb8
+#define A_DM_PARTIAL_0		    0x0010070ba0
+#define A_DM_PARTIAL_1		    0x0010070ba8
+#define A_DM_PARTIAL_2		    0x0010070bb0
+#define A_DM_PARTIAL_3		    0x0010070bb8
 #define DM_PARTIAL_REGISTER_SPACING 0x8
 #define A_DM_PARTIAL(idx)	    (A_DM_PARTIAL_0 + ((idx) * DM_PARTIAL_REGISTER_SPACING))
 #endif /* 1250 PASS3 || 112x PASS1 */
 
 #if SIBYTE_HDR_FEATURE(1250, PASS3) || SIBYTE_HDR_FEATURE(112x, PASS1)
-#define A_DM_CRC_0		    0x0010020b80
-#define A_DM_CRC_1		    0x0010020b90
+#define A_DM_CRC_0		    0x0010070b80
+#define A_DM_CRC_1		    0x0010070b90
 #define DM_CRC_REGISTER_SPACING	    0x10
 #define DM_CRC_NUM_CHANNELS	    2
 #define A_DM_CRC_BASE(idx)	    (A_DM_CRC_0 + ((idx) * DM_CRC_REGISTER_SPACING))

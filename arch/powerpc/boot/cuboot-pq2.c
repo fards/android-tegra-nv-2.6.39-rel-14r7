@@ -229,8 +229,8 @@ static void fixup_pci(void)
 	/* Park the bus on PCI, and elevate PCI's arbitration priority,
 	 * as required by section 9.6 of the user's manual.
 	 */
-	out_8(&soc_regs[0x10028], 3);
-	out_be32((u32 *)&soc_regs[0x1002c], 0x01236745);
+	out_8(&soc_regs[0x10078], 3);
+	out_be32((u32 *)&soc_regs[0x1007c], 0x01236745);
 
 	return;
 

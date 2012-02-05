@@ -33,8 +33,8 @@
 #include <linux/slab.h>
 #include <linux/delay.h>
 
-#ifdef CONFIG_MACH_SMBA1002
-#include "../../arch/arm/mach-tegra/board-smba1002.h"
+#ifdef CONFIG_MACH_SMBA1007
+#include "../../arch/arm/mach-tegra/board-smba1007.h"
 #endif
 
 struct bcm4329_rfkill_data {
@@ -52,8 +52,8 @@ static int bcm4329_bt_rfkill_set_power(void *data, bool blocked)
 	if (blocked) {
 		if (!bcm4329_rfkill->state)
 			return 0;
-#ifdef CONFIG_MACH_SMBA1002
-		smba1002_bt_wifi_gpio_set(0);
+#ifdef CONFIG_MACH_SMBA1007
+		smba1007_bt_wifi_gpio_set(0);
 #else
 		if (bcm4329_rfkill->gpio_shutdown)
 			gpio_direction_output(bcm4329_rfkill->gpio_shutdown, 0);
@@ -67,8 +67,8 @@ static int bcm4329_bt_rfkill_set_power(void *data, bool blocked)
 	} else {
 		if (bcm4329_rfkill->state)
 			return 0;
-#ifdef CONFIG_MACH_SMBA1002
-		smba1002_bt_wifi_gpio_set(1);
+#ifdef CONFIG_MACH_SMBA1007
+		smba1007_bt_wifi_gpio_set(1);
 #else
 		if (bcm4329_rfkill->bt_32k_clk)
 			clk_enable(bcm4329_rfkill->bt_32k_clk);
@@ -112,9 +112,9 @@ static int bcm4329_rfkill_probe(struct platform_device *pdev)
 	
 	bcm4329_rfkill->state = 0;
 
-#ifdef CONFIG_MACH_SMBA1002
+#ifdef CONFIG_MACH_SMBA1007
 	// Init the gpio manager if it isn't already.
-	smba1002_bt_wifi_gpio_init();
+	smba1007_bt_wifi_gpio_init();
 #else
 	bcm4329_rfkill->bt_32k_clk = clk_get(&pdev->dev, "bcm4329_32k_clk");
 	if (IS_ERR(bcm4329_rfkill->bt_32k_clk)) {

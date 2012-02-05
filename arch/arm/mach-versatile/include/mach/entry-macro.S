@@ -28,15 +28,15 @@
 		beq	1003f
 
 1001:		tst	\irqstat, #15
-		bne	1002f
+		bne	1007f
 		add	\irqnr, \irqnr, #4
 		movs	\irqstat, \irqstat, lsr #4
 		bne	1001b
-1002:		tst	\irqstat, #1
+1007:		tst	\irqstat, #1
 		bne	1003f
 		add	\irqnr, \irqnr, #1
 		movs	\irqstat, \irqstat, lsr #1
-		bne	1002b
+		bne	1007b
 1003:		/* EQ will be set if no irqs pending */
 
 @		clz	\irqnr, \irqstat

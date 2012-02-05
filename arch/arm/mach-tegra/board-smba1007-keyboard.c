@@ -1,6 +1,6 @@
 /* OK */
 /*
- * arch/arm/mach-tegra/board-smba1002-keyboard.c
+ * arch/arm/mach-tegra/board-smba1007-keyboard.c
  *
  * Copyright (C) 2011 Eduardo José Tagle <ejtagle@tutopia.com>
  *
@@ -32,14 +32,14 @@
 #include <linux/gpio.h>
 #include <asm/mach-types.h>
 
-#include "board-smba1002.h"
+#include "board-smba1007.h"
 #include "gpio-names.h"
 #include "wakeups-t2.h"
 #include "fuse.h"
 
-static struct gpio_keys_button smba1002_keys[] = {
+static struct gpio_keys_button smba1007_keys[] = {
 	[0] = {
-		.gpio = SMBA1002_KEY_VOLUMEUP,
+		.gpio = SMBA1007_KEY_VOLUMEUP,
 		.active_low = true,
 		.debounce_interval = 10,
 		.wakeup = false,		
@@ -48,7 +48,7 @@ static struct gpio_keys_button smba1002_keys[] = {
 		.desc = "volume up",
 	},
 	[1] = {
-		.gpio = SMBA1002_KEY_VOLUMEDOWN,
+		.gpio = SMBA1007_KEY_VOLUMEDOWN,
 		.active_low = true,
 		.debounce_interval = 10,
 		.wakeup = false,		
@@ -57,7 +57,7 @@ static struct gpio_keys_button smba1002_keys[] = {
 		.desc = "volume down",
 	},
 	[2] = {
-		.gpio = SMBA1002_KEY_POWER,
+		.gpio = SMBA1007_KEY_POWER,
 		.active_low = true,
 		.debounce_interval = 50,
 		.wakeup = true,		
@@ -65,41 +65,41 @@ static struct gpio_keys_button smba1002_keys[] = {
 		.type = EV_KEY,		
 		.desc = "power",
 	},
-	[3] = {
-		.gpio = SMBA1002_KEY_BACK,
+/*	[3] = {
+		.gpio = SMBA1007_KEY_BACK,
 		.active_low = true,
 		.debounce_interval = 10,
 		.wakeup = false,		
 		.code = KEY_BACK,
 		.type = EV_KEY,		
 		.desc = "back",
-	},
+	},*/
 };
 #define PMC_WAKE_STATUS 0x14
 
-static int smba1002_wakeup_key(void)
+static int smba1007_wakeup_key(void)
 {
 	unsigned long status = 
 		readl(IO_ADDRESS(TEGRA_PMC_BASE) + PMC_WAKE_STATUS);
 	return status & TEGRA_WAKE_GPIO_PV2 ? KEY_POWER : KEY_RESERVED;
 }
 
-static struct gpio_keys_platform_data smba1002_keys_platform_data = {
-	.buttons 	= smba1002_keys,
-	.nbuttons 	= ARRAY_SIZE(smba1002_keys),
-	.wakeup_key     = smba1002_wakeup_key,
+static struct gpio_keys_platform_data smba1007_keys_platform_data = {
+	.buttons 	= smba1007_keys,
+	.nbuttons 	= ARRAY_SIZE(smba1007_keys),
+	.wakeup_key     = smba1007_wakeup_key,
 	.rep		= false, /* auto repeat enabled */
 };
 
-static struct platform_device smba1002_keys_device = {
+static struct platform_device smba1007_keys_device = {
 	.name 		= "gpio-keys",
 	.id 		= 0,
 	.dev		= {
-		.platform_data = &smba1002_keys_platform_data,
+		.platform_data = &smba1007_keys_platform_data,
 	},
 };
 
-static struct gpio_led smba1002_gpio_leds[] = {
+static struct gpio_led smba1007_gpio_leds[] = {
 	{
                 .name   = "cpu",
                 .gpio   = TEGRA_GPIO_PI3,
@@ -116,28 +116,28 @@ static struct gpio_led smba1002_gpio_leds[] = {
         },
 };
 
-static struct gpio_led_platform_data smba1002_led_data = {
-        .leds   = smba1002_gpio_leds,
-        .num_leds       = ARRAY_SIZE(smba1002_gpio_leds),
+static struct gpio_led_platform_data smba1007_led_data = {
+        .leds   = smba1007_gpio_leds,
+        .num_leds       = ARRAY_SIZE(smba1007_gpio_leds),
 };
 
-static struct platform_device smba1002_leds_gpio = {
+static struct platform_device smba1007_leds_gpio = {
         .name   = "leds-gpio",
         .id     = -1,
         .dev    = {
-                .platform_data = &smba1002_led_data,
+                .platform_data = &smba1007_led_data,
         },
 };
 
-static struct platform_device *smba1002_pmu_devices[] __initdata = {
-	&smba1002_keys_device,
-	//&smba1002_leds_gpio,
+static struct platform_device *smba1007_pmu_devices[] __initdata = {
+	&smba1007_keys_device,
+	//&smba1007_leds_gpio,
 };
 
 /* Register all keyboard devices */
-int __init smba1002_keyboard_register_devices(void)
+int __init smba1007_keyboard_register_devices(void)
 {
   	//enable_irq_wake(gpio_to_irq(TEGRA_WAKE_GPIO_PV2));
-	return platform_add_devices(smba1002_pmu_devices, ARRAY_SIZE(smba1002_pmu_devices));
+	return platform_add_devices(smba1007_pmu_devices, ARRAY_SIZE(smba1007_pmu_devices));
 }
 

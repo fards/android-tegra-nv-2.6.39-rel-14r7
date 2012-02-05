@@ -39,7 +39,7 @@
 #define MSP_ETHERNET_GPIO2	16
 
 #ifdef CONFIG_MSP_HAS_TSMAC
-#define MSP_TSMAC_SIZE	0x10020
+#define MSP_TSMAC_SIZE	0x10070
 #define MSP_TSMAC_ID	"pmc_tsmac"
 
 static struct resource msp_tsmac0_resources[] = {

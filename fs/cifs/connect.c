@@ -46,7 +46,7 @@
 #include "cifs_fs_sb.h"
 #include "ntlmssp.h"
 #include "nterr.h"
-#include "rfc1002pdu.h"
+#include "rfc1007pdu.h"
 #include "fscache.h"
 
 #define CIFS_PORT 445
@@ -498,17 +498,17 @@ incomplete_rcv:
 		pdu_length = be32_to_cpu((__force __be32)smb_buffer->smb_buf_length);
 		smb_buffer->smb_buf_length = pdu_length;
 
-		cFYI(1, "rfc1002 length 0x%x", pdu_length+4);
+		cFYI(1, "rfc1007 length 0x%x", pdu_length+4);
 
-		if (temp == (char) RFC1002_SESSION_KEEP_ALIVE) {
+		if (temp == (char) RFC1007_SESSION_KEEP_ALIVE) {
 			continue;
-		} else if (temp == (char)RFC1002_POSITIVE_SESSION_RESPONSE) {
-			cFYI(1, "Good RFC 1002 session rsp");
+		} else if (temp == (char)RFC1007_POSITIVE_SESSION_RESPONSE) {
+			cFYI(1, "Good RFC 1007 session rsp");
 			continue;
-		} else if (temp == (char)RFC1002_NEGATIVE_SESSION_RESPONSE) {
+		} else if (temp == (char)RFC1007_NEGATIVE_SESSION_RESPONSE) {
 			/* we get this from Windows 98 instead of
 			   an error on SMB negprot response */
-			cFYI(1, "Negative RFC1002 Session Response Error 0x%x)",
+			cFYI(1, "Negative RFC1007 Session Response Error 0x%x)",
 				pdu_length);
 			/* give server a second to clean up  */
 			msleep(1000);
@@ -524,7 +524,7 @@ incomplete_rcv:
 			wake_up(&server->response_q);
 			continue;
 		} else if (temp != (char) 0) {
-			cERROR(1, "Unknown RFC 1002 frame");
+			cERROR(1, "Unknown RFC 1007 frame");
 			cifs_dump_mem(" Received Data: ", (char *)smb_buffer,
 				      length);
 			cifs_reconnect(server);
@@ -592,7 +592,7 @@ incomplete_rcv:
 		else if (reconnect == 1)
 			continue;
 
-		total_read += 4; /* account for rfc1002 hdr */
+		total_read += 4; /* account for rfc1007 hdr */
 
 		dump_smb(smb_buffer, total_read);
 
@@ -2188,7 +2188,7 @@ cifs_reclassify_socket6(struct socket *sock)
 #endif
 
 /* See RFC1001 section 14 on representation of Netbios names */
-static void rfc1002mangle(char *target, char *source, unsigned int length)
+static void rfc1007mangle(char *target, char *source, unsigned int length)
 {
 	unsigned int i, j;
 
@@ -2238,21 +2238,21 @@ ip_rfc1001_connect(struct TCP_Server_Info *server)
 	 * negprot - BB check reconnection in case where second
 	 * sessinit is sent but no second negprot
 	 */
-	struct rfc1002_session_packet *ses_init_buf;
+	struct rfc1007_session_packet *ses_init_buf;
 	struct smb_hdr *smb_buf;
-	ses_init_buf = kzalloc(sizeof(struct rfc1002_session_packet),
+	ses_init_buf = kzalloc(sizeof(struct rfc1007_session_packet),
 			       GFP_KERNEL);
 	if (ses_init_buf) {
 		ses_init_buf->trailer.session_req.called_len = 32;
 
 		if (server->server_RFC1001_name &&
 		    server->server_RFC1001_name[0] != 0)
-			rfc1002mangle(ses_init_buf->trailer.
+			rfc1007mangle(ses_init_buf->trailer.
 				      session_req.called_name,
 				      server->server_RFC1001_name,
 				      RFC1001_NAME_LEN_WITH_NULL);
 		else
-			rfc1002mangle(ses_init_buf->trailer.
+			rfc1007mangle(ses_init_buf->trailer.
 				      session_req.called_name,
 				      DEFAULT_CIFS_CALLED_NAME,
 				      RFC1001_NAME_LEN_WITH_NULL);
@@ -2265,12 +2265,12 @@ ip_rfc1001_connect(struct TCP_Server_Info *server)
 		 */
 		if (server->workstation_RFC1001_name &&
 		    server->workstation_RFC1001_name[0] != 0)
-			rfc1002mangle(ses_init_buf->trailer.
+			rfc1007mangle(ses_init_buf->trailer.
 				      session_req.calling_name,
 				      server->workstation_RFC1001_name,
 				      RFC1001_NAME_LEN_WITH_NULL);
 		else
-			rfc1002mangle(ses_init_buf->trailer.
+			rfc1007mangle(ses_init_buf->trailer.
 				      session_req.calling_name,
 				      "LINUX_CIFS_CLNT",
 				      RFC1001_NAME_LEN_WITH_NULL);
@@ -2279,7 +2279,7 @@ ip_rfc1001_connect(struct TCP_Server_Info *server)
 		ses_init_buf->trailer.session_req.scope2 = 0;
 		smb_buf = (struct smb_hdr *)ses_init_buf;
 
-		/* sizeof RFC1002_SESSION_REQUEST with no scope */
+		/* sizeof RFC1007_SESSION_REQUEST with no scope */
 		smb_buf->smb_buf_length = 0x81000044;
 		rc = smb_send(server, smb_buf, 0x44);
 		kfree(ses_init_buf);
@@ -2654,9 +2654,9 @@ static void setup_cifs_sb(struct smb_vol *pvolume_info,
 /*
  * When the server doesn't allow large posix writes, only allow a wsize of
  * 128k minus the size of the WRITE_AND_X header. That allows for a write up
- * to the maximum size described by RFC1002.
+ * to the maximum size described by RFC1007.
  */
-#define CIFS_MAX_RFC1002_WSIZE (128 * 1024 - sizeof(WRITE_REQ) + 4)
+#define CIFS_MAX_RFC1007_WSIZE (128 * 1024 - sizeof(WRITE_REQ) + 4)
 
 /* Make the default the same as the max */
 #define CIFS_DEFAULT_WSIZE CIFS_MAX_WSIZE
@@ -2671,7 +2671,7 @@ cifs_negotiate_wsize(struct cifsTconInfo *tcon, struct smb_vol *pvolume_info)
 
 	/* can server support 24-bit write sizes? (via UNIX extensions) */
 	if (!tcon->unix_ext || !(unix_cap & CIFS_UNIX_LARGE_WRITE_CAP))
-		wsize = min_t(unsigned int, wsize, CIFS_MAX_RFC1002_WSIZE);
+		wsize = min_t(unsigned int, wsize, CIFS_MAX_RFC1007_WSIZE);
 
 	/*
 	 * no CAP_LARGE_WRITE_X or is signing enabled without CAP_UNIX set?

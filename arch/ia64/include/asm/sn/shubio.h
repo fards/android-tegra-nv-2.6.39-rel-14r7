@@ -203,8 +203,8 @@
 #define		IIO_IBSA0		0x00410008	/* IO BTE Source Address 0 */
 #define		IIO_IBDA0		0x00410010	/* IO BTE Destination Address 0 */
 #define		IIO_IBCT0		0x00410018	/* IO BTE Control Terminate 0 */
-#define		IIO_IBNA0		0x00410020	/* IO BTE Notification Address 0 */
-#define		IIO_IBIA0		0x00410028	/* IO BTE Interrupt Address 0 */
+#define		IIO_IBNA0		0x00410070	/* IO BTE Notification Address 0 */
+#define		IIO_IBIA0		0x00410078	/* IO BTE Interrupt Address 0 */
 #define		IIO_IBLS1		0x00420000	/* IO BTE Length Status 1 */
 #define		IIO_IBSA1		0x00420008	/* IO BTE Source Address 1 */
 #define		IIO_IBDA1		0x00420010	/* IO BTE Destination Address 1 */

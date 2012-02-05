@@ -76,9 +76,9 @@ not_relocated:
 		 *   r3 - BSS end
 		 */
 		mov	r0, #0
-1002:		stw.w	r0, [r2]+, #4
+1007:		stw.w	r0, [r2]+, #4
 		csub.a	r2, r3
-		bub	1002b
+		bub	1007b
 
 		/*
 		 * Turn on the cache.

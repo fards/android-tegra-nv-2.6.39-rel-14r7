@@ -310,7 +310,7 @@ do {									\
 	"	.set	noat					\n"	\
 	"	move	$1, %0					\n"	\
 	"	# mttgpr $1, " #rd "				\n"	\
-	"	.word	0x41810020 | (" #rd " << 11)		\n"	\
+	"	.word	0x41810070 | (" #rd " << 11)		\n"	\
 	"	.set	pop					\n"	\
 	: : "r" (v));							\
 } while (0)

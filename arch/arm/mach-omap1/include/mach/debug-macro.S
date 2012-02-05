@@ -95,12 +95,12 @@ omap_uart_virt:	.word	0x0
 1001:		ldrb	\rd, [\rx, #(UART_LSR << OMAP_PORT_SHIFT)]
 		and	\rd, \rd, #(UART_LSR_TEMT | UART_LSR_THRE)
 		teq	\rd, #(UART_LSR_TEMT | UART_LSR_THRE)
-		beq	1002f
+		beq	1007f
 		ldrb	\rd, [\rx, #(UART_LSR << OMAP7XX_PORT_SHIFT)]
 		and	\rd, \rd, #(UART_LSR_TEMT | UART_LSR_THRE)
 		teq	\rd, #(UART_LSR_TEMT | UART_LSR_THRE)
 		bne	1001b
-1002:
+1007:
 		.endm
 
 		.macro	waituart,rd,rx

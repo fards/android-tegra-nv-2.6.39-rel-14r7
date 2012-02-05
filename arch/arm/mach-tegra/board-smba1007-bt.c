@@ -1,5 +1,5 @@
 /*
- * arch/arm/mach-tegra/board-smba1002-bt.c
+ * arch/arm/mach-tegra/board-smba1007-bt.c
  *
  * Copyright (C) 2011 Eduardo José Tagle <ejtagle@tutopia.com>
  *
@@ -39,40 +39,40 @@
 #include <mach/iomap.h>
 
 #include "board.h"
-#include "board-smba1002.h"
+#include "board-smba1007.h"
 #include "clock.h"
 #include "gpio-names.h"
 #include "devices.h"
 
-static struct resource smba1002_bcm4329_rfkill_resources[] = {
+static struct resource smba1007_bcm4329_rfkill_resources[] = {
 	{
 		.name   = "bcm4329_nreset_gpio",
-		.start  = SMBA1002_BT_RST,
-		.end    = SMBA1002_BT_RST,
+		.start  = SMBA1007_BT_RST,
+		.end    = SMBA1007_BT_RST,
 		.flags  = IORESOURCE_IO,
 	},
 };
 
-static struct platform_device smba1002_bcm4329_rfkill_device = {
+static struct platform_device smba1007_bcm4329_rfkill_device = {
 	.name = "bcm4329_rfkill",
 	.id             = -1,
-	.num_resources  = ARRAY_SIZE(smba1002_bcm4329_rfkill_resources),
-	.resource       = smba1002_bcm4329_rfkill_resources,
+	.num_resources  = ARRAY_SIZE(smba1007_bcm4329_rfkill_resources),
+	.resource       = smba1007_bcm4329_rfkill_resources,
 };
 
-void __init smba1002_bt_rfkill(void)
+void __init smba1007_bt_rfkill(void)
 {
 	/*Add Clock Resource*/
-	int res = clk_add_alias("bcm4329_32k_clk", smba1002_bcm4329_rfkill_device.name, \
+	int res = clk_add_alias("bcm4329_32k_clk", smba1007_bcm4329_rfkill_device.name, \
 				"blink", NULL);
 	printk("Initializing BT RFKILL, clk_add_alias: %d", res);
-	res = platform_device_register(&smba1002_bcm4329_rfkill_device);
+	res = platform_device_register(&smba1007_bcm4329_rfkill_device);
 	if (res)
 		printk("Error on BT RFKILL reg, result: %d", res);
 	return;
 }
 
-void __init smba1002_setup_bluesleep(void)
+void __init smba1007_setup_bluesleep(void)
 {
 	struct platform_device *pdev = NULL;
 	struct resource *res;

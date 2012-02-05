@@ -4,7 +4,7 @@
 /*
  * Physical base addresses
  */
-#define CT_CA9X4_CLCDC		(0x10020000)
+#define CT_CA9X4_CLCDC		(0x10070000)
 #define CT_CA9X4_AXIRAM		(0x10060000)
 #define CT_CA9X4_DMC		(0x100e0000)
 #define CT_CA9X4_SMC		(0x100e1000)

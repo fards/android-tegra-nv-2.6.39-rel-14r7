@@ -276,7 +276,7 @@ enum phy {
 	phy_nsc_tx   = 0x5C002000,
 	phy_82562_et = 0x033002A8,
 	phy_82562_em = 0x032002A8,
-	phy_82562_ek = 0x031002A8,
+	phy_82562_ek = 0x031007A8,
 	phy_82562_eh = 0x017002A8,
 	phy_82552_v  = 0xd061004d,
 	phy_unknown  = 0xFFFFFFFF,

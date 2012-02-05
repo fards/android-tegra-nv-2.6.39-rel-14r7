@@ -1511,12 +1511,12 @@ bool radeon_get_legacy_connector_info_from_table(struct drm_device *dev)
 			/* imac g5 isight */
 			rdev->mode_info.connector_table = CT_IMAC_G5_ISIGHT;
 		} else if ((rdev->pdev->device == 0x4a48) &&
-			   (rdev->pdev->subsystem_vendor == 0x1002) &&
+			   (rdev->pdev->subsystem_vendor == 0x1007) &&
 			   (rdev->pdev->subsystem_device == 0x4a48)) {
 			/* Mac X800 */
 			rdev->mode_info.connector_table = CT_MAC_X800;
 		} else if ((rdev->pdev->device == 0x4150) &&
-			   (rdev->pdev->subsystem_vendor == 0x1002) &&
+			   (rdev->pdev->subsystem_vendor == 0x1007) &&
 			   (rdev->pdev->subsystem_device == 0x4150)) {
 			/* Mac G5 9600 */
 			rdev->mode_info.connector_table = CT_MAC_G5_9600;

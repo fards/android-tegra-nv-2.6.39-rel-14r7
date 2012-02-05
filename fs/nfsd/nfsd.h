@@ -217,7 +217,7 @@ void		nfsd_lockd_shutdown(void);
 /* replay detected */
 #define	nfserr_replay_me	cpu_to_be32(11001)
 /* nfs41 replay detected */
-#define	nfserr_replay_cache	cpu_to_be32(11002)
+#define	nfserr_replay_cache	cpu_to_be32(11007)
 
 /* Check for dir entries '.' and '..' */
 #define isdotent(n, l)	(l < 3 && n[0] == '.' && (l == 1 || n[1] == '.'))

@@ -1,5 +1,5 @@
 /*
- * arch/arm/mach-tegra/board-smba1002-bootinfo.c
+ * arch/arm/mach-tegra/board-smba1007-bootinfo.c
  *  Boot information via /proc/bootinfo.
  *   The information currently includes:
  *	  - the powerup reason
@@ -39,14 +39,14 @@
 #include <mach/system.h>
 
 #include "board.h"
-#include "board-smba1002.h"
+#include "board-smba1007.h"
 #include "gpio-names.h"
 #include "devices.h"
 #include "wakeups-t2.h"
 
 #define PMC_WAKE_STATUS 0x14
 
-static int smba1002_was_wakeup(void)
+static int smba1007_was_wakeup(void)
 {
 	unsigned long status = 
 		readl(IO_ADDRESS(TEGRA_PMC_BASE) + PMC_WAKE_STATUS);
@@ -56,7 +56,7 @@ static int smba1002_was_wakeup(void)
 static int bootinfo_show(struct seq_file *m, void *v)
 {
 	seq_printf(m, "POWERUPREASON : 0x%08x\n",
-		smba1002_was_wakeup());
+		smba1007_was_wakeup());
 
 	seq_printf(m, "BOARDREVISION : 0x%08x\n",
 		0x01);

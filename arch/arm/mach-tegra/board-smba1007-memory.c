@@ -24,13 +24,13 @@
 #include <linux/version.h>
 #include <linux/init.h>
 
-#include "board-smba1002.h"
+#include "board-smba1007.h"
 #include "tegra2_emc.h"
 
-#if defined (SMBA1002_EMC_SAMSUNG)
+#if defined (SMBA1007_EMC_SAMSUNG)
 
 /* Samsung: manufacturer_id = 0x0101, mem_pid = 0x5454 */
-static const struct tegra_emc_table smba1002_emc_tables[] = {
+static const struct tegra_emc_table smba1007_emc_tables[] = {
 	{
 		.rate = 25000,   /* SDRAM frequency */
 		.regs = {
@@ -288,10 +288,10 @@ static const struct tegra_emc_table smba1002_emc_tables[] = {
 	}
 };
 
-#elif defined (SMBA1002_EMC_ELPIDA50NM)
+#elif defined (SMBA1007_EMC_ELPIDA50NM)
 
 /* Elpida 50nm: .mem_manufacturer_id = 0x0303, .mem_pid = 0x5454 */
-static const struct tegra_emc_table smba1002_emc_tables[] = {
+static const struct tegra_emc_table smba1007_emc_tables[] = {
 	{
 		.rate = 25000,   /* SDRAM frequency */
 		.regs = {
@@ -549,10 +549,10 @@ static const struct tegra_emc_table smba1002_emc_tables[] = {
 	}
 };
 
-#elif defined (SMBA1002_EMC_ELPIDA40NM)
+#elif defined (SMBA1007_EMC_ELPIDA40NM)
 
 /* Elpida 40nm : mem_manufacturer_id = 0x0303, mem_revision_id1 = 0x0101, mem_pid = 0x5454 */
-static const struct tegra_emc_table smba1002_emc_tables[] = {
+static const struct tegra_emc_table smba1007_emc_tables[] = {
 	{
 		.rate = 25000,   /* SDRAM frequency */
 		.regs = {
@@ -813,7 +813,7 @@ static const struct tegra_emc_table smba1002_emc_tables[] = {
 #elif 1
 
 // This is the table used by nvidia ODM
-static const struct tegra_emc_table smba1002_emc_tables[] = {
+static const struct tegra_emc_table smba1007_emc_tables[] = {
 	{
 		.rate = 166500,   /* SDRAM frequency */
 		.regs = {
@@ -1088,7 +1088,7 @@ static const struct tegra_emc_table smba1002_emc_tables[] = {
 #else
 
 // This is a Hynix compatible memory information table
-static const struct tegra_emc_table smba1002_emc_tables[] = {
+static const struct tegra_emc_table smba1007_emc_tables[] = {
 	{
 		.rate =  18000,   /* SDRAM frequency : 950mV emc core voltage*/
 		.regs = {
@@ -1502,24 +1502,24 @@ static const struct tegra_emc_table smba1002_emc_tables[] = {
 #endif
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,38) || LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,39) 
-static const struct tegra_emc_chip smba1002_emc_chips[] = {
+static const struct tegra_emc_chip smba1007_emc_chips[] = {
 	{
 		.description = "Shuttle memory",
 		.mem_manufacturer_id = -1,
 		.mem_revision_id1 = -1,
 		.mem_revision_id2 = -1,
 		.mem_pid = -1,
-		.table = smba1002_emc_tables,
-		.table_size = ARRAY_SIZE(smba1002_emc_tables),
+		.table = smba1007_emc_tables,
+		.table_size = ARRAY_SIZE(smba1007_emc_tables),
 	},
 };
 #endif
 
-void __init smba1002_init_emc(void)
+void __init smba1007_init_emc(void)
 {
 #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,38) || LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,39) 
-	tegra_init_emc(smba1002_emc_chips, ARRAY_SIZE(smba1002_emc_chips));
+	tegra_init_emc(smba1007_emc_chips, ARRAY_SIZE(smba1007_emc_chips));
 #else
-	tegra_init_emc(smba1002_emc_tables, ARRAY_SIZE(smba1002_emc_tables));
+	tegra_init_emc(smba1007_emc_tables, ARRAY_SIZE(smba1007_emc_tables));
 #endif
 }

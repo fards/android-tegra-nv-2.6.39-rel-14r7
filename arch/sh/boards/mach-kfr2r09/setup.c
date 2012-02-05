@@ -393,7 +393,7 @@ static struct platform_device *kfr2r09_devices[] __initdata = {
 };
 
 #define BSC_CS0BCR 0xfec10004
-#define BSC_CS0WCR 0xfec10024
+#define BSC_CS0WCR 0xfec10074
 #define BSC_CS4BCR 0xfec10010
 #define BSC_CS4WCR 0xfec10030
 #define PORT_MSELCRB 0xa4050182

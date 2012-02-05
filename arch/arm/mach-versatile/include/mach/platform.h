@@ -198,7 +198,7 @@
 #define VERSATILE_MMCI1_BASE           0x1000B000    /* MMC Interface */
 	/* 0x1000C000 - 0x1000CFFF = reserved */
 #define VERSATILE_ETH_BASE             0x10010000	/* Ethernet */
-#define VERSATILE_USB_BASE             0x10020000	/* USB */
+#define VERSATILE_USB_BASE             0x10070000	/* USB */
 	/* 0x10030000 - 0x100FFFFF = reserved */
 #define VERSATILE_SMC_BASE             0x10100000	/* SMC */
 #define VERSATILE_MPMC_BASE            0x10110000	/* MPMC */

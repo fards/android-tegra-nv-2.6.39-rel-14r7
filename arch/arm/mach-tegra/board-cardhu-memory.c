@@ -3217,7 +3217,7 @@ static const struct tegra_emc_table cardhu_emc_tables_k4p8g304eb[] = {
 			0x00080000, /* EMC_DLL_XFORM_DQ1 */
 			0x00080000, /* EMC_DLL_XFORM_DQ2 */
 			0x00080000, /* EMC_DLL_XFORM_DQ3 */
-			0x00100220, /* EMC_XM2CMDPADCTRL */
+			0x00100720, /* EMC_XM2CMDPADCTRL */
 			0x0800201c, /* EMC_XM2DQSPADCTRL2 */
 			0x00000000, /* EMC_XM2DQPADCTRL2 */
 			0x77ffc004, /* EMC_XM2CLKPADCTRL */
@@ -3259,7 +3259,7 @@ static const struct tegra_emc_table cardhu_emc_tables_k4p8g304eb[] = {
 		0x001fffff, /* EMC_AUTO_CAL_INTERVAL */
 		0x00000001, /* EMC_CFG.PERIODIC_QRST */
 		0x00000000, /* Mode Register 0 */
-		0x00010022, /* Mode Register 1 */
+		0x00010072, /* Mode Register 1 */
 		0x00020001, /* Mode Register 2 */
 		0x00000001, /* EMC_CFG.DYN_SELF_REF */
 	},
@@ -3337,7 +3337,7 @@ static const struct tegra_emc_table cardhu_emc_tables_k4p8g304eb[] = {
 			0x00080000, /* EMC_DLL_XFORM_DQ1 */
 			0x00080000, /* EMC_DLL_XFORM_DQ2 */
 			0x00080000, /* EMC_DLL_XFORM_DQ3 */
-			0x00100220, /* EMC_XM2CMDPADCTRL */
+			0x00100720, /* EMC_XM2CMDPADCTRL */
 			0x0800201c, /* EMC_XM2DQSPADCTRL2 */
 			0x00000000, /* EMC_XM2DQPADCTRL2 */
 			0x77ffc004, /* EMC_XM2CLKPADCTRL */
@@ -3379,7 +3379,7 @@ static const struct tegra_emc_table cardhu_emc_tables_k4p8g304eb[] = {
 		0x001fffff, /* EMC_AUTO_CAL_INTERVAL */
 		0x00000001, /* EMC_CFG.PERIODIC_QRST */
 		0x00000000, /* Mode Register 0 */
-		0x00010022, /* Mode Register 1 */
+		0x00010072, /* Mode Register 1 */
 		0x00020001, /* Mode Register 2 */
 		0x00000001, /* EMC_CFG.DYN_SELF_REF */
 	},
@@ -3499,7 +3499,7 @@ static const struct tegra_emc_table cardhu_emc_tables_k4p8g304eb[] = {
 		0x001fffff, /* EMC_AUTO_CAL_INTERVAL */
 		0x00000001, /* EMC_CFG.PERIODIC_QRST */
 		0x00000000, /* Mode Register 0 */
-		0x00010022, /* Mode Register 1 */
+		0x00010072, /* Mode Register 1 */
 		0x00020001, /* Mode Register 2 */
 		0x00000001, /* EMC_CFG.DYN_SELF_REF */
 	},
@@ -3577,7 +3577,7 @@ static const struct tegra_emc_table cardhu_emc_tables_k4p8g304eb[] = {
 			0x00078000, /* EMC_DLL_XFORM_DQ1 */
 			0x00078000, /* EMC_DLL_XFORM_DQ2 */
 			0x00078000, /* EMC_DLL_XFORM_DQ3 */
-			0x00100220, /* EMC_XM2CMDPADCTRL */
+			0x00100720, /* EMC_XM2CMDPADCTRL */
 			0x0800201c, /* EMC_XM2DQSPADCTRL2 */
 			0x00000000, /* EMC_XM2DQPADCTRL2 */
 			0x77ffc004, /* EMC_XM2CLKPADCTRL */
@@ -3862,7 +3862,7 @@ static const struct tegra_emc_table cardhu_emc_tables_edb8132b2ma[] = {
 		0x001fffff, /* EMC_AUTO_CAL_INTERVAL */
 		0x00000001, /* EMC_CFG.PERIODIC_QRST */
 		0x00000000, /* Mode Register 0 */
-		0x00010022, /* Mode Register 1 */
+		0x00010072, /* Mode Register 1 */
 		0x00020001, /* Mode Register 2 */
 		0x00000001, /* EMC_CFG.DYN_SELF_REF */
 	},
@@ -3982,7 +3982,7 @@ static const struct tegra_emc_table cardhu_emc_tables_edb8132b2ma[] = {
 		0x001fffff, /* EMC_AUTO_CAL_INTERVAL */
 		0x00000001, /* EMC_CFG.PERIODIC_QRST */
 		0x00000000, /* Mode Register 0 */
-		0x00010022, /* Mode Register 1 */
+		0x00010072, /* Mode Register 1 */
 		0x00020001, /* Mode Register 2 */
 		0x00000001, /* EMC_CFG.DYN_SELF_REF */
 	},
@@ -4102,7 +4102,7 @@ static const struct tegra_emc_table cardhu_emc_tables_edb8132b2ma[] = {
 		0x001fffff, /* EMC_AUTO_CAL_INTERVAL */
 		0x00000001, /* EMC_CFG.PERIODIC_QRST */
 		0x00000000, /* Mode Register 0 */
-		0x00010022, /* Mode Register 1 */
+		0x00010072, /* Mode Register 1 */
 		0x00020001, /* Mode Register 2 */
 		0x00000001, /* EMC_CFG.DYN_SELF_REF */
 	},

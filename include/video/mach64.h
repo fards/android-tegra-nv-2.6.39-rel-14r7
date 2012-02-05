@@ -939,7 +939,7 @@
 
 #define ONE_MB			0x100000
 /* ATI PCI constants */
-#define PCI_ATI_VENDOR_ID	0x1002
+#define PCI_ATI_VENDOR_ID	0x1007
 
 
 /* CNFG_CHIP_ID register constants */

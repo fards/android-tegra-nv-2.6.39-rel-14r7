@@ -526,7 +526,7 @@ asmlinkage void __init unit_pci_init(void)
 							 * number */
 	BRIDGEREGB(0x44)		= 0x01;
 	BRIDGEREGL(0x50)		= 0x00000001;
-	BRIDGEREGL(0x58)		= 0x00001002;
+	BRIDGEREGL(0x58)		= 0x00001007;
 	BRIDGEREGL(0x5C)		= 0x00000011;
 
 	/* we also need to set up the PCI-PCI bridge */

@@ -1,5 +1,5 @@
 /*
- * arch/arm/mach-tegra/board-smba1002-touch.c
+ * arch/arm/mach-tegra/board-smba1007-touch.c
  *
  * Copyright (C) 2011 Jens Andersen <jens.andersen@gmail.com
  * Copyright (C) 2010 Google, Inc.
@@ -28,26 +28,26 @@
 #include <linux/interrupt.h>
 #include <linux/input.h>
 
-#include "board-smba1002.h"
+#include "board-smba1007.h"
 #include "gpio-names.h"
 
 struct at168_i2c_ts_platform_data at168_pdata = {
-	.gpio_reset = SMBA1002_TS_RESET,
-	.gpio_power = SMBA1002_TS_POWER,
+	.gpio_reset = SMBA1007_TS_RESET,
+	.gpio_power = SMBA1007_TS_POWER,
 };
 
-static struct i2c_board_info __initdata smba1002_i2c_bus0_touch_info_at168[] = {
+static struct i2c_board_info __initdata smba1007_i2c_bus0_touch_info_at168[] = {
 	{
 		I2C_BOARD_INFO("at168_touch", 0x5c),
-		.irq = TEGRA_GPIO_TO_IRQ(SMBA1002_TS_IRQ),
+		.irq = TEGRA_GPIO_TO_IRQ(SMBA1007_TS_IRQ),
 		.platform_data = &at168_pdata,
 	},
 };
 
 
-int __init smba1002_touch_register_devices(void)
+int __init smba1007_touch_register_devices(void)
 {
-	i2c_register_board_info(0, smba1002_i2c_bus0_touch_info_at168, 1);
+	i2c_register_board_info(0, smba1007_i2c_bus0_touch_info_at168, 1);
 
 	return 0;
 }

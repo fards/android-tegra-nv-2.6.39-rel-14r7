@@ -1,5 +1,5 @@
 /*
- * arch/arm/mach-tegra/board-smba1002.c
+ * arch/arm/mach-tegra/board-smba1007.c
  *
  * Copyright (C) 2011 Eduardo José Tagle <ejtagle@tutopia.com>
  *
@@ -53,7 +53,7 @@
 #include <mach/nvmap.h>
 
 #include "board.h"
-#include "board-smba1002.h"
+#include "board-smba1007.h"
 #include "clock.h"
 #include "gpio-names.h"
 #include "devices.h"
@@ -491,7 +491,7 @@ void dump_bootflags(void)
 #endif
 
 static struct clk *wifi_32k_clk;
-int smba1002_bt_wifi_gpio_init(void)
+int smba1007_bt_wifi_gpio_init(void)
 {
 	static bool inited = 0;
 	// Check to see if we've already been init'ed.
@@ -502,15 +502,15 @@ int smba1002_bt_wifi_gpio_init(void)
                 pr_err("%s: unable to get blink clock\n", __func__);
                 return -1;
         }
-	gpio_request(SMBA1002_WLAN_POWER, "bt_wifi_power");
-        tegra_gpio_enable(SMBA1002_WLAN_POWER);
-	gpio_direction_output(SMBA1002_WLAN_POWER, 0);
+	gpio_request(SMBA1007_WLAN_POWER, "bt_wifi_power");
+        tegra_gpio_enable(SMBA1007_WLAN_POWER);
+	gpio_direction_output(SMBA1007_WLAN_POWER, 0);
 	inited = 1;
 	return 0;	
 }
-EXPORT_SYMBOL_GPL(smba1002_bt_wifi_gpio_init);
+EXPORT_SYMBOL_GPL(smba1007_bt_wifi_gpio_init);
 
-int smba1002_bt_wifi_gpio_set(bool on)
+int smba1007_bt_wifi_gpio_set(bool on)
 {
        static int count = 0;
 	if (IS_ERR(wifi_32k_clk)) {
@@ -520,7 +520,7 @@ int smba1002_bt_wifi_gpio_set(bool on)
 				
 	if (on) {
 		if (count == 0) {
-			gpio_set_value(SMBA1002_WLAN_POWER, 1);
+			gpio_set_value(SMBA1007_WLAN_POWER, 1);
         		mdelay(100);
 			clk_enable(wifi_32k_clk);
 		}
@@ -530,7 +530,7 @@ int smba1002_bt_wifi_gpio_set(bool on)
 			pr_err("%s: Unbalanced wifi/bt power disable requests\n", __func__);
 			return -1;
 		} else if (count == 1) {
-			        gpio_set_value(SMBA1002_WLAN_POWER, 0);
+			        gpio_set_value(SMBA1007_WLAN_POWER, 0);
         			mdelay(100);
 				clk_disable(wifi_32k_clk);
 		} 
@@ -538,24 +538,24 @@ int smba1002_bt_wifi_gpio_set(bool on)
 	}
 	return 0;		
 }
-EXPORT_SYMBOL_GPL(smba1002_bt_wifi_gpio_set);
+EXPORT_SYMBOL_GPL(smba1007_bt_wifi_gpio_set);
 
 
 
 
-static void smba1002_board_suspend(int lp_state, enum suspend_stage stg)
+static void smba1007_board_suspend(int lp_state, enum suspend_stage stg)
 {
 	if ((lp_state == TEGRA_SUSPEND_LP1) && (stg == TEGRA_SUSPEND_BEFORE_CPU))
 		tegra_console_uart_suspend();
 }
 
-static void smba1002_board_resume(int lp_state, enum resume_stage stg)
+static void smba1007_board_resume(int lp_state, enum resume_stage stg)
 {
 	if ((lp_state == TEGRA_SUSPEND_LP1) && (stg == TEGRA_RESUME_AFTER_CPU))
 		tegra_console_uart_resume();
 }
 
-static struct tegra_suspend_platform_data smba1002_suspend = {
+static struct tegra_suspend_platform_data smba1007_suspend = {
 	.cpu_timer 	  	= 2000,  	// 5000
 	.cpu_off_timer 	= 100, 		// 5000
 	.core_timer    	= 0x7e7e,	//
@@ -564,8 +564,8 @@ static struct tegra_suspend_platform_data smba1002_suspend = {
 	.sysclkreq_high = true,
 	.suspend_mode 	= TEGRA_SUSPEND_LP1,
 	.cpu_lp2_min_residency = 2000,	
-	.board_suspend = smba1002_board_suspend,
-	.board_resume = smba1002_board_resume, 	
+	.board_suspend = smba1007_board_suspend,
+	.board_resume = smba1007_board_resume, 	
 };
 
 #ifdef CONFIG_ANDROID_RAM_CONSOLE
@@ -603,7 +603,7 @@ static void __init tegra_ramconsole_reserve(unsigned long size)
 }
 #endif
 
-static void __init tegra_smba1002_init(void)
+static void __init tegra_smba1007_init(void)
 {
 	struct clk *clk;
 
@@ -611,7 +611,7 @@ static void __init tegra_smba1002_init(void)
 	// console_suspend_enabled = 0;
 
 	/* Init the suspend information */
-	tegra_init_suspend(&smba1002_suspend);
+	tegra_init_suspend(&smba1007_suspend);
 
 	/* Set the SDMMC1 (wifi) tap delay to 6.  This value is determined
 	 * based on propagation delay on the PCB traces. */
@@ -624,71 +624,71 @@ static void __init tegra_smba1002_init(void)
 	}
 
 	/* Initialize the pinmux */
-	smba1002_pinmux_init();
+	smba1007_pinmux_init();
 
 	/* Initialize the clocks - clocks require the pinmux to be initialized first */
-	smba1002_clks_init();
+	smba1007_clks_init();
 
 	/* Register i2c devices - required for Power management and MUST be done before the power register */
-	smba1002_i2c_register_devices();
+	smba1007_i2c_register_devices();
 
 	/* Register the power subsystem - Including the poweroff handler - Required by all the others */
-	smba1002_power_register_devices();
+	smba1007_power_register_devices();
 	
 	/* Register the USB device */
-	smba1002_usb_register_devices();
+	smba1007_usb_register_devices();
 
 	/* Register UART devices */
-	smba1002_uart_register_devices();
+	smba1007_uart_register_devices();
 	
 	/* Register SPI devices */
-	smba1002_spi_register_devices();
+	smba1007_spi_register_devices();
 
 	/* Register GPU devices */
-	smba1002_gpu_register_devices();
+	smba1007_gpu_register_devices();
 
 	/* Register Audio devices */
-	smba1002_audio_register_devices();
+	smba1007_audio_register_devices();
 
 	/* Register Jack devices */
-//	smba1002_jack_register_devices();
+//	smba1007_jack_register_devices();
 
 	/* Register AES encryption devices */
-	smba1002_aes_register_devices();
+	smba1007_aes_register_devices();
 
 	/* Register Watchdog devices */
-	smba1002_wdt_register_devices();
+	smba1007_wdt_register_devices();
 
 	/* Register all the keyboard devices */
-	smba1002_keyboard_register_devices();
+	smba1007_keyboard_register_devices();
 	
 	/* Register touchscreen devices */
-	smba1002_touch_register_devices();
+	smba1007_touch_register_devices();
 	
 	/* Register SDHCI devices */
-	smba1002_sdhci_register_devices();
+	smba1007_sdhci_register_devices();
 
 	/* Register accelerometer device */
-	smba1002_sensors_register_devices();
+	smba1007_sensors_register_devices();
 	
 	/* Register wlan powermanagement devices */
-//	smba1002_wlan_pm_register_devices();
+//	smba1007_wlan_pm_register_devices();
 	
 	/* Register gps powermanagement devices */
-	//smba1002_gps_pm_register_devices();
+	//smba1007_gps_pm_register_devices();
 
 	/* Register gsm powermanagement devices */
-	//smba1002_gsm_pm_register_devices();
+	//smba1007_gsm_pm_register_devices();
 	
 	/* Register Bluetooth powermanagement devices */
-	smba1002_bt_rfkill();
-	smba1002_setup_bluesleep();
+	smba1007_bt_rfkill();
+	smba1007_setup_bluesleep();
 
 	/* Register Camera powermanagement devices */
-//	smba1002_camera_register_devices();
+//	smba1007_camera_register_devices();
 
 	/* Register NAND flash devices */
-	smba1002_nand_register_devices();
+	smba1007_nand_register_devices();
 	
 	
 	tegra_release_bootloader_fb();
@@ -697,10 +697,10 @@ static void __init tegra_smba1002_init(void)
 #endif
 #if 0
 	/* Finally, init the external memory controller and memory frequency scaling
-   	   NB: This is not working on SMBA1002. And seems there is no point in fixing it,
+   	   NB: This is not working on SMBA1007. And seems there is no point in fixing it,
 	   as the EMC clock is forced to the maximum speed as soon as the 2D/3D engine
 	   starts.*/
-	smba1002_init_emc();
+	smba1007_init_emc();
 #endif
 
 #ifdef _DUMP_WBCODE
@@ -720,7 +720,7 @@ static void __init tegra_smba1002_init(void)
 	tegra_release_bootloader_fb();
 }
 
-static void __init tegra_smba1002_reserve(void)
+static void __init tegra_smba1007_reserve(void)
 {
 	if (memblock_reserve(0x0, 4096) < 0)
 		pr_warn("Cannot reserve first 4K of memory for safety\n");
@@ -728,9 +728,9 @@ static void __init tegra_smba1002_reserve(void)
 	/* Reserve the graphics memory */		
 #if defined(DYNAMIC_GPU_MEM)
 #if defined(CONFIG_NVMAP_CONVERT_CARVEOUT_TO_IOVMM)	
-	tegra_reserve(0, SMBA1002_FB1_MEM_SIZE, SMBA1002_FB2_MEM_SIZE);
+	tegra_reserve(0, SMBA1007_FB1_MEM_SIZE, SMBA1007_FB2_MEM_SIZE);
 #else
-	tegra_reserve(SMBA1002_GPU_MEM_SIZE, SMBA1002_FB1_MEM_SIZE, SMBA1002_FB2_MEM_SIZE);
+	tegra_reserve(SMBA1007_GPU_MEM_SIZE, SMBA1007_FB1_MEM_SIZE, SMBA1007_FB2_MEM_SIZE);
 #endif
 #endif
 
@@ -740,15 +740,15 @@ static void __init tegra_smba1002_reserve(void)
 #endif
 }
 
-static void __init tegra_smba1002_fixup(struct machine_desc *desc,
+static void __init tegra_smba1007_fixup(struct machine_desc *desc,
 	struct tag *tags, char **cmdline, struct meminfo *mi)
 {
-	mi->nr_banks = SMBA1002_MEM_BANKS;
+	mi->nr_banks = SMBA1007_MEM_BANKS;
 	mi->bank[0].start = PHYS_OFFSET;
 #if defined(DYNAMIC_GPU_MEM)
-	mi->bank[0].size  = SMBA1002_MEM_SIZE;
+	mi->bank[0].size  = SMBA1007_MEM_SIZE;
 #else
-	mi->bank[0].size  = SMBA1002_MEM_SIZE - SMBA1002_GPU_MEM_SIZE;
+	mi->bank[0].size  = SMBA1007_MEM_SIZE - SMBA1007_GPU_MEM_SIZE;
 #endif
 } 
 
@@ -761,9 +761,9 @@ MACHINE_START(HARMONY, "harmony")
 	.init_early     = tegra_init_early,
 	.init_irq       = tegra_init_irq,
 	.timer          = &tegra_timer,
-	.init_machine	= tegra_smba1002_init,
-	.reserve		= tegra_smba1002_reserve,
-	.fixup			= tegra_smba1002_fixup,
+	.init_machine	= tegra_smba1007_init,
+	.reserve		= tegra_smba1007_reserve,
+	.fixup			= tegra_smba1007_fixup,
 MACHINE_END
 
 #ifdef MACH_TYPE_TEGRA_LEGACY
@@ -776,9 +776,9 @@ MACHINE_START(LEGACY, "legacy")
 	.init_early     = tegra_init_early,
 	.init_irq       = tegra_init_irq,
 	.timer          = &tegra_timer, 	
-	.init_machine	= tegra_smba1002_init,
-	.reserve		= tegra_smba1002_reserve,
-	.fixup			= tegra_smba1002_fixup,
+	.init_machine	= tegra_smba1007_init,
+	.reserve		= tegra_smba1007_reserve,
+	.fixup			= tegra_smba1007_fixup,
 MACHINE_END
 
 

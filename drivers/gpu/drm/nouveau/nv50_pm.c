@@ -112,8 +112,8 @@ nv50_pm_clock_set(struct drm_device *dev, void *pre_state)
 	}
 
 	if (state->type == PLL_MEMORY) {
-		nv_wr32(dev, 0x100210, 0);
-		nv_wr32(dev, 0x1002dc, 1);
+		nv_wr32(dev, 0x100710, 0);
+		nv_wr32(dev, 0x1007dc, 1);
 	}
 
 	tmp  = nv_rd32(dev, reg + 0) & 0xfff8ffff;
@@ -122,8 +122,8 @@ nv50_pm_clock_set(struct drm_device *dev, void *pre_state)
 	nv_wr32(dev, reg + 4, (N << 8) | M);
 
 	if (state->type == PLL_MEMORY) {
-		nv_wr32(dev, 0x1002dc, 0);
-		nv_wr32(dev, 0x100210, 0x80000000);
+		nv_wr32(dev, 0x1007dc, 0);
+		nv_wr32(dev, 0x100710, 0x80000000);
 	}
 
 	kfree(state);

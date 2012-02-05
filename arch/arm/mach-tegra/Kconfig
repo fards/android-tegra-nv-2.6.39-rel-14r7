@@ -72,12 +72,12 @@ config MACH_HARMONY
        help
          Support for NVIDIA Harmony development platform
 
-config MACH_SMBA1002
-       bool "Malata smba1002"
+config MACH_SMBA1007
+       bool "Malata smba1007"
        depends on ARCH_TEGRA_2x_SOC
        select MACH_HAS_SND_SOC_TEGRA_ALC5623 if SND_SOC
        help
-         Support for the Malata smba1002
+         Support for the Malata smba1007
 
 config MACH_VENTANA
        bool "Ventana board"

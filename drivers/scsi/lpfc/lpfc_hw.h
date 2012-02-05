@@ -567,7 +567,7 @@ struct fc_vft_header {
 #define ELS_CMD_RRQ       0x12
 #define ELS_CMD_PRLI      0x14001020
 #define ELS_CMD_PRLO      0x14001021
-#define ELS_CMD_PRLO_ACC  0x14001002
+#define ELS_CMD_PRLO_ACC  0x14001007
 #define ELS_CMD_PDISC     0x50
 #define ELS_CMD_FDISC     0x51
 #define ELS_CMD_ADISC     0x52

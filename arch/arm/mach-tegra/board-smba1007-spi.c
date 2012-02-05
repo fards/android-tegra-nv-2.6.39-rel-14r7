@@ -1,5 +1,5 @@
 /*
- * arch/arm/mach-tegra/board-smba1002-wlan.c
+ * arch/arm/mach-tegra/board-smba1007-spi.c
  *
  * Copyright (C) 2011 Eduardo José Tagle <ejtagle@tutopia.com>
  *
@@ -39,22 +39,19 @@
 #include <mach/iomap.h>
 
 #include "board.h"
-#include "board-smba1002.h"
+#include "board-smba1007.h"
 #include "clock.h"
 #include "gpio-names.h"
 #include "devices.h"
 
-static struct platform_device smba1002_wlan_pm_device = {
-	.name		= "smba1002-pm-wlan",
-	.id			= -1,
+static struct platform_device *smba1007_spi_devices[] __initdata = {
+	&tegra_spi_device1,
+	&tegra_spi_device2,
+	&tegra_spi_device3,
+	&tegra_spi_device4,
 };
 
-
-static struct platform_device *smba1002_wlan_pm_devices[] __initdata = {
-	&smba1002_wlan_pm_device,
-};
-
-int __init smba1002_wlan_pm_register_devices(void)
+int __init smba1007_spi_register_devices(void)
 {
-	return platform_add_devices(smba1002_wlan_pm_devices, ARRAY_SIZE(smba1002_wlan_pm_devices));
+	return platform_add_devices(smba1007_spi_devices, ARRAY_SIZE(smba1007_spi_devices));
 }

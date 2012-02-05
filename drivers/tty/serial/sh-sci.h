@@ -44,7 +44,7 @@
 # define SCIF_ORER 0x0001   /* overrun error bit */
 #elif defined(CONFIG_CPU_SUBTYPE_SH7760)
 # define SCSPTR0 0xfe600024 /* 16 bit SCIF */
-# define SCSPTR1 0xfe610024 /* 16 bit SCIF */
+# define SCSPTR1 0xfe610074 /* 16 bit SCIF */
 # define SCSPTR2 0xfe620024 /* 16 bit SCIF */
 # define SCIF_ORER 0x0001  /* overrun error bit */
 #elif defined(CONFIG_CPU_SUBTYPE_SH7710) || defined(CONFIG_CPU_SUBTYPE_SH7712)

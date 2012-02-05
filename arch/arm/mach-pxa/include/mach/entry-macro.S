@@ -24,7 +24,7 @@
 		mov	\tmp, \tmp, lsr #13
 		and	\tmp, \tmp, #0x7		@ Core G
 		cmp	\tmp, #1
-		bhi	1002f
+		bhi	1007f
 
 		@ Core Generation 1 (PXA25x)
 		mov	\base, #io_p2v(0x40000000)	@ IIR Ctl = 0x40d00000
@@ -39,7 +39,7 @@
 		clz	\irqnr, \irqstat
 		rsb	\irqnr, \irqnr, #(31 + PXA_IRQ(0))
 		b	1001f
-1002:
+1007:
 		@ Core Generation 2 (PXA27x) or Core Generation 3 (PXA3xx)
 		mrc	p6, 0, \irqstat, c5, c0, 0	@ ICHP
 		tst	\irqstat, #0x80000000

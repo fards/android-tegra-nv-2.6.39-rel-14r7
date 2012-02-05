@@ -28,7 +28,7 @@
 #include "dvb_frontend.h"
 #include "dvb_net.h"
 
-#include "tda1002x.h"
+#include "tda1007x.h"
 #include "mantis_common.h"
 #include "mantis_ioc.h"
 #include "mantis_dvb.h"
@@ -37,12 +37,12 @@
 #define MANTIS_MODEL_NAME	"VP-2033"
 #define MANTIS_DEV_TYPE		"DVB-C"
 
-struct tda1002x_config vp2033_tda1002x_cu1216_config = {
+struct tda1007x_config vp2033_tda1007x_cu1216_config = {
 	.demod_address = 0x18 >> 1,
 	.invert = 1,
 };
 
-struct tda10023_config vp2033_tda10023_cu1216_config = {
+struct tda10073_config vp2033_tda10073_cu1216_config = {
 	.demod_address = 0x18 >> 1,
 	.invert = 1,
 };
@@ -65,7 +65,7 @@ static u8 read_pwm(struct mantis_pci *mantis)
 	return pwm;
 }
 
-static int tda1002x_cu1216_tuner_set(struct dvb_frontend *fe, struct dvb_frontend_parameters *params)
+static int tda1007x_cu1216_tuner_set(struct dvb_frontend *fe, struct dvb_frontend_parameters *params)
 {
 	struct mantis_pci *mantis = fe->dvb->priv;
 	struct i2c_adapter *adapter = &mantis->adapter;
@@ -132,28 +132,28 @@ static int vp2033_frontend_init(struct mantis_pci *mantis, struct dvb_frontend *
 		msleep(250);
 
 		dprintk(MANTIS_ERROR, 1, "Probing for CU1216 (DVB-C)");
-		fe = dvb_attach(tda10021_attach, &vp2033_tda1002x_cu1216_config,
+		fe = dvb_attach(tda10071_attach, &vp2033_tda1007x_cu1216_config,
 				     adapter,
 				     read_pwm(mantis));
 
 		if (fe) {
 			dprintk(MANTIS_ERROR, 1,
-				"found Philips CU1216 DVB-C frontend (TDA10021) @ 0x%02x",
-				vp2033_tda1002x_cu1216_config.demod_address);
+				"found Philips CU1216 DVB-C frontend (TDA10071) @ 0x%02x",
+				vp2033_tda1007x_cu1216_config.demod_address);
 		} else {
-			fe = dvb_attach(tda10023_attach, &vp2033_tda10023_cu1216_config,
+			fe = dvb_attach(tda10073_attach, &vp2033_tda10073_cu1216_config,
 					     adapter,
 					     read_pwm(mantis));
 
 			if (fe) {
 				dprintk(MANTIS_ERROR, 1,
-					"found Philips CU1216 DVB-C frontend (TDA10023) @ 0x%02x",
-					vp2033_tda1002x_cu1216_config.demod_address);
+					"found Philips CU1216 DVB-C frontend (TDA10073) @ 0x%02x",
+					vp2033_tda1007x_cu1216_config.demod_address);
 			}
 		}
 
 		if (fe) {
-			fe->ops.tuner_ops.set_params = tda1002x_cu1216_tuner_set;
+			fe->ops.tuner_ops.set_params = tda1007x_cu1216_tuner_set;
 			dprintk(MANTIS_ERROR, 1, "Mantis DVB-C Philips CU1216 frontend attach success");
 		} else {
 			return -1;

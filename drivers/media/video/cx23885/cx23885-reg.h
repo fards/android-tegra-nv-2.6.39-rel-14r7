@@ -347,12 +347,12 @@ Channel manager Data Structure entry = 20 DWORD
 #define SOFT_RESET	0x0011001C
 
 /* GPIO (417 Microsoftcontroller) RW Data */
-#define MC417_RWD	0x00110020
+#define MC417_RWD	0x00110070
 
 /* GPIO (417 Microsoftcontroller) Output Enable, Low Active */
-#define MC417_OEN	0x00110024
-#define MC417_CTL	0x00110028
-#define ALT_PIN_OUT_SEL 0x0011002C
+#define MC417_OEN	0x00110074
+#define MC417_CTL	0x00110078
+#define ALT_PIN_OUT_SEL 0x0011007C
 #define CLK_DELAY	0x00110048
 #define PAD_CTRL	0x0011004C
 

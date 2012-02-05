@@ -627,10 +627,10 @@ sub main_firmware_24($$$$)
 	write_hunk(309624, 192);
 
 	#
-	# Firmware 52, type: SCODE FW  DTV6 ATSC OREN36 HAS IF (0x60210020), IF = 3.80 MHz id: (0000000000000000), size: 192
+	# Firmware 52, type: SCODE FW  DTV6 ATSC OREN36 HAS IF (0x60210070), IF = 3.80 MHz id: (0000000000000000), size: 192
 	#
 
-	write_le32(0x60210020);			# Type
+	write_le32(0x60210070);			# Type
 	write_le64(0x00000000, 0x00000000);	# ID
 	write_le16(3800);			# IF
 	write_le32(192);			# Size
@@ -647,10 +647,10 @@ sub main_firmware_24($$$$)
 	write_hunk(309240, 192);
 
 	#
-	# Firmware 54, type: SCODE FW  DTV6 ATSC TOYOTA388 HAS IF (0x60410020), IF = 4.08 MHz id: (0000000000000000), size: 192
+	# Firmware 54, type: SCODE FW  DTV6 ATSC TOYOTA388 HAS IF (0x60410070), IF = 4.08 MHz id: (0000000000000000), size: 192
 	#
 
-	write_le32(0x60410020);			# Type
+	write_le32(0x60410070);			# Type
 	write_le64(0x00000000, 0x00000000);	# ID
 	write_le16(4080);			# IF
 	write_le32(192);			# Size
@@ -757,10 +757,10 @@ sub main_firmware_24($$$$)
 	write_hunk(304248, 192);
 
 	#
-	# Firmware 65, type: SCODE FW  DTV6 ATSC OREN538 HAS IF (0x60110020), IF = 5.58 MHz id: (0000000000000000), size: 192
+	# Firmware 65, type: SCODE FW  DTV6 ATSC OREN538 HAS IF (0x60110070), IF = 5.58 MHz id: (0000000000000000), size: 192
 	#
 
-	write_le32(0x60110020);			# Type
+	write_le32(0x60110070);			# Type
 	write_le64(0x00000000, 0x00000000);	# ID
 	write_le16(5580);			# IF
 	write_le32(192);			# Size
@@ -887,10 +887,10 @@ sub main_firmware_24($$$$)
 	write_hunk(308088, 192);
 
 	#
-	# Firmware 78, type: SCODE FW  DTV6 ATSC TOYOTA794 HAS IF (0x60810020), IF = 8.14 MHz id: (0000000000000000), size: 192
+	# Firmware 78, type: SCODE FW  DTV6 ATSC TOYOTA794 HAS IF (0x60810070), IF = 8.14 MHz id: (0000000000000000), size: 192
 	#
 
-	write_le32(0x60810020);			# Type
+	write_le32(0x60810070);			# Type
 	write_le64(0x00000000, 0x00000000);	# ID
 	write_le16(8140);			# IF
 	write_le32(192);			# Size
@@ -1398,10 +1398,10 @@ sub main_firmware_27($$$$)
 	write_hunk(812472, 192);
 
 	#
-	# Firmware 52, type: SCODE FW  DTV6 ATSC OREN36 HAS IF (0x60210020), IF = 3.80 MHz id: (0000000000000000), size: 192
+	# Firmware 52, type: SCODE FW  DTV6 ATSC OREN36 HAS IF (0x60210070), IF = 3.80 MHz id: (0000000000000000), size: 192
 	#
 
-	write_le32(0x60210020);			# Type
+	write_le32(0x60210070);			# Type
 	write_le64(0x00000000, 0x00000000);	# ID
 	write_le16(3800);			# IF
 	write_le32(192);			# Size
@@ -1418,10 +1418,10 @@ sub main_firmware_27($$$$)
 	write_hunk(812088, 192);
 
 	#
-	# Firmware 54, type: SCODE FW  DTV6 ATSC TOYOTA388 HAS IF (0x60410020), IF = 4.08 MHz id: (0000000000000000), size: 192
+	# Firmware 54, type: SCODE FW  DTV6 ATSC TOYOTA388 HAS IF (0x60410070), IF = 4.08 MHz id: (0000000000000000), size: 192
 	#
 
-	write_le32(0x60410020);			# Type
+	write_le32(0x60410070);			# Type
 	write_le64(0x00000000, 0x00000000);	# ID
 	write_le16(4080);			# IF
 	write_le32(192);			# Size
@@ -1528,10 +1528,10 @@ sub main_firmware_27($$$$)
 	write_hunk(807096, 192);
 
 	#
-	# Firmware 65, type: SCODE FW  DTV6 ATSC OREN538 HAS IF (0x60110020), IF = 5.58 MHz id: (0000000000000000), size: 192
+	# Firmware 65, type: SCODE FW  DTV6 ATSC OREN538 HAS IF (0x60110070), IF = 5.58 MHz id: (0000000000000000), size: 192
 	#
 
-	write_le32(0x60110020);			# Type
+	write_le32(0x60110070);			# Type
 	write_le64(0x00000000, 0x00000000);	# ID
 	write_le16(5580);			# IF
 	write_le32(192);			# Size
@@ -1658,10 +1658,10 @@ sub main_firmware_27($$$$)
 	write_hunk(810936, 192);
 
 	#
-	# Firmware 78, type: SCODE FW  DTV6 ATSC TOYOTA794 HAS IF (0x60810020), IF = 8.14 MHz id: (0000000000000000), size: 192
+	# Firmware 78, type: SCODE FW  DTV6 ATSC TOYOTA794 HAS IF (0x60810070), IF = 8.14 MHz id: (0000000000000000), size: 192
 	#
 
-	write_le32(0x60810020);			# Type
+	write_le32(0x60810070);			# Type
 	write_le64(0x00000000, 0x00000000);	# ID
 	write_le16(8140);			# IF
 	write_le32(192);			# Size

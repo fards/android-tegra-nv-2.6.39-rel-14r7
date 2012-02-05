@@ -1164,7 +1164,7 @@ operr_0_pc:
 	mov.l		&0xffff0000,IFPREGS+0x0(%a6)
 	mov.l		&0x00000000,IFPREGS+0x4(%a6)
 	mov.l		&0x00000000,IFPREGS+0x8(%a6)
-	mov.l		&0x01002080,IFPCREGS+0x4(%a6)
+	mov.l		&0x01007080,IFPCREGS+0x4(%a6)
 	lea		operr_0_pc(%pc),%a0
 	mov.l		%a0,IFPCREGS+0x8(%a6)
 

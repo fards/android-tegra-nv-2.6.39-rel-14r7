@@ -4,10 +4,10 @@ if BOARD_ATSTK1000
 
 choice
 	prompt "ATSTK1000 CPU daughterboard type"
-	default BOARD_ATSTK1002
+	default BOARD_ATSTK1007
 
-config BOARD_ATSTK1002
-	bool "ATSTK1002"
+config BOARD_ATSTK1007
+	bool "ATSTK1007"
 	select CPU_AT32AP7000
 
 config BOARD_ATSTK1003
@@ -26,7 +26,7 @@ endchoice
 
 
 config BOARD_ATSTK100X_CUSTOM
-	bool "Non-default STK1002/STK1003/STK1004 jumper settings"
+	bool "Non-default STK1007/STK1003/STK1004 jumper settings"
 	help
 	  You will normally leave the jumpers on the CPU card at their
 	  default settings.  If you need to use certain peripherals,
@@ -57,13 +57,13 @@ config BOARD_ATSTK100X_SW4_CUSTOM
 	  To use the camera interface you'll need a custom card (on the
 	  PCI-format connector) connect a video sensor.
 
-config BOARD_ATSTK1002_SW5_CUSTOM
+config BOARD_ATSTK1007_SW5_CUSTOM
 	bool "SW5: use MACB1 (not LCDC)"
-	depends on BOARD_ATSTK1002
+	depends on BOARD_ATSTK1007
 
-config BOARD_ATSTK1002_SW6_CUSTOM
+config BOARD_ATSTK1007_SW6_CUSTOM
 	bool "SW6: more GPIOs (not MACB0)"
-	depends on BOARD_ATSTK1002
+	depends on BOARD_ATSTK1007
 
 endif	# custom
 

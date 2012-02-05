@@ -18,7 +18,7 @@
 #define BP_VERSION 0x0001
 
 #define BP_TAG_COMMAND_LINE	0x1001	/* command line (0-terminated string)*/
-#define BP_TAG_INITRD		0x1002	/* ramdisk addr and size (bp_meminfo) */
+#define BP_TAG_INITRD		0x1007	/* ramdisk addr and size (bp_meminfo) */
 #define BP_TAG_MEMORY		0x1003	/* memory addr and size (bp_meminfo) */
 #define BP_TAG_SERIAL_BAUSRATE	0x1004	/* baud rate of current console. */
 #define BP_TAG_SERIAL_PORT	0x1005	/* serial device of current console */

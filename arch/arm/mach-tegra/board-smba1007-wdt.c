@@ -1,5 +1,5 @@
 /*
- * arch/arm/mach-tegra/board-smba1002-wdt.c
+ * arch/arm/mach-tegra/board-smba1007-wdt.c
  *
  * Copyright (C) 2011 Eduardo José Tagle <ejtagle@tutopia.com>
  *
@@ -39,16 +39,16 @@
 #include <mach/iomap.h>
 
 #include "board.h"
-#include "board-smba1002.h"
+#include "board-smba1007.h"
 #include "clock.h"
 #include "gpio-names.h"
 #include "devices.h"
 
-static struct platform_device *smba1002_wdt_devices[] __initdata = {
+static struct platform_device *smba1007_wdt_devices[] __initdata = {
 	&tegra_wdt_device,
 };
 
-int __init smba1002_wdt_register_devices(void)
+int __init smba1007_wdt_register_devices(void)
 {
-	return platform_add_devices(smba1002_wdt_devices, ARRAY_SIZE(smba1002_wdt_devices));
+	return platform_add_devices(smba1007_wdt_devices, ARRAY_SIZE(smba1007_wdt_devices));
 }

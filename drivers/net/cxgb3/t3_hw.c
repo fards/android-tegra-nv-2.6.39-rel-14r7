@@ -551,7 +551,7 @@ struct port_type_info {
 
 static const struct port_type_info port_types[] = {
 	{ NULL },
-	{ t3_ael1002_phy_prep },
+	{ t3_ael1007_phy_prep },
 	{ t3_vsc8211_phy_prep },
 	{ NULL},
 	{ t3_xaui_direct_phy_prep },

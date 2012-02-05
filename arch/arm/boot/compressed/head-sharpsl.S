@@ -97,7 +97,7 @@ __SharpSL_start:
 .PXA270ID:
 	.word	0x69054100		@ PXA270 Processor ID
 .W100ID:
-	.word	0x57411002		@ w100 Chip ID
+	.word	0x57411007		@ w100 Chip ID
 .W100ADDR:
 	.word 	0x08010000		@ w100 Chip ID Reg Address
 .SCOOP2ADDR:

@@ -156,7 +156,7 @@ struct pda_custom_wrapper {
 /* ARM range (0x1000 - 0x1fff) */
 #define PDR_COUNTRY_INFORMATION			0x1000 /* obsolete */
 #define PDR_INTERFACE_LIST			0x1001
-#define PDR_HARDWARE_PLATFORM_COMPONENT_ID	0x1002
+#define PDR_HARDWARE_PLATFORM_COMPONENT_ID	0x1007
 #define PDR_OEM_NAME				0x1003
 #define PDR_PRODUCT_NAME			0x1004
 #define PDR_UTF8_OEM_NAME			0x1005

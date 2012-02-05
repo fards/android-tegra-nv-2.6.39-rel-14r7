@@ -49,10 +49,10 @@ struct asregs {
   volatile u32 vt_hblank;    /* 0x010014 hblank on/off */
   volatile u32 vt_flags;     /* 0x010018 polarity of vt signals */
   volatile u32 vt_f2rf_lock; /* 0x01001c f2rf & framelck y coord */
-  volatile u32 vt_intr01;    /* 0x010020 intr 0,1 y coords */
-  volatile u32 vt_intr23;    /* 0x010024 intr 2,3 y coords */
-  volatile u32 fp_hdrv;      /* 0x010028 flat panel hdrv on/off */
-  volatile u32 fp_vdrv;      /* 0x01002c flat panel vdrv on/off */
+  volatile u32 vt_intr01;    /* 0x010070 intr 0,1 y coords */
+  volatile u32 vt_intr23;    /* 0x010074 intr 2,3 y coords */
+  volatile u32 fp_hdrv;      /* 0x010078 flat panel hdrv on/off */
+  volatile u32 fp_vdrv;      /* 0x01007c flat panel vdrv on/off */
   volatile u32 fp_de;        /* 0x010030 flat panel de on/off */
   volatile u32 vt_hpixen;    /* 0x010034 intrnl horiz pixel on/off*/
   volatile u32 vt_vpixen;    /* 0x010038 intrnl vert pixel on/off */

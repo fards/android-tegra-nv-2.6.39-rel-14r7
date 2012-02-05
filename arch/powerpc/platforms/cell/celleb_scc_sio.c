@@ -26,7 +26,7 @@
 #include <asm/io.h>
 #include <asm/prom.h>
 
-/* sio irq0=0xb00010022 irq0=0xb00010023 irq2=0xb00010024
+/* sio irq0=0xb00010072 irq0=0xb00010073 irq2=0xb00010074
     mmio=0xfff000-0x1000,0xff2000-0x1000 */
 static int txx9_serial_bitmap __initdata;
 

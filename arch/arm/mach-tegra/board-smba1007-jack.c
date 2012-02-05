@@ -1,5 +1,5 @@
 /*
- * arch/arm/mach-tegra/board-smba1002-jack.c
+ * arch/arm/mach-tegra/board-smba1007-jack.c
  *
  * Copyright (c) 2011, NVIDIA Corporation.
  *
@@ -26,10 +26,10 @@
 #include <mach/audio.h>
 
 #include "gpio-names.h"
-#include "board-smba1002.h"
+#include "board-smba1007.h"
 
-static struct wired_jack_conf smba1002_wr_jack_conf = {
-	.hp_det_n = SMBA1002_HP_DETECT,
+static struct wired_jack_conf smba1007_wr_jack_conf = {
+	.hp_det_n = SMBA1007_HP_DETECT,
 	.en_mic_ext = -1,
 	.en_mic_int = -1,
 	.en_spkr = ALC5623_GP0,
@@ -37,23 +37,23 @@ static struct wired_jack_conf smba1002_wr_jack_conf = {
 //	.spkr_amp_reg = "avdd_amp"
 };
 
-static struct platform_device smba1002_hs_jack_device = {
+static struct platform_device smba1007_hs_jack_device = {
 	.name = "tegra_wired_jack",
 	.id = -1,
 	.dev = {
-		.platform_data = &smba1002_wr_jack_conf,
+		.platform_data = &smba1007_wr_jack_conf,
 	},
 };
 
-int __init smba1002_jack_register_devices(void)
+int __init smba1007_jack_register_devices(void)
 {
 	int ret;
 
-	tegra_gpio_enable(smba1002_wr_jack_conf.hp_det_n);
-//	tegra_gpio_enable(smba1002_wr_jack_conf.en_mic_int);
-//	tegra_gpio_enable(smba1002_wr_jack_conf.en_mic_ext);
-//	tegra_gpio_enable(smba1002_wr_jack_conf.cdc_irq);
+	tegra_gpio_enable(smba1007_wr_jack_conf.hp_det_n);
+//	tegra_gpio_enable(smba1007_wr_jack_conf.en_mic_int);
+//	tegra_gpio_enable(smba1007_wr_jack_conf.en_mic_ext);
+//	tegra_gpio_enable(smba1007_wr_jack_conf.cdc_irq);
 
-	ret = platform_device_register(&smba1002_hs_jack_device);
+	ret = platform_device_register(&smba1007_hs_jack_device);
 	return ret;
 }

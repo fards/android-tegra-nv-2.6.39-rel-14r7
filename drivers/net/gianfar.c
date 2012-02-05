@@ -951,7 +951,7 @@ static void gfar_detect_errata(struct gfar_private *priv)
 
 	/* MPC8313 Rev < 2.0, MPC8548 rev 2.0 */
 	if ((pvr == 0x80850010 && mod == 0x80b0 && rev < 0x0020) ||
-			(pvr == 0x80210020 && mod == 0x8030 && rev == 0x0020))
+			(pvr == 0x80210070 && mod == 0x8030 && rev == 0x0020))
 		priv->errata |= GFAR_ERRATA_12;
 
 	if (priv->errata)

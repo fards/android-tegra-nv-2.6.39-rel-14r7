@@ -84,7 +84,7 @@
 
 /* MS02-NV general constants. */
 #define MS02NV_ID		0x03021966	/* MS02-NV magic ID value */
-#define MS02NV_VALID_ID		0xbd100248	/* valid data magic ID value */
+#define MS02NV_VALID_ID		0xbd100748	/* valid data magic ID value */
 #define MS02NV_SLOT_SIZE	0x800000	/* size of the address space
 						   decoded by the module */
 

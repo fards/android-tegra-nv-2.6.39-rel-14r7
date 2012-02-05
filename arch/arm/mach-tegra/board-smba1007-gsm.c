@@ -1,5 +1,5 @@
 /*
- * arch/arm/mach-tegra/board-smba1002-gsm.c
+ * arch/arm/mach-tegra/board-smba1007-gsm.c
  *
  * Copyright (C) 2011 Eduardo José Tagle <ejtagle@tutopia.com>
  *
@@ -39,22 +39,22 @@
 #include <mach/iomap.h>
 
 #include "board.h"
-#include "board-smba1002.h"
+#include "board-smba1007.h"
 #include "clock.h"
 #include "gpio-names.h"
 #include "devices.h"
 
-static struct platform_device smba1002_gsm_pm_device = {
-	.name		= "smba1002-pm-gsm",
+static struct platform_device smba1007_gsm_pm_device = {
+	.name		= "smba1007-pm-gsm",
 	.id			= -1,
 };
 
 
-static struct platform_device *smba1002_gsm_pm_devices[] __initdata = {
-	&smba1002_gsm_pm_device,
+static struct platform_device *smba1007_gsm_pm_devices[] __initdata = {
+	&smba1007_gsm_pm_device,
 };
 
-int __init smba1002_gsm_pm_register_devices(void)
+int __init smba1007_gsm_pm_register_devices(void)
 {
-	return platform_add_devices(smba1002_gsm_pm_devices, ARRAY_SIZE(smba1002_gsm_pm_devices));
+	return platform_add_devices(smba1007_gsm_pm_devices, ARRAY_SIZE(smba1007_gsm_pm_devices));
 }

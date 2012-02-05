@@ -111,7 +111,7 @@
 #define DRIVER_DESC "D-Link DSB-R100 USB FM radio driver"
 
 #define DSB100_VENDOR 0x04b4
-#define DSB100_PRODUCT 0x1002
+#define DSB100_PRODUCT 0x1007
 
 /* Commands the device appears to understand */
 #define DSB100_TUNE 1

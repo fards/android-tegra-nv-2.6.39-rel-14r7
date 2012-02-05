@@ -549,7 +549,7 @@ static int sx_busy_wait_neq(struct sx_board *board,
 	return 0;
 }
 
-/* 5.6.4 of 6210028 r2.3 */
+/* 5.6.4 of 6210078 r2.3 */
 static int sx_reset(struct sx_board *board)
 {
 	func_enter();

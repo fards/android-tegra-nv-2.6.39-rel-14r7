@@ -827,7 +827,7 @@ static struct dif_settings Dif_set_array[] = {
 /* BEGIN - DIF BPF register values from 63_quant.dat*/
 {6300000, DIF_BPF_COEFF01,    0xfffffffd},
 {6300000, DIF_BPF_COEFF23,    0xfffe000a},
-{6300000, DIF_BPF_COEFF45,    0x0021002f},
+{6300000, DIF_BPF_COEFF45,    0x0021007f},
 {6300000, DIF_BPF_COEFF67,    0x0010ffb8},
 {6300000, DIF_BPF_COEFF89,    0xff50ff3b},
 {6300000, DIF_BPF_COEFF1011,  0xffcc00f0},

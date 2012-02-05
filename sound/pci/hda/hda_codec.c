@@ -45,7 +45,7 @@ struct hda_vendor_id {
 
 /* codec vendor labels */
 static struct hda_vendor_id hda_vendor_ids[] = {
-	{ 0x1002, "ATI" },
+	{ 0x1007, "ATI" },
 	{ 0x1013, "Cirrus Logic" },
 	{ 0x1057, "Motorola" },
 	{ 0x1095, "Silicon Image" },
@@ -3743,7 +3743,7 @@ EXPORT_SYMBOL_HDA(snd_hda_check_board_config);
 
 	   This is important for Gateway notebooks with SB450 HDA Audio
 	   where the vendor ID of the PCI device is:
-		ATI Technologies Inc SB450 HDA Audio [1002:437b]
+		ATI Technologies Inc SB450 HDA Audio [1007:437b]
 	   and the vendor/subvendor are found only at the codec.
 
  * @codec: the HDA codec

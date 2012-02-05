@@ -35,7 +35,7 @@
 #include "s5h1409.h"
 #include "mt352.h"
 #include "mt352_priv.h" /* FIXME */
-#include "tda1002x.h"
+#include "tda1007x.h"
 #include "tda18271.h"
 #include "s921.h"
 
@@ -327,7 +327,7 @@ static struct mt352_config terratec_xs_mt352_cfg = {
 	.demod_init = mt352_terratec_xs_init,
 };
 
-static struct tda10023_config em28xx_tda10023_config = {
+static struct tda10073_config em28xx_tda10073_config = {
 	.demod_address = 0x0c,
 	.invert = 1,
 };
@@ -601,9 +601,9 @@ static int dvb_init(struct em28xx *dev)
 		break;
 #endif
 	case EM2870_BOARD_REDDO_DVB_C_USB_BOX:
-		/* Philips CU1216L NIM (Philips TDA10023 + Infineon TUA6034) */
-		dvb->frontend = dvb_attach(tda10023_attach,
-			&em28xx_tda10023_config,
+		/* Philips CU1216L NIM (Philips TDA10073 + Infineon TUA6034) */
+		dvb->frontend = dvb_attach(tda10073_attach,
+			&em28xx_tda10073_config,
 			&dev->i2c_adap, 0x48);
 		if (dvb->frontend) {
 			if (!dvb_attach(simple_tuner_attach, dvb->frontend,

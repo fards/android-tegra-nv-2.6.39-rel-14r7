@@ -30,7 +30,7 @@
 		.endm
 
 		.macro	busyuart, rd, rx
-1002:		ldr	\rd, [\rx, #UART01x_FR]			@ FLAG REGISTER
+1007:		ldr	\rd, [\rx, #UART01x_FR]			@ FLAG REGISTER
 		tst	\rd, #UART011_FR_TXFE			@ TX_EMPTY
-		beq	1002b
+		beq	1007b
 		.endm

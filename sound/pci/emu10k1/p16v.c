@@ -116,7 +116,7 @@
 /* Card IDs:
  * Class 0401: 1102:0004 (rev 04) Subsystem: 1102:2002 -> Audigy2 ZS 7.1 Model:SB0350
  * Class 0401: 1102:0004 (rev 04) Subsystem: 1102:1007 -> Audigy2 6.1    Model:SB0240
- * Class 0401: 1102:0004 (rev 04) Subsystem: 1102:1002 -> Audigy2 Platinum  Model:SB msb0240230009266
+ * Class 0401: 1102:0004 (rev 04) Subsystem: 1102:1007 -> Audigy2 Platinum  Model:SB msb0240230009266
  * Class 0401: 1102:0004 (rev 04) Subsystem: 1102:2007 -> Audigy4 Pro Model:SB0380 M1SB0380472001901E
  *
  */

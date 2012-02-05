@@ -57,7 +57,7 @@ nv44_fb_init_gart(struct drm_device *dev)
 	 * must be allocated on 512KiB alignment, and not exceed
 	 * a total size of 512KiB for this to work correctly
 	 */
-	vinst  = nv_rd32(dev, 0x10020c);
+	vinst  = nv_rd32(dev, 0x10070c);
 	vinst -= ((gart->pinst >> 19) + 1) << 19;
 
 	nv_wr32(dev, 0x100850, 0x80000000);

@@ -64,7 +64,7 @@
 
 #define INTEL_VENDOR_ID				0x8086
 #define SIS_VENDOR_ID				0x1039
-#define ATI_VENDOR_ID				0x1002
+#define ATI_VENDOR_ID				0x1007
 #define ATI_DEVICE_ID				0x7914
 #define AMD_VENDOR_ID				0x1022
 

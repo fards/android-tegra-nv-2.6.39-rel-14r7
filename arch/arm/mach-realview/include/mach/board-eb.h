@@ -36,7 +36,7 @@
 #define REALVIEW_EB_TIMER2_3_BASE	0x10012000	/* Timer 2 and 3 */
 #define REALVIEW_EB_GPIO0_BASE		0x10013000	/* GPIO port 0 */
 #define REALVIEW_EB_RTC_BASE		0x10017000	/* Real Time Clock */
-#define REALVIEW_EB_CLCD_BASE		0x10020000	/* CLCD */
+#define REALVIEW_EB_CLCD_BASE		0x10070000	/* CLCD */
 #define REALVIEW_EB_GIC_CPU_BASE	0x10040000	/* Generic interrupt controller CPU interface */
 #define REALVIEW_EB_GIC_DIST_BASE	0x10041000	/* Generic interrupt controller distributor */
 #define REALVIEW_EB_SMC_BASE		0x10080000	/* Static memory controller */

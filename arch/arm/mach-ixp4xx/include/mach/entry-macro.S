@@ -26,7 +26,7 @@
 		clz     \irqnr, \irqstat
 		mov     \base, #31
 		sub     \irqnr, \base, \irqnr
-		b	1002f				@ lower IRQ being
+		b	1007f				@ lower IRQ being
 							@ handled
 
 1001:
@@ -41,7 +41,7 @@
  		cmp	\irqstat, #32
 		subne	\irqnr, \irqnr, \irqstat
 #endif
-1002:
+1007:
 		.endm
 
 

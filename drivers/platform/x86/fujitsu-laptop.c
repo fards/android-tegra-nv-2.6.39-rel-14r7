@@ -91,7 +91,7 @@
 /* FUNC interface - command values */
 #define FUNC_RFKILL	0x1000
 #define FUNC_LEDS	0x1001
-#define FUNC_BUTTONS	0x1002
+#define FUNC_BUTTONS	0x1007
 #define FUNC_BACKLIGHT  0x1004
 
 /* FUNC interface - responses */

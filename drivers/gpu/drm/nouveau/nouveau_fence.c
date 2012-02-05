@@ -428,7 +428,7 @@ semaphore_release(struct nouveau_channel *chan, struct nouveau_semaphore *sema)
 		OUT_RING  (chan, upper_32_bits(offset));
 		OUT_RING  (chan, lower_32_bits(offset));
 		OUT_RING  (chan, 1);
-		OUT_RING  (chan, 0x1002); /* RELEASE */
+		OUT_RING  (chan, 0x1007); /* RELEASE */
 	}
 
 	/* Delay semaphore destruction until its work is done */

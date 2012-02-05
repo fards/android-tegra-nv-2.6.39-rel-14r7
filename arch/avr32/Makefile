@@ -9,7 +9,7 @@
 .PHONY: all
 all: uImage vmlinux.elf
 
-KBUILD_DEFCONFIG	:= atstk1002_defconfig
+KBUILD_DEFCONFIG	:= atstk1007_defconfig
 
 KBUILD_CFLAGS	+= -pipe -fno-builtin -mno-pic
 KBUILD_AFLAGS	+= -mrelax -mno-pic

@@ -150,9 +150,9 @@ nv50_vram_rblock(struct drm_device *dev)
 	u64 rowsize, predicted;
 	u32 r0, r4, rt, ru, rblock_size;
 
-	r0 = nv_rd32(dev, 0x100200);
-	r4 = nv_rd32(dev, 0x100204);
-	rt = nv_rd32(dev, 0x100250);
+	r0 = nv_rd32(dev, 0x100700);
+	r4 = nv_rd32(dev, 0x100704);
+	rt = nv_rd32(dev, 0x100750);
 	ru = nv_rd32(dev, 0x001540);
 	NV_DEBUG(dev, "memcfg 0x%08x 0x%08x 0x%08x 0x%08x\n", r0, r4, rt, ru);
 
@@ -191,7 +191,7 @@ nv50_vram_init(struct drm_device *dev)
 {
 	struct drm_nouveau_private *dev_priv = dev->dev_private;
 
-	dev_priv->vram_size  = nv_rd32(dev, 0x10020c);
+	dev_priv->vram_size  = nv_rd32(dev, 0x10070c);
 	dev_priv->vram_size |= (dev_priv->vram_size & 0xff) << 32;
 	dev_priv->vram_size &= 0xffffffff00ULL;
 

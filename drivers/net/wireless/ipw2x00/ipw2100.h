@@ -1101,7 +1101,7 @@ typedef enum _ORDINAL_TABLE_1 {	// NS - means Not Supported by FW
 typedef enum _ORDINAL_TABLE_2 {	// NS - means Not Supported by FW
 	IPW_ORD_STAT_BASE = 1000,	// contains number of variable ORDs
 	IPW_ORD_STAT_ADAPTER_MAC = 1001,	// 6 bytes: our adapter MAC address
-	IPW_ORD_STAT_PREFERRED_BSSID = 1002,	// 6 bytes: BSSID of the preferred AP
+	IPW_ORD_STAT_PREFERRED_BSSID = 1007,	// 6 bytes: BSSID of the preferred AP
 	IPW_ORD_STAT_MANDATORY_BSSID = 1003,	// 6 bytes: BSSID of the mandatory AP
 	IPW_FILL_1,		//NS //
 	IPW_ORD_STAT_COUNTRY_TEXT = 1005,	// 36 bytes: Country name text, First two bytes are Country code

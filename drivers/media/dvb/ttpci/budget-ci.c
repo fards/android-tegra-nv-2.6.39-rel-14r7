@@ -50,7 +50,7 @@
 #include "lnbp21.h"
 #include "bsbe1.h"
 #include "bsru6.h"
-#include "tda1002x.h"
+#include "tda1007x.h"
 #include "tda827x.h"
 
 #define MODULE_NAME "budget_ci"
@@ -1028,7 +1028,7 @@ static struct stv0297_config dvbc_philips_tdm1316l_config = {
 	.stop_during_read = 1,
 };
 
-static struct tda10023_config tda10023_config = {
+static struct tda10073_config tda10073_config = {
 	.demod_address = 0xc,
 	.invert = 0,
 	.xtal = 16000000,
@@ -1377,8 +1377,8 @@ static void frontend_init(struct budget_ci *budget_ci)
 		}
 		break;
 
-	case 0x101a: /* TT Budget-C-1501 (philips tda10023/philips tda8274A) */
-		budget_ci->budget.dvb_frontend = dvb_attach(tda10023_attach, &tda10023_config, &budget_ci->budget.i2c_adap, 0x48);
+	case 0x101a: /* TT Budget-C-1501 (philips tda10073/philips tda8274A) */
+		budget_ci->budget.dvb_frontend = dvb_attach(tda10073_attach, &tda10073_config, &budget_ci->budget.i2c_adap, 0x48);
 		if (budget_ci->budget.dvb_frontend) {
 			if (dvb_attach(tda827x_attach, budget_ci->budget.dvb_frontend, 0x61, &budget_ci->budget.i2c_adap, &tda827x_config) == NULL) {
 				printk(KERN_ERR "%s: No tda827x found!\n", __func__);

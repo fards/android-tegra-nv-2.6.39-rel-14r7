@@ -2065,7 +2065,7 @@ enum {
 };
 
 /* reivision id to check workarounds */
-#define AD1988A_REV2		0x100200
+#define AD1988A_REV2		0x100700
 
 #define is_rev2(codec) \
 	((codec)->vendor_id == 0x11d41988 && \

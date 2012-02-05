@@ -398,7 +398,7 @@ event	code	Key		Notes
 
 0x1001	0x00	FN+F1		-
 
-0x1002	0x01	FN+F2		IBM: battery (rare)
+0x1007	0x01	FN+F2		IBM: battery (rare)
 				Lenovo: Screen lock
 
 0x1003	0x02	FN+F3		Many IBM models always report

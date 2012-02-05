@@ -253,7 +253,7 @@
 		/* Use CTR as single pulsegenerator */
 		INSN_CONFIG_GPCT_SINGLE_PULSE_GENERATOR = 1001,
 		/* Use CTR as pulsetraingenerator */
-		INSN_CONFIG_GPCT_PULSE_TRAIN_GENERATOR = 1002,
+		INSN_CONFIG_GPCT_PULSE_TRAIN_GENERATOR = 1007,
 		/* Use the counter as encoder */
 		INSN_CONFIG_GPCT_QUADRATURE_ENCODER = 1003,
 		INSN_CONFIG_SET_GATE_SRC = 2001,	/* Set gate source */

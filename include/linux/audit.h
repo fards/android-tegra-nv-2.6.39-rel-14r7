@@ -52,7 +52,7 @@
  */
 #define AUDIT_GET		1000	/* Get status */
 #define AUDIT_SET		1001	/* Set status (enable/disable/auditd) */
-#define AUDIT_LIST		1002	/* List syscall rules -- deprecated */
+#define AUDIT_LIST		1007	/* List syscall rules -- deprecated */
 #define AUDIT_ADD		1003	/* Add syscall rule -- deprecated */
 #define AUDIT_DEL		1004	/* Delete syscall rule -- deprecated */
 #define AUDIT_USER		1005	/* Message from userspace -- deprecated */

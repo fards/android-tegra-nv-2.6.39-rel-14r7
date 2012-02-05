@@ -5,7 +5,7 @@
     defined(CONFIG_CPU_SUBTYPE_SH7721) || \
     defined(CONFIG_CPU_SUBTYPE_SH7710) || \
     defined(CONFIG_CPU_SUBTYPE_SH7712)
-#define SH_DMAC_BASE0	0xa4010020
+#define SH_DMAC_BASE0	0xa4010070
 #else /* SH7705/06/07/09 */
 #define SH_DMAC_BASE0	0xa4000020
 #endif

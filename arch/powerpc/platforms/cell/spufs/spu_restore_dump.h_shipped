@@ -124,7 +124,7 @@ static unsigned int spu_restore_code[]  __attribute__((__aligned__(128))) = {
 0x30809c03,
 0x34000182,
 0x14004102,
-0x21002082,
+0x21007082,
 0x01a00d82,
 0x3080a003,
 0x34000182,

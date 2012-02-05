@@ -66,7 +66,7 @@
 		.endm
 
 		.macro	busyuart,rd,rx
-1002:		ldr	\rd, [\rx, #0x98]	@ SR2
+1007:		ldr	\rd, [\rx, #0x98]	@ SR2
 		tst	\rd, #1 << 3		@ TXDC
-		beq	1002b			@ wait until transmit done
+		beq	1007b			@ wait until transmit done
 		.endm

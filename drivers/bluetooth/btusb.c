@@ -85,7 +85,7 @@ static struct usb_device_id btusb_table[] = {
 	{ USB_DEVICE(0x044e, 0x3002) },
 
 	/* Ericsson with non-standard id */
-	{ USB_DEVICE(0x0bdb, 0x1002) },
+	{ USB_DEVICE(0x0bdb, 0x1007) },
 
 	/* Canyon CN-BTU1 with HID interfaces */
 	{ USB_DEVICE(0x0c10, 0x0000) },

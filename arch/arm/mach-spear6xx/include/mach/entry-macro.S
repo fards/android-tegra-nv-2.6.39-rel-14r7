@@ -32,7 +32,7 @@
 		ldr	\base, =VA_SPEAR6XX_CPU_VIC_SEC_BASE
 		ldr	\irqstat, [\base, #VIC_IRQ_STATUS]	@ get status
 		teq	\irqstat, #0
-		beq	1002f				@ this will set/reset
+		beq	1007f				@ this will set/reset
 							@ zero register
 		mov	\irqnr, #32
 1001:
@@ -50,5 +50,5 @@
 		rsb	\tmp, \tmp, #0x1F		@ tmp = 32 - tmp - 1
 		add	\irqnr, \irqnr, \tmp
 
-1002:		/* EQ will be set if no irqs pending */
+1007:		/* EQ will be set if no irqs pending */
 		.endm

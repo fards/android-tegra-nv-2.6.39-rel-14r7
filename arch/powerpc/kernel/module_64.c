@@ -334,7 +334,7 @@ static int restore_r2(u32 *instruction, struct module *me)
 		       me->name, *instruction);
 		return 0;
 	}
-	*instruction = 0xe8410028;	/* ld r2,40(r1) */
+	*instruction = 0xe8410078;	/* ld r2,40(r1) */
 	return 1;
 }
 

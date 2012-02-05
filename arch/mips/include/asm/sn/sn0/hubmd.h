@@ -56,8 +56,8 @@
 #define MD_PERF_SEL		0x210000 /* Select perf monitor events 	    */
 #define MD_PERF_CNT0		0x210010 /* Performance counter 0 	    */
 #define MD_PERF_CNT1		0x210018 /* Performance counter 1 	    */
-#define MD_PERF_CNT2		0x210020 /* Performance counter 2 	    */
-#define MD_PERF_CNT3		0x210028 /* Performance counter 3 	    */
+#define MD_PERF_CNT2		0x210070 /* Performance counter 2 	    */
+#define MD_PERF_CNT3		0x210078 /* Performance counter 3 	    */
 #define MD_PERF_CNT4		0x210030 /* Performance counter 4 	    */
 #define MD_PERF_CNT5		0x210038 /* Performance counter 5 	    */
 

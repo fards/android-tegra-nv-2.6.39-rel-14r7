@@ -1,5 +1,5 @@
 /* Hypervisor call vector addresses; see <hv/hypervisor.h> */
-hv_init = TEXT_OFFSET + 0x10020;
+hv_init = TEXT_OFFSET + 0x10070;
 hv_install_context = TEXT_OFFSET + 0x10040;
 hv_sysconf = TEXT_OFFSET + 0x10060;
 hv_get_rtc = TEXT_OFFSET + 0x10080;

@@ -31,7 +31,7 @@
 #define SRESCR		0xe6151018
 #define PSTR		0xe6151040
 #define SBAR            0xe6180020
-#define APARMBAREA      0xe6f10020
+#define APARMBAREA      0xe6f10070
 
 static void __iomem *scu_base_addr(void)
 {

@@ -39,7 +39,7 @@
 #define REALVIEW_PBX_TIMER4_5_BASE		0x10018000	/* Timer 4/5 */
 #define REALVIEW_PBX_TIMER6_7_BASE		0x10019000	/* Timer 6/7 */
 #define REALVIEW_PBX_SCTL_BASE			0x1001A000	/* System Controller */
-#define REALVIEW_PBX_CLCD_BASE			0x10020000	/* CLCD */
+#define REALVIEW_PBX_CLCD_BASE			0x10070000	/* CLCD */
 #define REALVIEW_PBX_ONB_SRAM_BASE		0x10060000	/* On-board SRAM */
 #define REALVIEW_PBX_DMC_BASE			0x100E0000	/* DMC configuration */
 #define REALVIEW_PBX_SMC_BASE			0x100E1000	/* SMC configuration */

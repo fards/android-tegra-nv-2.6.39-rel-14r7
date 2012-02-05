@@ -17,8 +17,8 @@ config DVB_MANTIS
 	select DVB_STB0899 if !DVB_FE_CUSTOMISE
 	select DVB_STB6100 if !DVB_FE_CUSTOMISE
 	select DVB_TDA665x if !DVB_FE_CUSTOMISE
-	select DVB_TDA10021 if !DVB_FE_CUSTOMISE
-	select DVB_TDA10023 if !DVB_FE_CUSTOMISE
+	select DVB_TDA10071 if !DVB_FE_CUSTOMISE
+	select DVB_TDA10073 if !DVB_FE_CUSTOMISE
 	select DVB_PLL
 	help
 	  Support for PCI cards based on the Mantis PCI bridge.

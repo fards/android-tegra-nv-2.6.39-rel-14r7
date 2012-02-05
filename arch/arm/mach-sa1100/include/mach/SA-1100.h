@@ -270,7 +270,7 @@
 #define _UTCR4(Nb)	__REG(0x80010010 + ((Nb) - 1)*0x00020000)  /* UART Control Reg. 4 [2] */
 #define _UTDR(Nb)	__REG(0x80010014 + ((Nb) - 1)*0x00020000)  /* UART Data Reg. [1..3] */
 #define _UTSR0(Nb)	__REG(0x8001001C + ((Nb) - 1)*0x00020000)  /* UART Status Reg. 0 [1..3] */
-#define _UTSR1(Nb)	__REG(0x80010020 + ((Nb) - 1)*0x00020000)  /* UART Status Reg. 1 [1..3] */
+#define _UTSR1(Nb)	__REG(0x80010070 + ((Nb) - 1)*0x00020000)  /* UART Status Reg. 1 [1..3] */
 
 #define Ser1UTCR0	_UTCR0 (1)	/* Ser. port 1 UART Control Reg. 0 */
 #define Ser1UTCR1	_UTCR1 (1)	/* Ser. port 1 UART Control Reg. 1 */

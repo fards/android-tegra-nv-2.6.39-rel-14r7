@@ -1,5 +1,5 @@
 /*
- * arch/arm/mach-tegra/board-smba1002-spi.c
+ * arch/arm/mach-tegra/board-smba1007-uart.c
  *
  * Copyright (C) 2011 Eduardo José Tagle <ejtagle@tutopia.com>
  *
@@ -18,6 +18,7 @@
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/platform_device.h>
+#include <linux/serial_8250.h>
 #include <linux/clk.h>
 #include <linux/mtd/mtd.h>
 #include <linux/mtd/partitions.h>
@@ -33,25 +34,28 @@
 #include <asm/setup.h>
 
 #include <mach/io.h>
+#include <mach/w1.h>
 #include <mach/iomap.h>
 #include <mach/irqs.h>
 #include <mach/nand.h>
 #include <mach/iomap.h>
 
 #include "board.h"
-#include "board-smba1002.h"
+#include "board-smba1007.h"
 #include "clock.h"
 #include "gpio-names.h"
 #include "devices.h"
 
-static struct platform_device *smba1002_spi_devices[] __initdata = {
-	&tegra_spi_device1,
-	&tegra_spi_device2,
-	&tegra_spi_device3,
-	&tegra_spi_device4,
+
+static struct platform_device *smba1007_uart_devices[] __initdata = {
+	&tegra_uarta_device,
+	&tegra_uartb_device,
+	&tegra_uartc_device,
+	&tegra_uartd_device,
+	&tegra_uarte_device,
 };
 
-int __init smba1002_spi_register_devices(void)
+int __init smba1007_uart_register_devices(void)
 {
-	return platform_add_devices(smba1002_spi_devices, ARRAY_SIZE(smba1002_spi_devices));
+	return platform_add_devices(smba1007_uart_devices, ARRAY_SIZE(smba1007_uart_devices));
 }

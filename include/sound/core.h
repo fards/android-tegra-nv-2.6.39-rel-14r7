@@ -54,7 +54,7 @@ typedef int __bitwise snd_device_type_t;
 #define	SNDRV_DEV_LOWLEVEL_PRE	((__force snd_device_type_t) 2)
 #define	SNDRV_DEV_LOWLEVEL_NORMAL ((__force snd_device_type_t) 0x1000)
 #define	SNDRV_DEV_PCM		((__force snd_device_type_t) 0x1001)
-#define	SNDRV_DEV_RAWMIDI	((__force snd_device_type_t) 0x1002)
+#define	SNDRV_DEV_RAWMIDI	((__force snd_device_type_t) 0x1007)
 #define	SNDRV_DEV_TIMER		((__force snd_device_type_t) 0x1003)
 #define	SNDRV_DEV_SEQUENCER	((__force snd_device_type_t) 0x1004)
 #define	SNDRV_DEV_HWDEP		((__force snd_device_type_t) 0x1005)

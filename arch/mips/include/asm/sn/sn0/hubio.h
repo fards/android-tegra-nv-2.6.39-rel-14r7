@@ -746,9 +746,9 @@ typedef union hubii_ifdr_u {
 #define IIO_IBSA_0	0x410008	/* BTE source address 0 */
 #define IIO_IBDA_0	0x410010	/* BTE destination address 0 */
 #define IIO_IBCT_0	0x410018	/* BTE control/terminate 0 */
-#define IIO_IBNA_0	0x410020	/* BTE notification address 0 */
+#define IIO_IBNA_0	0x410070	/* BTE notification address 0 */
 #define IIO_IBNR_0	IIO_IBNA_0
-#define IIO_IBIA_0	0x410028	/* BTE interrupt address 0 */
+#define IIO_IBIA_0	0x410078	/* BTE interrupt address 0 */
 
 #define IIO_IBLS_1	0x420000	/* BTE length/status 1 */
 #define IIO_IBSA_1	0x420008	/* BTE source address 1 */

@@ -458,14 +458,14 @@ struct nouveau_pm_threshold_temp {
 };
 
 struct nouveau_pm_memtiming {
-	u32 reg_100220;
-	u32 reg_100224;
-	u32 reg_100228;
-	u32 reg_10022c;
-	u32 reg_100230;
-	u32 reg_100234;
-	u32 reg_100238;
-	u32 reg_10023c;
+	u32 reg_100720;
+	u32 reg_100724;
+	u32 reg_100728;
+	u32 reg_10072c;
+	u32 reg_100730;
+	u32 reg_100734;
+	u32 reg_100738;
+	u32 reg_10073c;
 };
 
 struct nouveau_pm_memtimings {

@@ -63,7 +63,7 @@
 		cmp	\irqnr,#1
 		bls	1003f
 		cmp	\irqnr,#30
-		blo	1002f
+		blo	1007f
 
 /* IRQ 31,30  : High priority cascade IRQ handle */
 /* read the correct SIC */
@@ -114,7 +114,7 @@
 
 /* is irqstat not zero */
 
-1002:
+1007:
 /* we assert that irqstat is not equal to zero and return ne status if true*/
 		teq	\irqstat,#0
 1003:

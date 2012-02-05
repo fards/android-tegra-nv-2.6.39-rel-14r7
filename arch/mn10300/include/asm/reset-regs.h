@@ -26,7 +26,7 @@
  */
 #define WDBC			__SYSREGC(0xc0001000, u8) /* watchdog binary counter reg */
 
-#define WDCTR			__SYSREG(0xc0001002, u8)  /* watchdog timer control reg */
+#define WDCTR			__SYSREG(0xc0001007, u8)  /* watchdog timer control reg */
 #define WDCTR_WDCK		0x07	/* clock source selection */
 #define WDCTR_WDCK_256th	0x00	/* - OSCI/256 */
 #define WDCTR_WDCK_1024th	0x01	/* - OSCI/1024 */

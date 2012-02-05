@@ -56,7 +56,7 @@
 1003:
 		fifo_full \rd, \rx
 		bne	1003b
-		b	1002f
+		b	1007f
 
 1001:
 		@ busy waiting for non fifo
@@ -64,7 +64,7 @@
 		tst	\rd, #S3C2410_UTRSTAT_TXFE
 		beq	1001b
 
-1002:		@ exit busyuart
+1007:		@ exit busyuart
 	.endm
 
 	.macro	waituart,rd,rx
@@ -76,12 +76,12 @@
 		fifo_level \rd, \rx
 		teq	\rd, #0
 		bne	1003b
-		b	1002f
+		b	1007f
 1001:
 		@ idle waiting for non fifo
 		ldr	\rd, [ \rx, # S3C2410_UTRSTAT ]
 		tst	\rd, #S3C2410_UTRSTAT_TXFE
 		beq	1001b
 
-1002:		@ exit busyuart
+1007:		@ exit busyuart
 	.endm

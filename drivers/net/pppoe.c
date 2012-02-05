@@ -41,7 +41,7 @@
  * 121301 :	New ppp channels interface; cannot unregister a channel
  *		from interrupts.  Thus, we mark the socket as a ZOMBIE
  *		and do the unregistration later.
- * 081002 :	seq_file support for proc stuff -acme
+ * 081007 :	seq_file support for proc stuff -acme
  * 111602 :	Merge all 2.4 fixes into 2.5/2.6 tree.  Label 2.5/2.6
  *		as version 0.7.  Spacing cleanup.
  * Author:	Michal Ostrowski <mostrows@speakeasy.net>

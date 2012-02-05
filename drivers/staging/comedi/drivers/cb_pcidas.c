@@ -34,7 +34,7 @@ Author: Ivan Martinez <imr@oersted.dtu.dk>,
 Updated: 2003-3-11
 Devices: [Measurement Computing] PCI-DAS1602/16 (cb_pcidas),
   PCI-DAS1602/16jr, PCI-DAS1602/12, PCI-DAS1200, PCI-DAS1200jr,
-  PCI-DAS1000, PCI-DAS1001, PCI_DAS1002
+  PCI-DAS1000, PCI-DAS1001, PCI_DAS1007
 
 Status:
   There are many reports of the driver being used with most of the
@@ -388,7 +388,7 @@ static const struct cb_pcidas_board cb_pcidas_boards[] = {
 	 .has_ai_trig_invert = 0,
 	 },
 	{
-	 .name = "pci-das1002",
+	 .name = "pci-das1007",
 	 .device_id = 0x1b,
 	 .ai_se_chans = 16,
 	 .ai_diff_chans = 8,

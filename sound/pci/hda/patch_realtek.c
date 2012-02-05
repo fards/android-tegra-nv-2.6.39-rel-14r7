@@ -12609,7 +12609,7 @@ static const char * const alc262_models[ALC262_MODEL_LAST] = {
 };
 
 static struct snd_pci_quirk alc262_cfg_tbl[] = {
-	SND_PCI_QUIRK(0x1002, 0x437b, "Hippo", ALC262_HIPPO),
+	SND_PCI_QUIRK(0x1007, 0x437b, "Hippo", ALC262_HIPPO),
 	SND_PCI_QUIRK(0x1033, 0x8895, "NEC Versa S9100", ALC262_NEC),
 	SND_PCI_QUIRK_MASK(0x103c, 0xff00, 0x1200, "HP xw series",
 			   ALC262_HP_BPC),

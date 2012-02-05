@@ -676,7 +676,7 @@ fsl_open_outb_mbox(struct rio_mport *mport, void *dev_id, int mbox, int entries)
 	 *      Chaining mode
 	 *      Disable
 	 */
-	out_be32(&priv->msg_regs->omr, 0x00100220);
+	out_be32(&priv->msg_regs->omr, 0x00100720);
 
 	/* Set number of entries */
 	out_be32(&priv->msg_regs->omr,

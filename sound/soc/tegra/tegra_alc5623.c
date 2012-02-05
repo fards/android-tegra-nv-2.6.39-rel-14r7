@@ -322,7 +322,7 @@ static int tegra_alc5623_event_int_mic(struct snd_soc_dapm_widget *w,
 
 
 
-#ifdef CONFIG_MACH_SMBA1002
+#ifdef CONFIG_MACH_SMBA1007
 static const struct snd_soc_dapm_widget dapm_widgets[] = {
 	//SND_SOC_DAPM_PRE("Channel Swap Detect", NULL),
 	SND_SOC_DAPM_PGA("Ext Amp", ALC5623_GPIO_OUTPUT_PIN_CTRL, 1, 0, NULL, 0),

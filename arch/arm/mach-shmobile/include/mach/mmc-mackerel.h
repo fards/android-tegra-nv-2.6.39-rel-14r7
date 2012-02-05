@@ -3,7 +3,7 @@
 
 #define PORT0CR      (void __iomem *)0xe6051000
 #define PORT1CR      (void __iomem *)0xe6051001
-#define PORT2CR      (void __iomem *)0xe6051002
+#define PORT2CR      (void __iomem *)0xe6051007
 #define PORT159CR    (void __iomem *)0xe605009f
 
 #define PORTR031_000DR (void __iomem *)0xe6055000

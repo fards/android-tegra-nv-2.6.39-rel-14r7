@@ -6,7 +6,7 @@
 #ifndef __LINUX_NFSACL_H
 #define __LINUX_NFSACL_H
 
-#define NFS_ACL_PROGRAM	100227
+#define NFS_ACL_PROGRAM	100727
 
 #define ACLPROC2_GETACL		1
 #define ACLPROC2_SETACL		2

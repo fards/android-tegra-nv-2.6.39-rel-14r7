@@ -1,5 +1,5 @@
 /*
- * ATSTK1002/ATSTK1006 daughterboard-specific init code
+ * ATSTK1007/ATSTK1006 daughterboard-specific init code
  *
  * Copyright (C) 2005-2007 Atmel Corporation
  *
@@ -38,10 +38,10 @@ unsigned long at32_board_osc_rates[3] = {
 };
 
 /*
- * The ATSTK1006 daughterboard is very similar to the ATSTK1002. Both
+ * The ATSTK1006 daughterboard is very similar to the ATSTK1007. Both
  * have the AT32AP7000 chip on board; the difference is that the
- * STK1006 has 128 MB SDRAM (the STK1002 uses the 8 MB SDRAM chip on
- * the STK1000 motherboard) and 256 MB NAND flash (the STK1002 has
+ * STK1006 has 128 MB SDRAM (the STK1007 uses the 8 MB SDRAM chip on
+ * the STK1000 motherboard) and 256 MB NAND flash (the STK1007 has
  * none.)
  *
  * The RAM difference is handled by the boot loader, so the only
@@ -215,7 +215,7 @@ static void __init set_hw_addr(struct platform_device *pdev)
 }
 
 #ifdef CONFIG_BOARD_ATSTK1000_EXTDAC
-static void __init atstk1002_setup_extdac(void)
+static void __init atstk1007_setup_extdac(void)
 {
 	struct clk *gclk;
 	struct clk *pll;
@@ -243,7 +243,7 @@ err_gclk:
 	return;
 }
 #else
-static void __init atstk1002_setup_extdac(void)
+static void __init atstk1007_setup_extdac(void)
 {
 
 }
@@ -269,7 +269,7 @@ static struct mci_platform_data __initdata mci0_data = {
 		.bus_width	= 4,
 
 /* MMC card detect requires MACB0 *NOT* be used */
-#ifdef CONFIG_BOARD_ATSTK1002_SW6_CUSTOM
+#ifdef CONFIG_BOARD_ATSTK1007_SW6_CUSTOM
 		.detect_pin	= GPIO_PIN_PC(14), /* gpio30/sdcd */
 		.wp_pin		= GPIO_PIN_PC(15), /* gpio31/sdwp */
 #else
@@ -281,7 +281,7 @@ static struct mci_platform_data __initdata mci0_data = {
 
 #endif	/* SW2 for MMC signal routing */
 
-static int __init atstk1002_init(void)
+static int __init atstk1007_init(void)
 {
 	/*
 	 * ATSTK1000 uses 32-bit SDRAM interface. Reserve the
@@ -302,7 +302,7 @@ static int __init atstk1002_init(void)
 #endif
 	at32_add_device_usart(2);
 
-#ifndef CONFIG_BOARD_ATSTK1002_SW6_CUSTOM
+#ifndef CONFIG_BOARD_ATSTK1007_SW6_CUSTOM
 	set_hw_addr(at32_add_device_eth(0, &eth_data[0]));
 #endif
 #ifndef CONFIG_BOARD_ATSTK100X_SW1_CUSTOM
@@ -314,7 +314,7 @@ static int __init atstk1002_init(void)
 #ifndef CONFIG_BOARD_ATSTK100X_SW2_CUSTOM
 	at32_add_device_mci(0, &mci0_data);
 #endif
-#ifdef CONFIG_BOARD_ATSTK1002_SW5_CUSTOM
+#ifdef CONFIG_BOARD_ATSTK1007_SW5_CUSTOM
 	set_hw_addr(at32_add_device_eth(1, &eth_data[1]));
 #else
 	at32_add_device_lcdc(0, &atstk1000_lcdc_data,
@@ -327,8 +327,8 @@ static int __init atstk1002_init(void)
 #endif
 
 	atstk1000_setup_j2_leds();
-	atstk1002_setup_extdac();
+	atstk1007_setup_extdac();
 
 	return 0;
 }
-postcore_initcall(atstk1002_init);
+postcore_initcall(atstk1007_init);

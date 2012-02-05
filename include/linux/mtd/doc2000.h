@@ -33,7 +33,7 @@
 
 #define DoC_ChipID		0x1000
 #define DoC_DOCStatus		0x1001
-#define DoC_DOCControl		0x1002
+#define DoC_DOCControl		0x1007
 #define DoC_FloorSelect		0x1003
 #define DoC_CDSNControl		0x1004
 #define DoC_CDSNDeviceSelect 	0x1005
@@ -57,7 +57,7 @@
 #define DoC_Mil_CDSN_IO 	0x0800
 #define DoC_2k_CDSN_IO 		0x1800
 
-#define DoC_Mplus_NOP			0x1002
+#define DoC_Mplus_NOP			0x1007
 #define DoC_Mplus_AliasResolution	0x1004
 #define DoC_Mplus_DOCControl		0x1006
 #define DoC_Mplus_AccessStatus		0x1008

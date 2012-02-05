@@ -47,7 +47,7 @@
                 ands    \irqstat, \irqstat, \irqnr
 		mov	\irqnr, #0xffffffff             @ code meaning no interrupt bits set
 		cmp	\irqstat, #0
-		beq	1002f
+		beq	1007f
 
 		mov	\irqnr, #IRQ_SINTC_START        @ something is set, so fixup return value
 
@@ -72,7 +72,7 @@
 		addeq	\irqnr, \irqnr, #1
 		orrs	\base, \base, #1
 
-1002:           @ irqnr will be set to 0xffffffff if no irq bits are set
+1007:           @ irqnr will be set to 0xffffffff if no irq bits are set
 		.endm
 
 		.macro  get_irqnr_preamble, base, tmp

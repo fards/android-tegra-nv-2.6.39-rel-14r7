@@ -36,7 +36,7 @@ To add: #define SO_REUSEPORT 0x0200	/* Allow local address and port reuse.  */
 #define SO_STYLE	SO_TYPE	/* Synonym */
 #define SO_ERROR	0x1007	/* get error status and clear */
 #define SO_SNDBUF	0x1001	/* Send buffer size. */
-#define SO_RCVBUF	0x1002	/* Receive buffer. */
+#define SO_RCVBUF	0x1007	/* Receive buffer. */
 #define SO_SNDLOWAT	0x1003	/* send low-water mark */
 #define SO_RCVLOWAT	0x1004	/* receive low-water mark */
 #define SO_SNDTIMEO	0x1005	/* send timeout */

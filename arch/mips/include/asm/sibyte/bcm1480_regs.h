@@ -321,30 +321,30 @@
 
 /* Watchdog timers */
 
-#define A_BCM1480_SCD_WDOG_2                0x0010022050
-#define A_BCM1480_SCD_WDOG_3                0x0010022150
+#define A_BCM1480_SCD_WDOG_2                0x0010072050
+#define A_BCM1480_SCD_WDOG_3                0x0010072150
 
 #define BCM1480_SCD_NUM_WDOGS               4
 
 #define A_BCM1480_SCD_WDOG_BASE(w)       (A_BCM1480_SCD_WDOG_0+((w)&2)*0x1000 + ((w)&1)*0x100)
 #define A_BCM1480_SCD_WDOG_REGISTER(w, r) (A_BCM1480_SCD_WDOG_BASE(w) + (r))
 
-#define A_BCM1480_SCD_WDOG_INIT_2       0x0010022050
-#define A_BCM1480_SCD_WDOG_CNT_2        0x0010022058
-#define A_BCM1480_SCD_WDOG_CFG_2        0x0010022060
+#define A_BCM1480_SCD_WDOG_INIT_2       0x0010072050
+#define A_BCM1480_SCD_WDOG_CNT_2        0x0010072058
+#define A_BCM1480_SCD_WDOG_CFG_2        0x0010072060
 
-#define A_BCM1480_SCD_WDOG_INIT_3       0x0010022150
-#define A_BCM1480_SCD_WDOG_CNT_3        0x0010022158
-#define A_BCM1480_SCD_WDOG_CFG_3        0x0010022160
+#define A_BCM1480_SCD_WDOG_INIT_3       0x0010072150
+#define A_BCM1480_SCD_WDOG_CNT_3        0x0010072158
+#define A_BCM1480_SCD_WDOG_CFG_3        0x0010072160
 
 /* BCM1480 has two additional compare registers */
 
 #define A_BCM1480_SCD_ZBBUS_CYCLE_COUNT		A_SCD_ZBBUS_CYCLE_COUNT
-#define A_BCM1480_SCD_ZBBUS_CYCLE_CP_BASE       0x0010020C00
+#define A_BCM1480_SCD_ZBBUS_CYCLE_CP_BASE       0x0010070C00
 #define A_BCM1480_SCD_ZBBUS_CYCLE_CP0           A_SCD_ZBBUS_CYCLE_CP0
 #define A_BCM1480_SCD_ZBBUS_CYCLE_CP1           A_SCD_ZBBUS_CYCLE_CP1
-#define A_BCM1480_SCD_ZBBUS_CYCLE_CP2           0x0010020C10
-#define A_BCM1480_SCD_ZBBUS_CYCLE_CP3           0x0010020C18
+#define A_BCM1480_SCD_ZBBUS_CYCLE_CP2           0x0010070C10
+#define A_BCM1480_SCD_ZBBUS_CYCLE_CP3           0x0010070C18
 
 /*  *********************************************************************
     * System Control Registers (Section 4.2)
@@ -352,7 +352,7 @@
 
 /* Scratch register in different place */
 
-#define A_BCM1480_SCD_SCRATCH	 	0x100200A0
+#define A_BCM1480_SCD_SCRATCH	 	0x100700A0
 
 /*  *********************************************************************
     * System Address Trap Registers (Section 4.9)
@@ -364,10 +364,10 @@
     * System Interrupt Mapper Registers (Sections 4.3-4.5)
     ********************************************************************* */
 
-#define A_BCM1480_IMR_CPU0_BASE             0x0010020000
-#define A_BCM1480_IMR_CPU1_BASE             0x0010022000
-#define A_BCM1480_IMR_CPU2_BASE             0x0010024000
-#define A_BCM1480_IMR_CPU3_BASE             0x0010026000
+#define A_BCM1480_IMR_CPU0_BASE             0x0010070000
+#define A_BCM1480_IMR_CPU1_BASE             0x0010072000
+#define A_BCM1480_IMR_CPU2_BASE             0x0010074000
+#define A_BCM1480_IMR_CPU3_BASE             0x0010076000
 #define BCM1480_IMR_REGISTER_SPACING        0x2000
 #define BCM1480_IMR_REGISTER_SPACING_SHIFT  13
 
@@ -405,10 +405,10 @@
 #define R_BCM1480_IMR_INTERRUPT_STATUS_BASE_L   0x1100
 #define R_BCM1480_IMR_INTERRUPT_MAP_BASE_L      0x1200
 
-#define A_BCM1480_IMR_ALIAS_MAILBOX_CPU0_BASE   0x0010028000
-#define A_BCM1480_IMR_ALIAS_MAILBOX_CPU1_BASE   0x0010028100
-#define A_BCM1480_IMR_ALIAS_MAILBOX_CPU2_BASE   0x0010028200
-#define A_BCM1480_IMR_ALIAS_MAILBOX_CPU3_BASE   0x0010028300
+#define A_BCM1480_IMR_ALIAS_MAILBOX_CPU0_BASE   0x0010078000
+#define A_BCM1480_IMR_ALIAS_MAILBOX_CPU1_BASE   0x0010078100
+#define A_BCM1480_IMR_ALIAS_MAILBOX_CPU2_BASE   0x0010078200
+#define A_BCM1480_IMR_ALIAS_MAILBOX_CPU3_BASE   0x0010078300
 #define BCM1480_IMR_ALIAS_MAILBOX_SPACING       0100
 
 #define A_BCM1480_IMR_ALIAS_MAILBOX(cpu)     (A_BCM1480_IMR_ALIAS_MAILBOX_CPU0_BASE + \
@@ -421,7 +421,7 @@
 /*
  * these macros work together to build the address of a mailbox
  * register, e.g., A_BCM1480_MAILBOX_REGISTER(0,R_BCM1480_IMR_MAILBOX_SET,2)
- * for mbox_0_set_cpu2 returns 0x00100240C8
+ * for mbox_0_set_cpu2 returns 0x00100740C8
  */
 #define R_BCM1480_IMR_MAILBOX_CPU         0x00
 #define R_BCM1480_IMR_MAILBOX_SET         0x08
@@ -440,11 +440,11 @@
 /* BCM1480 has four more performance counter registers, and two control
    registers. */
 
-#define A_BCM1480_SCD_PERF_CNT_BASE         0x00100204C0
+#define A_BCM1480_SCD_PERF_CNT_BASE         0x00100704C0
 
-#define A_BCM1480_SCD_PERF_CNT_CFG0         0x00100204C0
+#define A_BCM1480_SCD_PERF_CNT_CFG0         0x00100704C0
 #define A_BCM1480_SCD_PERF_CNT_CFG_0        A_BCM1480_SCD_PERF_CNT_CFG0
-#define A_BCM1480_SCD_PERF_CNT_CFG1         0x00100204C8
+#define A_BCM1480_SCD_PERF_CNT_CFG1         0x00100704C8
 #define A_BCM1480_SCD_PERF_CNT_CFG_1        A_BCM1480_SCD_PERF_CNT_CFG1
 
 #define A_BCM1480_SCD_PERF_CNT_0            A_SCD_PERF_CNT_0
@@ -452,10 +452,10 @@
 #define A_BCM1480_SCD_PERF_CNT_2            A_SCD_PERF_CNT_2
 #define A_BCM1480_SCD_PERF_CNT_3            A_SCD_PERF_CNT_3
 
-#define A_BCM1480_SCD_PERF_CNT_4            0x00100204F0
-#define A_BCM1480_SCD_PERF_CNT_5            0x00100204F8
-#define A_BCM1480_SCD_PERF_CNT_6            0x0010020500
-#define A_BCM1480_SCD_PERF_CNT_7            0x0010020508
+#define A_BCM1480_SCD_PERF_CNT_4            0x00100704F0
+#define A_BCM1480_SCD_PERF_CNT_5            0x00100704F8
+#define A_BCM1480_SCD_PERF_CNT_6            0x0010070500
+#define A_BCM1480_SCD_PERF_CNT_7            0x0010070508
 
 #define BCM1480_SCD_NUM_PERF_CNT 8
 #define BCM1480_SCD_PERF_CNT_SPACING 8
@@ -468,7 +468,7 @@
 
 /* Same as 1250 except BUS_ERR_STATUS_DEBUG is in a different place. */
 
-#define A_BCM1480_BUS_ERR_STATUS_DEBUG      0x00100208D8
+#define A_BCM1480_BUS_ERR_STATUS_DEBUG      0x00100708D8
 
 /*  *********************************************************************
     * System Debug Controller Registers (Section 19)

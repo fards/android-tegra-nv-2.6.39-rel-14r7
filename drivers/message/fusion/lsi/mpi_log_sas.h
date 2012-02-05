@@ -255,15 +255,15 @@
 #define IR_LOGINFO_VOLUME_ACTIVATING_TOO_MANY_PHYS_DISKS       (0x00010016)
 
 /* Phys Disk failed, too many phys disks */
-#define IR_LOGINFO_PHYSDISK_CREATE_TOO_MANY_DISKS              (0x00010020)
+#define IR_LOGINFO_PHYSDISK_CREATE_TOO_MANY_DISKS              (0x00010070)
 /* Amount of information passed down for Create Pnysdisk is too large */
-#define IR_LOGINFO_PHYSDISK_CREATE_INVALID_LENGTH              (0x00010021)
+#define IR_LOGINFO_PHYSDISK_CREATE_INVALID_LENGTH              (0x00010071)
 /* Creation failed due to DMA error in trying to read from host */
-#define IR_LOGINFO_PHYSDISK_CREATE_DMA_ERROR                   (0x00010022)
+#define IR_LOGINFO_PHYSDISK_CREATE_DMA_ERROR                   (0x00010072)
 /* Creation failed due to invalid Bus TargetID passed down */
-#define IR_LOGINFO_PHYSDISK_CREATE_BUS_TID_INVALID             (0x00010023)
+#define IR_LOGINFO_PHYSDISK_CREATE_BUS_TID_INVALID             (0x00010073)
 /* Creation failed due to error in creating RAID Phys Disk Config Page */
-#define IR_LOGINFO_PHYSDISK_CREATE_CONFIG_PAGE_ERROR           (0x00010024)
+#define IR_LOGINFO_PHYSDISK_CREATE_CONFIG_PAGE_ERROR           (0x00010074)
 
 
 /* Compatibility Error : IR Disabled */

@@ -1,5 +1,5 @@
 /*
- * arch/arm/mach-tegra/board-smba1002-aes.c
+ * arch/arm/mach-tegra/board-smba1007-aes.c
  *
  * Copyright (C) 2011 Eduardo José Tagle <ejtagle@tutopia.com>
  *
@@ -38,16 +38,16 @@
 #include <mach/iomap.h>
 
 #include "board.h"
-#include "board-smba1002.h"
+#include "board-smba1007.h"
 #include "clock.h"
 #include "gpio-names.h"
 #include "devices.h"
 
-static struct platform_device *smba1002_aes_devices[] __initdata = {
+static struct platform_device *smba1007_aes_devices[] __initdata = {
 	&tegra_aes_device,
 };
 
-int __init smba1002_aes_register_devices(void)
+int __init smba1007_aes_register_devices(void)
 {
-	return platform_add_devices(smba1002_aes_devices, ARRAY_SIZE(smba1002_aes_devices));
+	return platform_add_devices(smba1007_aes_devices, ARRAY_SIZE(smba1007_aes_devices));
 }

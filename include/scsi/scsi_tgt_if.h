@@ -29,7 +29,7 @@
 
 /* kernel -> user */
 #define	TGT_KEVENT_CMD_REQ		0x1001
-#define	TGT_KEVENT_CMD_DONE		0x1002
+#define	TGT_KEVENT_CMD_DONE		0x1007
 #define	TGT_KEVENT_IT_NEXUS_REQ		0x1003
 #define	TGT_KEVENT_TSK_MGMT_REQ		0x1004
 

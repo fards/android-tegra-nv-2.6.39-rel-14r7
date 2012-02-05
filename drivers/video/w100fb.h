@@ -236,9 +236,9 @@
 #define WRAP_BUF_BASE_VALUE    0x80000
 #define WRAP_BUF_TOP_VALUE     0xbffff
 
-#define CHIP_ID_W100           0x57411002
-#define CHIP_ID_W3200          0x56441002
-#define CHIP_ID_W3220          0x57441002
+#define CHIP_ID_W100           0x57411007
+#define CHIP_ID_W3200          0x56441007
+#define CHIP_ID_W3220          0x57441007
 
 /* Register structure definitions */
 

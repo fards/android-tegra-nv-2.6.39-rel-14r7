@@ -934,7 +934,7 @@ static void hci_power_on(struct work_struct *work)
 
 	BT_DBG("%s", hdev->name);
 
-// SMBA1002 patch: BT turns on cleaner if we allow bluedroid
+// SMBA1007 patch: BT turns on cleaner if we allow bluedroid
 // to open it via the ioctl HCIDEVUP
 //if (hci_dev_open(hdev->id) < 0)
 //  return;

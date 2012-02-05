@@ -35,10 +35,10 @@
 #include <mach/hardware.h>
 #include <asm/mach-types.h>
 
-#include "board-smba1002.h"
+#include "board-smba1007.h"
 #include "gpio-names.h"
 
-struct smba1002_pm_camera_data {
+struct smba1007_pm_camera_data {
 	struct regulator *regulator;
 #ifdef CONFIG_PM
 	int pre_resume_state;
@@ -48,9 +48,9 @@ struct smba1002_pm_camera_data {
 
 
 /* Power control */
-static void __smba1002_pm_camera_power(struct device *dev, unsigned int on)
+static void __smba1007_pm_camera_power(struct device *dev, unsigned int on)
 {
-	struct smba1002_pm_camera_data *camera_data = dev_get_drvdata(dev);
+	struct smba1007_pm_camera_data *camera_data = dev_get_drvdata(dev);
 
 	/* Avoid turning it on if already on */
 	if (camera_data->state == on)
@@ -62,16 +62,16 @@ static void __smba1002_pm_camera_power(struct device *dev, unsigned int on)
 		regulator_enable(camera_data->regulator);
 	
 		/* Camera power on sequence */
-		gpio_set_value(SMBA1002_CAMERA_POWER, 0); /* Powerdown */
+		gpio_set_value(SMBA1007_CAMERA_POWER, 0); /* Powerdown */
 		msleep(2);
-		gpio_set_value(SMBA1002_CAMERA_POWER, 1); /* Powerup */
+		gpio_set_value(SMBA1007_CAMERA_POWER, 1); /* Powerup */
 		msleep(2);
 
 		
 	} else {
 		dev_info(dev, "Disabling Camera\n");
 		
-		gpio_set_value(SMBA1002_CAMERA_POWER, 0); /* Powerdown */
+		gpio_set_value(SMBA1007_CAMERA_POWER, 0); /* Powerdown */
 		
 		regulator_disable(camera_data->regulator);
 
@@ -86,7 +86,7 @@ static ssize_t camera_read(struct device *dev, struct device_attribute *attr,
 		       char *buf)
 {
 	int ret = 0;
-	struct smba1002_pm_camera_data *camera_data = dev_get_drvdata(dev);
+	struct smba1007_pm_camera_data *camera_data = dev_get_drvdata(dev);
 	
 	if (!strcmp(attr->attr.name, "power_on")) {
 		if (camera_data->state)
@@ -104,10 +104,10 @@ static ssize_t camera_write(struct device *dev, struct device_attribute *attr,
 			const char *buf, size_t count)
 {
 	unsigned long on = simple_strtoul(buf, NULL, 10);
-	/*struct smba1002_pm_camera_data *camera_data = dev_get_drvdata(dev);*/
+	/*struct smba1007_pm_camera_data *camera_data = dev_get_drvdata(dev);*/
 
 	if (!strcmp(attr->attr.name, "power_on")) {
-		__smba1002_pm_camera_power(dev, on);
+		__smba1007_pm_camera_power(dev, on);
 	} 
 
 	return count;
@@ -117,47 +117,47 @@ static DEVICE_ATTR(power_on, 0644, camera_read, camera_write);
 static DEVICE_ATTR(reset, 0644, camera_read, camera_write);
 
 #ifdef CONFIG_PM
-static int smba1002_camera_suspend(struct platform_device *pdev, pm_message_t state)
+static int smba1007_camera_suspend(struct platform_device *pdev, pm_message_t state)
 {
-	struct smba1002_pm_camera_data *camera_data = dev_get_drvdata(&pdev->dev);
+	struct smba1007_pm_camera_data *camera_data = dev_get_drvdata(&pdev->dev);
 
 	dev_dbg(&pdev->dev, "suspending\n");
 
 	camera_data->pre_resume_state = camera_data->state;
-	__smba1002_pm_camera_power(&pdev->dev, 0);
+	__smba1007_pm_camera_power(&pdev->dev, 0);
 
 	return 0;
 }
 
-static int smba1002_camera_resume(struct platform_device *pdev)
+static int smba1007_camera_resume(struct platform_device *pdev)
 {
-	struct smba1002_pm_camera_data *camera_data = dev_get_drvdata(&pdev->dev);
+	struct smba1007_pm_camera_data *camera_data = dev_get_drvdata(&pdev->dev);
 	dev_dbg(&pdev->dev, "resuming\n");
 
-	__smba1002_pm_camera_power(&pdev->dev, camera_data->pre_resume_state);
+	__smba1007_pm_camera_power(&pdev->dev, camera_data->pre_resume_state);
 	return 0;
 }
 #else
-#define smba1002_camera_suspend	NULL
-#define smba1002_camera_resume		NULL
+#define smba1007_camera_suspend	NULL
+#define smba1007_camera_resume		NULL
 #endif
 
-static struct attribute *smba1002_camera_sysfs_entries[] = {
+static struct attribute *smba1007_camera_sysfs_entries[] = {
 	&dev_attr_power_on.attr,
 	&dev_attr_reset.attr,
 	NULL
 };
 
-static struct attribute_group smba1002_camera_attr_group = {
+static struct attribute_group smba1007_camera_attr_group = {
 	.name	= NULL,
-	.attrs	= smba1002_camera_sysfs_entries,
+	.attrs	= smba1007_camera_sysfs_entries,
 };
 
 /* ----- Initialization/removal -------------------------------------------- */
-static int __init smba1002_camera_probe(struct platform_device *pdev)
+static int __init smba1007_camera_probe(struct platform_device *pdev)
 {
 	struct regulator *regulator;
-	struct smba1002_pm_camera_data *camera_data;
+	struct smba1007_pm_camera_data *camera_data;
 
 	camera_data = kzalloc(sizeof(*camera_data), GFP_KERNEL);
 	if (!camera_data) {
@@ -178,24 +178,24 @@ static int __init smba1002_camera_probe(struct platform_device *pdev)
 
 	
 	/* Init io pins and disable camera */
-	gpio_request(SMBA1002_CAMERA_POWER, "camera_power");
-	gpio_direction_output(SMBA1002_CAMERA_POWER, 0);
+	gpio_request(SMBA1007_CAMERA_POWER, "camera_power");
+	gpio_direction_output(SMBA1007_CAMERA_POWER, 0);
 
 	dev_info(&pdev->dev, "Camera power management driver registered\n");
 	
-	return sysfs_create_group(&pdev->dev.kobj, &smba1002_camera_attr_group);
+	return sysfs_create_group(&pdev->dev.kobj, &smba1007_camera_attr_group);
 }
 
-static int smba1002_camera_remove(struct platform_device *pdev)
+static int smba1007_camera_remove(struct platform_device *pdev)
 {
-	struct smba1002_pm_camera_data *camera_data = dev_get_drvdata(&pdev->dev);
+	struct smba1007_pm_camera_data *camera_data = dev_get_drvdata(&pdev->dev);
 
-	sysfs_remove_group(&pdev->dev.kobj, &smba1002_camera_attr_group);
+	sysfs_remove_group(&pdev->dev.kobj, &smba1007_camera_attr_group);
 
 	if (!camera_data || !camera_data->regulator)
 		return 0;
 
-	__smba1002_pm_camera_power(&pdev->dev, 0);
+	__smba1007_pm_camera_power(&pdev->dev, 0);
 	
 	regulator_put(camera_data->regulator);	
 
@@ -205,28 +205,28 @@ static int smba1002_camera_remove(struct platform_device *pdev)
 	return 0;
 }
 
-static struct platform_driver smba1002_camera_driver_ops = {
-	.probe		= smba1002_camera_probe,
-	.remove		= smba1002_camera_remove,
-	.suspend	= smba1002_camera_suspend,
-	.resume		= smba1002_camera_resume,
+static struct platform_driver smba1007_camera_driver_ops = {
+	.probe		= smba1007_camera_probe,
+	.remove		= smba1007_camera_remove,
+	.suspend	= smba1007_camera_suspend,
+	.resume		= smba1007_camera_resume,
 	.driver		= {
-		.name		= "smba1002-pm-camera",
+		.name		= "smba1007-pm-camera",
 	},
 };
 
-static int __devinit smba1002_camera_init(void)
+static int __devinit smba1007_camera_init(void)
 {
-	return platform_driver_register(&smba1002_camera_driver_ops);
+	return platform_driver_register(&smba1007_camera_driver_ops);
 }
 
-static void smba1002_camera_exit(void)
+static void smba1007_camera_exit(void)
 {
-	platform_driver_unregister(&smba1002_camera_driver_ops);
+	platform_driver_unregister(&smba1007_camera_driver_ops);
 }
 
-module_init(smba1002_camera_init);
-module_exit(smba1002_camera_exit);
+module_init(smba1007_camera_init);
+module_exit(smba1007_camera_exit);
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Eduardo José Tagle <ejtagle@tutopia.com>");

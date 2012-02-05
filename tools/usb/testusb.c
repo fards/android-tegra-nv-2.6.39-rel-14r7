@@ -172,7 +172,7 @@ static int testdev_ifnum(FILE *fd)
 		return -1;
 
 	/* FX2 with (tweaked) bulksrc firmware */
-	if (dev.idVendor == 0x0547 && dev.idProduct == 0x1002)
+	if (dev.idVendor == 0x0547 && dev.idProduct == 0x1007)
 		return 0;
 
 	/*----------------------------------------------------*/

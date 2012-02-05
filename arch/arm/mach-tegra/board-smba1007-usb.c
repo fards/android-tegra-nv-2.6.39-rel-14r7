@@ -1,5 +1,5 @@
 /*
- * arch/arm/mach-tegra/board-smba1002-usb.c
+ * arch/arm/mach-tegra/board-smba1007-usb.c
  *
  * Copyright (C) 2011 Eduardo José Tagle <ejtagle@tutopia.com>
  *
@@ -71,7 +71,7 @@ hub-less systems.
 #include <linux/usb/f_accessory.h>
 
 #include "board.h"
-#include "board-smba1002.h"
+#include "board-smba1007.h"
 #include "clock.h"
 #include "gpio-names.h"
 #include "devices.h"
@@ -106,14 +106,14 @@ static struct tegra_ulpi_config ulpi_phy_config = {
 .clk = "cdev2",
 };
 
-static struct tegra_ulpi_config smba1002_ehci2_ulpi_phy_config = {
-.reset_gpio = SMBA1002_USB1_RESET,
+static struct tegra_ulpi_config smba1007_ehci2_ulpi_phy_config = {
+.reset_gpio = SMBA1007_USB1_RESET,
 .clk = "cdev2",
 };
-static struct tegra_ehci_platform_data smba1002_ehci2_ulpi_platform_data = {
+static struct tegra_ehci_platform_data smba1007_ehci2_ulpi_platform_data = {
 	.operating_mode = TEGRA_USB_HOST,
 	.power_down_on_bus_suspend = 0,
-	.phy_config = &smba1002_ehci2_ulpi_phy_config,
+	.phy_config = &smba1007_ehci2_ulpi_phy_config,
 	.phy_type = TEGRA_USB_PHY_TYPE_LINK_ULPI,
 };
 
@@ -153,12 +153,12 @@ static struct tegra_otg_platform_data tegra_otg_pdata = {
 };
 
 
-int __init smba1002_usb_register_devices(void)
+int __init smba1007_usb_register_devices(void)
 {
 	tegra_usb_phy_init(tegra_usb_phy_pdata, ARRAY_SIZE(tegra_usb_phy_pdata));
 	/* OTG should be the first to be registered */
-	//gpio_request(SMBA1002_USB0_VBUS, "USB0 VBUS");
-	//gpio_direction_output(SMBA1002_USB0_VBUS, 0 );
+	//gpio_request(SMBA1007_USB0_VBUS, "USB0 VBUS");
+	//gpio_direction_output(SMBA1007_USB0_VBUS, 0 );
 
 	tegra_otg_device.dev.platform_data = &tegra_otg_pdata;
 	platform_device_register(&tegra_otg_device);

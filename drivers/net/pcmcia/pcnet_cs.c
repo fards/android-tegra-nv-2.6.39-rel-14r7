@@ -124,7 +124,7 @@ typedef struct hw_info_t {
 #define USE_BIG_BUF	0x04
 #define HAS_IBM_MISC	0x08
 #define IS_DL10019	0x10
-#define IS_DL10022	0x20
+#define IS_DL10072	0x20
 #define HAS_MII		0x40
 #define USE_SHMEM	0x80	/* autodetected */
 
@@ -200,7 +200,7 @@ static hw_info_t hw_info[] = {
 
 static hw_info_t default_info = { 0, 0, 0, 0, 0 };
 static hw_info_t dl10019_info = { 0, 0, 0, 0, IS_DL10019|HAS_MII };
-static hw_info_t dl10022_info = { 0, 0, 0, 0, IS_DL10022|HAS_MII };
+static hw_info_t dl10072_info = { 0, 0, 0, 0, IS_DL10072|HAS_MII };
 
 typedef struct pcnet_dev_t {
 	struct pcmcia_device	*p_dev;
@@ -386,7 +386,7 @@ static hw_info_t *get_dl10019(struct pcmcia_device *link)
     for (i = 0; i < 6; i++)
 	dev->dev_addr[i] = inb_p(dev->base_addr + 0x14 + i);
     i = inb(dev->base_addr + 0x1f);
-    return ((i == 0x91)||(i == 0x99)) ? &dl10022_info : &dl10019_info;
+    return ((i == 0x91)||(i == 0x99)) ? &dl10072_info : &dl10019_info;
 }
 
 /*======================================================================
@@ -604,7 +604,7 @@ static int pcnet_config(struct pcmcia_device *link)
     ei_status.word16 = 1;
     ei_status.reset_8390 = pcnet_reset_8390;
 
-    if (info->flags & (IS_DL10019|IS_DL10022))
+    if (info->flags & (IS_DL10019|IS_DL10072))
 	mii_phy_probe(dev);
 
     SET_NETDEV_DEV(dev, &link->dev);
@@ -614,10 +614,10 @@ static int pcnet_config(struct pcmcia_device *link)
 	goto failed;
     }
 
-    if (info->flags & (IS_DL10019|IS_DL10022)) {
+    if (info->flags & (IS_DL10019|IS_DL10072)) {
 	u_char id = inb(dev->base_addr + 0x1a);
 	netdev_info(dev, "NE2000 (DL100%d rev %02x): ",
-	       (info->flags & IS_DL10022) ? 22 : 19, id);
+	       (info->flags & IS_DL10072) ? 22 : 19, id);
 	if (info->pna_phy)
 	    pr_cont("PNA, ");
     } else {
@@ -674,9 +674,9 @@ static int pcnet_resume(struct pcmcia_device *link)
 
 /*======================================================================
 
-    MII interface support for DL10019 and DL10022 based cards
+    MII interface support for DL10019 and DL10072 based cards
 
-    On the DL10019, the MII IO direction bit is 0x10; on the DL10022
+    On the DL10019, the MII IO direction bit is 0x10; on the DL10072
     it is 0x20.  Setting both bits seems to work on both card types.
 
 ======================================================================*/
@@ -740,7 +740,7 @@ static void mdio_write(unsigned int addr, int phy_id, int loc, int value)
 
 /*======================================================================
 
-    EEPROM access routines for DL10019 and DL10022 based cards
+    EEPROM access routines for DL10019 and DL10072 based cards
 
 ======================================================================*/
 
@@ -848,7 +848,7 @@ static void set_misc_reg(struct net_device *dev)
 	    tmp |= 8;
 	outb_p(tmp, nic_base + PCNET_MISC);
     }
-    if (info->flags & IS_DL10022) {
+    if (info->flags & IS_DL10072) {
 	if (info->flags & HAS_MII) {
 	    /* Advertise 100F, 100H, 10F, 10H */
 	    mdio_write(nic_base + DLINK_GPIO, info->eth_phy, 4, 0x01e1);
@@ -1053,7 +1053,7 @@ static void ei_watchdog(u_long arg)
     if (link != info->link_status) {
 	u_short p = mdio_read(mii_addr, info->phy_id, 5);
 	netdev_info(dev, "%s link beat\n", link ? "found" : "lost");
-	if (link && (info->flags & IS_DL10022)) {
+	if (link && (info->flags & IS_DL10072)) {
 	    /* Disable collision detection on full duplex links */
 	    outb((p & 0x0140) ? 4 : 0, nic_base + DLINK_DIAG);
 	} else if (link && (info->flags & IS_DL10019)) {
@@ -1104,7 +1104,7 @@ static int ei_ioctl(struct net_device *dev, struct ifreq *rq, int cmd)
     struct mii_ioctl_data *data = if_mii(rq);
     unsigned int mii_addr = dev->base_addr + DLINK_GPIO;
 
-    if (!(info->flags & (IS_DL10019|IS_DL10022)))
+    if (!(info->flags & (IS_DL10019|IS_DL10072)))
 	return -EINVAL;
 
     switch (cmd) {

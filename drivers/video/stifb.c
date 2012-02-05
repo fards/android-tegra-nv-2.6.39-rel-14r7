@@ -141,11 +141,11 @@ static int __initdata stifb_bpp_pref[MAX_STI_ROMS];
 #define REG_33		0x210040
 #define REG_34		0x200008
 #define REG_35		0x018010
-#define REG_38		0x210020
+#define REG_38		0x210070
 #define REG_39		0x210120
 #define REG_40		0x210130
-#define REG_42		0x210028
-#define REG_43		0x21002c
+#define REG_42		0x210078
+#define REG_43		0x21007c
 #define REG_44		0x210030
 #define REG_45		0x210034
 

@@ -3782,7 +3782,7 @@ typedef enum
   DAC960_PG_InterruptMaskRegisterOffset =	0x0034,
   DAC960_PG_CommandOpcodeRegisterOffset =	0x1000,
   DAC960_PG_CommandIdentifierRegisterOffset =	0x1001,
-  DAC960_PG_MailboxRegister2Offset =		0x1002,
+  DAC960_PG_MailboxRegister2Offset =		0x1007,
   DAC960_PG_MailboxRegister3Offset =		0x1003,
   DAC960_PG_MailboxRegister4Offset =		0x1004,
   DAC960_PG_MailboxRegister5Offset =		0x1005,

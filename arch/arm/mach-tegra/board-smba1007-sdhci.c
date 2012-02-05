@@ -1,5 +1,5 @@
 /*
- * arch/arm/mach-tegra/board-smba1002-sdhci.c
+ * arch/arm/mach-tegra/board-smba1007-sdhci.c
  *
  * Copyright (C) 2011 Eduardo José Tagle <ejtagle@tutopia.com> 
  * Copyright (C) 2010 Google, Inc.
@@ -32,43 +32,43 @@
 
 #include "gpio-names.h"
 #include "devices.h"
-#include "board-smba1002.h"
+#include "board-smba1007.h"
 
 
 static void (*wlan_status_cb)(int card_present, void *dev_id) = NULL;
 static void *wlan_status_cb_devid = NULL;
-static int smba1002_wlan_cd = 0; /* WIFI virtual 'card detect' status */
+static int smba1007_wlan_cd = 0; /* WIFI virtual 'card detect' status */
 
-static int smba1002_wifi_status_register(void (*callback)(int , void *), void *);
+static int smba1007_wifi_status_register(void (*callback)(int , void *), void *);
 static struct clk *wifi_32k_clk;
 
-static int smba1002_wifi_reset(int on);
-static int smba1002_wifi_power(int on);
-static int smba1002_wifi_set_carddetect(int val);
+static int smba1007_wifi_reset(int on);
+static int smba1007_wifi_power(int on);
+static int smba1007_wifi_set_carddetect(int val);
 
-static struct wifi_platform_data smba1002_wifi_control = {
-        .set_power      = smba1002_wifi_power,
-        .set_reset      = smba1002_wifi_reset,
-        .set_carddetect = smba1002_wifi_set_carddetect,
+static struct wifi_platform_data smba1007_wifi_control = {
+        .set_power      = smba1007_wifi_power,
+        .set_reset      = smba1007_wifi_reset,
+        .set_carddetect = smba1007_wifi_set_carddetect,
 };
 
 
-static struct platform_device smba1002_wifi_device = {
+static struct platform_device smba1007_wifi_device = {
         .name           = "bcm4329_wlan",
         .id             = 1,
         .dev            = {
-                .platform_data = &smba1002_wifi_control,
+                .platform_data = &smba1007_wifi_control,
         },
 };
 
 
 /* 2.6.36 version has a hook to check card status. Use it */
-/*static unsigned int smba1002_wlan_status(struct device *dev)
+/*static unsigned int smba1007_wlan_status(struct device *dev)
 {
-	return smba1002_wlan_cd;
+	return smba1007_wlan_cd;
 }*/
 
-static int smba1002_wifi_status_register(
+static int smba1007_wifi_status_register(
 		void (*callback)(int card_present, void *dev_id),
 		void *dev_id)
 {
@@ -93,11 +93,11 @@ static struct embedded_sdio_data embedded_sdio_data0 = {
         },
 };
 
-struct tegra_sdhci_platform_data smba1002_wlan_data = {
+struct tegra_sdhci_platform_data smba1007_wlan_data = {
 //        .clk_id = NULL,
 //        .force_hs = 0,
 	.mmc_data = {
-        	.register_status_notify = smba1002_wifi_status_register,
+        	.register_status_notify = smba1007_wifi_status_register,
 		.embedded_sdio = &embedded_sdio_data0,
 		.built_in = 1,
 	},
@@ -108,13 +108,13 @@ struct tegra_sdhci_platform_data smba1002_wlan_data = {
 };
 
 /* Used to set the virtual CD of wifi adapter */
-int smba1002_wifi_set_carddetect(int val)
+int smba1007_wifi_set_carddetect(int val)
 {
 	/* Only if a change is detected */
-	if (smba1002_wlan_cd != val) {
+	if (smba1007_wlan_cd != val) {
 	
 		/* Store new card 'detect' */
-		smba1002_wlan_cd = val;
+		smba1007_wlan_cd = val;
 		
 		/* Let the SDIO infrastructure know about the change */
 		if (wlan_status_cb) {
@@ -125,18 +125,18 @@ int smba1002_wifi_set_carddetect(int val)
 	return 0;
 }
 
-static int smba1002_wifi_power(int on)
+static int smba1007_wifi_power(int on)
 {
         pr_debug("%s: %d\n", __func__, on);
 
-		smba1002_bt_wifi_gpio_set(on);
-        gpio_set_value(SMBA1002_WLAN_RESET, on);
+		smba1007_bt_wifi_gpio_set(on);
+        gpio_set_value(SMBA1007_WLAN_RESET, on);
         mdelay(200);
 
         return 0;
 }
 
-static int smba1002_wifi_reset(int on)
+static int smba1007_wifi_reset(int on)
 {
         pr_debug("%s: do nothing\n", __func__);
         return 0;
@@ -151,9 +151,9 @@ static struct tegra_sdhci_platform_data tegra_sdhci_platform_data2 = {
 };
 
 static struct tegra_sdhci_platform_data tegra_sdhci_platform_data3 = {
-	.cd_gpio = SMBA1002_SDHC_CD,
+	.cd_gpio = SMBA1007_SDHC_CD,
 	.wp_gpio = -1,
-	.power_gpio = SMBA1002_SDHC_POWER,
+	.power_gpio = SMBA1007_SDHC_POWER,
 	.has_no_vreg = 1,
 };
 
@@ -166,7 +166,7 @@ static struct tegra_sdhci_platform_data tegra_sdhci_platform_data4 = {
 
 
 
-static struct platform_device *smba1002_sdhci_devices[] __initdata = {
+static struct platform_device *smba1007_sdhci_devices[] __initdata = {
 	&tegra_sdhci_device1,
 //	&tegra_sdhci_device2,
 //have to init these out of order so that the eMMC card is registered first
@@ -174,36 +174,36 @@ static struct platform_device *smba1002_sdhci_devices[] __initdata = {
 	&tegra_sdhci_device3,
 };
 
-static int __init smba1002_wifi_init(void)
+static int __init smba1007_wifi_init(void)
 {
 	// Init the power GPIO if it isn't already
-	smba1002_bt_wifi_gpio_init();
-        tegra_gpio_enable(SMBA1002_WLAN_RESET);
+	smba1007_bt_wifi_gpio_init();
+        tegra_gpio_enable(SMBA1007_WLAN_RESET);
 
-	gpio_request(SMBA1002_WLAN_RESET, "wifi_reset");
-        gpio_direction_output(SMBA1002_WLAN_RESET, 0);
+	gpio_request(SMBA1007_WLAN_RESET, "wifi_reset");
+        gpio_direction_output(SMBA1007_WLAN_RESET, 0);
 
-        platform_device_register(&smba1002_wifi_device);
+        platform_device_register(&smba1007_wifi_device);
 
-        device_init_wakeup(&smba1002_wifi_device.dev, 1);
-        device_set_wakeup_enable(&smba1002_wifi_device.dev, 0);
+        device_init_wakeup(&smba1007_wifi_device.dev, 1);
+        device_set_wakeup_enable(&smba1007_wifi_device.dev, 0);
 
         return 0;
 }
 
 
 /* Register sdhci devices */
-int __init smba1002_sdhci_register_devices(void)
+int __init smba1007_sdhci_register_devices(void)
 {
 	int ret=0;
 	/* Plug in platform data */
-	tegra_sdhci_device1.dev.platform_data = &smba1002_wlan_data;
+	tegra_sdhci_device1.dev.platform_data = &smba1007_wlan_data;
 	tegra_sdhci_device2.dev.platform_data = &tegra_sdhci_platform_data2;
 	tegra_sdhci_device3.dev.platform_data = &tegra_sdhci_platform_data3;
 	tegra_sdhci_device4.dev.platform_data = &tegra_sdhci_platform_data4;
 
-	ret = platform_add_devices(smba1002_sdhci_devices, ARRAY_SIZE(smba1002_sdhci_devices));
-	smba1002_wifi_init();
+	ret = platform_add_devices(smba1007_sdhci_devices, ARRAY_SIZE(smba1007_sdhci_devices));
+	smba1007_wifi_init();
 	return ret;
 
 }

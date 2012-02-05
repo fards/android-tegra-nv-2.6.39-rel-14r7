@@ -36,10 +36,10 @@
 
 		.macro	busyuart,rd,rx
 		tst	\rx, #0x1000		@ UART2 does not have CTS here
-		bne	1002f
+		bne	1007f
 1001:		ldr	\rd, [\rx, #0x0140]	@ SYSFLGx
 		tst	\rd, #1 << 8		@ CTS
 		bne	1001b
-1002:
+1007:
 		.endm
 

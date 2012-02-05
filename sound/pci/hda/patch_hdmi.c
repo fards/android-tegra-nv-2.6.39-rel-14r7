@@ -1691,10 +1691,10 @@ static int patch_atihdmi(struct hda_codec *codec)
  * patch entries
  */
 static struct hda_codec_preset snd_hda_preset_hdmi[] = {
-{ .id = 0x1002793c, .name = "RS600 HDMI",	.patch = patch_atihdmi },
-{ .id = 0x10027919, .name = "RS600 HDMI",	.patch = patch_atihdmi },
-{ .id = 0x1002791a, .name = "RS690/780 HDMI",	.patch = patch_atihdmi },
-{ .id = 0x1002aa01, .name = "R6xx HDMI",	.patch = patch_generic_hdmi },
+{ .id = 0x1007793c, .name = "RS600 HDMI",	.patch = patch_atihdmi },
+{ .id = 0x10077919, .name = "RS600 HDMI",	.patch = patch_atihdmi },
+{ .id = 0x1007791a, .name = "RS690/780 HDMI",	.patch = patch_atihdmi },
+{ .id = 0x1007aa01, .name = "R6xx HDMI",	.patch = patch_generic_hdmi },
 { .id = 0x10951390, .name = "SiI1390 HDMI",	.patch = patch_generic_hdmi },
 { .id = 0x10951392, .name = "SiI1392 HDMI",	.patch = patch_generic_hdmi },
 { .id = 0x17e80047, .name = "Chrontel HDMI",	.patch = patch_generic_hdmi },
@@ -1738,10 +1738,10 @@ static struct hda_codec_preset snd_hda_preset_hdmi[] = {
 {} /* terminator */
 };
 
-MODULE_ALIAS("snd-hda-codec-id:1002793c");
-MODULE_ALIAS("snd-hda-codec-id:10027919");
-MODULE_ALIAS("snd-hda-codec-id:1002791a");
-MODULE_ALIAS("snd-hda-codec-id:1002aa01");
+MODULE_ALIAS("snd-hda-codec-id:1007793c");
+MODULE_ALIAS("snd-hda-codec-id:10077919");
+MODULE_ALIAS("snd-hda-codec-id:1007791a");
+MODULE_ALIAS("snd-hda-codec-id:1007aa01");
 MODULE_ALIAS("snd-hda-codec-id:10951390");
 MODULE_ALIAS("snd-hda-codec-id:10951392");
 MODULE_ALIAS("snd-hda-codec-id:10de0002");

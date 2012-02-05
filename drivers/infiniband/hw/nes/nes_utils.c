@@ -469,7 +469,7 @@ void nes_write_10G_phy_reg(struct nes_device *nesdev, u16 phy_addr, u8 dev_addr,
 
 	/* set data */
 	nes_write_indexed(nesdev, NES_IDX_MAC_MDIO_CONTROL,
-			0x10020000 | (u32)data | (((u32)dev_addr) << 18) | (((u32)port_addr) << 23));
+			0x10070000 | (u32)data | (((u32)dev_addr) << 18) | (((u32)port_addr) << 23));
 	for (counter = 0; counter < 100 ; counter++) {
 		udelay(30);
 		u32temp = nes_read_indexed(nesdev, NES_IDX_MAC_INT_STATUS);

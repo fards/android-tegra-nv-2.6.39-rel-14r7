@@ -271,7 +271,7 @@ static void option_instat_callback(struct urb *urb);
 #define AXESSTEL_PRODUCT_MV110H			0x1000
 
 #define BANDRICH_VENDOR_ID			0x1A8D
-#define BANDRICH_PRODUCT_C100_1			0x1002
+#define BANDRICH_PRODUCT_C100_1			0x1007
 #define BANDRICH_PRODUCT_C100_2			0x1003
 #define BANDRICH_PRODUCT_1004			0x1004
 #define BANDRICH_PRODUCT_1005			0x1005
@@ -344,7 +344,7 @@ static void option_instat_callback(struct urb *urb);
 #define ALCATEL_PRODUCT_X060S_X200		0x0000
 
 #define PIRELLI_VENDOR_ID			0x1266
-#define PIRELLI_PRODUCT_C100_1			0x1002
+#define PIRELLI_PRODUCT_C100_1			0x1007
 #define PIRELLI_PRODUCT_C100_2			0x1003
 #define PIRELLI_PRODUCT_1004			0x1004
 #define PIRELLI_PRODUCT_1005			0x1005

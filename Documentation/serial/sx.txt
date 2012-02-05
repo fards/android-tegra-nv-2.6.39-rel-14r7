@@ -18,7 +18,7 @@
       rewrite  from scratch. Just a few lines-of-code have been snatched.
 
       (Sources)
-      Specialix document number 6210028: SX Host Card and Download Code
+      Specialix document number 6210078: SX Host Card and Download Code
       Software Functional Specification.
 
       (Copying)

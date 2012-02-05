@@ -628,7 +628,7 @@ struct hci_rp_read_local_version {
 	__le16   lmp_subver;
 } __packed;
 
-#define HCI_OP_READ_LOCAL_COMMANDS	0x1002
+#define HCI_OP_READ_LOCAL_COMMANDS	0x1007
 struct hci_rp_read_local_commands {
 	__u8     status;
 	__u8     commands[64];

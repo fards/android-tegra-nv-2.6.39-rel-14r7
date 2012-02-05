@@ -287,7 +287,7 @@ int kvm_arch_vcpu_setup(struct kvm_vcpu *vcpu)
 	atomic_set(&vcpu->arch.sie_block->cpuflags, CPUSTAT_ZARCH);
 	set_bit(KVM_REQ_MMU_RELOAD, &vcpu->requests);
 	vcpu->arch.sie_block->ecb   = 6;
-	vcpu->arch.sie_block->eca   = 0xC1002001U;
+	vcpu->arch.sie_block->eca   = 0xC1007001U;
 	vcpu->arch.sie_block->fac   = (int) (long) facilities;
 	hrtimer_init(&vcpu->arch.ckc_timer, CLOCK_REALTIME, HRTIMER_MODE_ABS);
 	tasklet_init(&vcpu->arch.tasklet, kvm_s390_tasklet,
