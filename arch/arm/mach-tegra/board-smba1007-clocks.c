@@ -186,13 +186,13 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
 	
 	/* cdev[1-2] take the configuration (clock parents) from the pinmux config, 
 	   That is why we are setting it to NULL */
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,38)
+//#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,38)
 #define CDEV1 "cdev1"
 #define CDEV2 "cdev2"
-#else
+/*#else
 #define CDEV1 "clk_dev1"
 #define CDEV2 "clk_dev2"
-#endif
+#endif*/
 #       ifdef SMBA1007_48KHZ_AUDIO
 //        { CDEV1,   NULL /*"pll_a_out0"*/,12288000,  false},             /* used as audio CODEC MCLK */
         { CDEV1,   NULL /*"pll_a_out0"*/,0,  true},             /* used as audio CODEC MCLK */
@@ -203,18 +203,17 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
 
 //	{ CDEV2,   NULL,	26000000,  false}, 	/* probably used as USB clock - perhaps 24mhz ?*/	
 	{ CDEV2,   NULL,	0,  false}, 	/* probably used as USB clock - perhaps 24mhz ?*/	
-
-#if 0 	
-   { "i2c1_i2c", "pll_p_out3", 72000000, true}, /* tegra-i2c.0 */
-    { "i2c2_i2c", "pll_p_out3", 72000000, true}, /* tegra-i2c.1 */
-    { "i2c3_i2c", "pll_p_out3", 72000000, true}, /* tegra-i2c.2 */
-    { "dvc_i2c", "pll_p_out3", 72000000, true}, /* tegra-i2c.3 */
+ 	
+   { "i2c1_i2c", "pll_p_out3", 72000000, false}, /* tegra-i2c.0 */
+    { "i2c2_i2c", "pll_p_out3", 72000000, false}, /* tegra-i2c.1 */
+    { "i2c3_i2c", "pll_p_out3", 72000000, false}, /* tegra-i2c.2 */
+    { "dvc_i2c", "pll_p_out3", 72000000, false}, /* tegra-i2c.3 */
 
     { "i2c1", "clk_m", 800000, false}, /* tegra-i2c.0 */
     { "i2c2", "clk_m", 3000000, false}, /* tegra-i2c.1 */
     { "i2c3", "clk_m", 12000000, false}, /* tegra-i2c.2 */
     { "dvc", "clk_m", 3000000, false}, /* tegra-i2c.3 */
-#endif
+
 
 	{ "apbdma",		"pclk",			108000000,	true}, 	/* tegra-dma */
 	{ "uarta",		"pll_p",		216000000,	true},		/* tegra_uart.0 uart.0 */
@@ -226,11 +225,11 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
 	{ "disp1",  	"pll_p",    	216000000, 	false},		/* tegradc.0 */
 	{ "disp2",  	"pll_p",    	216000000, 	false},		/* tegradc.1 */	
 	
-//#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,38)	
-//	{ "dsi",		"pll_d",		  5000000,	false},		/* tegra_dc.0, tegra_dc.1 */
-//#else
-	{ "dsi",		"pll_d_out0",	  2500000,	false},		/* tegra_dc.0, tegra_dc.1 - bug on kernel 2.6.36*/
-//#endif
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,38)	
+	{ "dsia",		"pll_d",		  5000000,	false},		/* tegra_dc.0, tegra_dc.1 */
+#else
+	{ "dsia",		"pll_d_out0",	  2500000,	false},		/* tegra_dc.0, tegra_dc.1 - bug on kernel 2.6.36*/
+#endif
 	{ "hdmi",		"clk_m",		 12000000,	false},		/* tegra_dc.0, tegra_dc.1 */
 	
 	{ "spi",		"clk_m",		 12000000,	false},

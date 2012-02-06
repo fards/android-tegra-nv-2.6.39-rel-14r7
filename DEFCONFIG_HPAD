@@ -1,7 +1,7 @@
 #
 # Automatically generated make config: don't edit
 # Linux/arm 2.6.39.4 Kernel Configuration
-# Sat Feb  4 23:24:32 2012
+# Mon Feb  6 21:27:14 2012
 #
 CONFIG_ARM=y
 CONFIG_HAVE_PWM=y
@@ -520,7 +520,7 @@ CONFIG_PM_RUNTIME=y
 CONFIG_PM=y
 # CONFIG_PM_DEBUG is not set
 # CONFIG_APM_EMULATION is not set
-# CONFIG_SUSPEND_TIME is not set
+CONFIG_SUSPEND_TIME=y
 CONFIG_ARCH_SUSPEND_POSSIBLE=y
 CONFIG_NET=y
 
@@ -2123,7 +2123,7 @@ CONFIG_USB_EHCI_TEGRA=y
 #
 # USB Device Class drivers
 #
-CONFIG_USB_ACM=y
+# CONFIG_USB_ACM is not set
 # CONFIG_USB_PRINTER is not set
 CONFIG_USB_WDM=y
 # CONFIG_USB_TMC is not set

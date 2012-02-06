@@ -155,6 +155,7 @@ struct tegra_i2c_dev {
 	int cont_id;
 	int irq;
 	bool irq_disabled;
+	bool controller_enabled;
 	int is_dvc;
 	bool is_slave;
 	struct completion msg_complete;

@@ -72,7 +72,7 @@ static struct regulator_consumer_supply tps658621_sm2_supply[] = {
 /* PEX_CLK voltage rail : VDDIO_PEX_CLK -> LDO0
 */
 static struct regulator_consumer_supply tps658621_ldo0_supply[] = { /* VDDIO_PEX_CLK */
-	//REGULATOR_SUPPLY("vdd_ldo0", NULL),
+	REGULATOR_SUPPLY("vdd_ldo0", NULL),
 	REGULATOR_SUPPLY("vdd_pex_clk_1", NULL),
 	REGULATOR_SUPPLY("vcore_wifi", NULL),
 };
@@ -87,7 +87,7 @@ static struct regulator_consumer_supply tps658621_ldo0_supply[] = { /* VDDIO_PEX
    PLLX voltage rail : AVDDPLLX -> LDO1
  */
 static struct regulator_consumer_supply tps658621_ldo1_supply[] = { /* 1V2 */
-	//REGULATOR_SUPPLY("vdd_ldo1", NULL),
+	REGULATOR_SUPPLY("vdd_ldo1", NULL),
 	REGULATOR_SUPPLY("pll_a", NULL),
 	REGULATOR_SUPPLY("pll_m", NULL),
 	REGULATOR_SUPPLY("pll_p", NULL),
@@ -102,7 +102,7 @@ static struct regulator_consumer_supply tps658621_ldo1_supply[] = { /* 1V2 */
 	>VDD_RTC 
 */
 static struct regulator_consumer_supply tps658621_ldo2_supply[] = { 
-	//REGULATOR_SUPPLY("vdd_ldo2", NULL),
+	REGULATOR_SUPPLY("vdd_ldo2", NULL),
 	REGULATOR_SUPPLY("vdd_rtc", NULL),
 	REGULATOR_SUPPLY("vdd_aon", NULL),
 };
@@ -116,7 +116,7 @@ static struct regulator_consumer_supply tps658621_ldo2_supply[] = {
    TMON pwer rail : TMON pwer rail -> LDO3 (VDD_3V3)
 */
 static struct regulator_consumer_supply tps658621_ldo3_supply[] = { /* 3V3 */
-	//REGULATOR_SUPPLY("vdd_ldo3", NULL),
+	REGULATOR_SUPPLY("vdd_ldo3", NULL),
 	REGULATOR_SUPPLY("avdd_usb_pll", NULL),
 	REGULATOR_SUPPLY("avdd_usb", NULL),
 	REGULATOR_SUPPLY("vddio_nand_3v3", NULL), /* AON? */
@@ -141,7 +141,7 @@ static struct regulator_consumer_supply tps658621_ldo3_supply[] = { /* 3V3 */
    Wlan : VDDIO_WLAN (AON:VDD_1V8)
 */
 static struct regulator_consumer_supply tps658621_ldo4_supply[] = { /* VDD IO VI */
-	//REGULATOR_SUPPLY("vdd_ldo4", NULL),
+	REGULATOR_SUPPLY("vdd_ldo4", NULL),
 	REGULATOR_SUPPLY("avdd_osc", NULL),       /* AVDD_OSC */
 	REGULATOR_SUPPLY("vddio_sys", NULL),
 	REGULATOR_SUPPLY("vddio_lcd", NULL),      /* AON? */
@@ -157,14 +157,14 @@ static struct regulator_consumer_supply tps658621_ldo4_supply[] = { /* VDD IO VI
 
 /*unused*/
 static struct regulator_consumer_supply tps658621_ldo5_supply[] = {
-	REGULATOR_SUPPLY("vdd ld5", NULL)
+	REGULATOR_SUPPLY("vdd ldo5", NULL)
 };
 
 /* VDAC voltage rail : AVDD_VDAC -> LDO6
    tvdac rail : VDDIO_VDAC,AVDD_VDAC
  */
 static struct regulator_consumer_supply tps658621_ldo6_supply[] = {
-     //REGULATOR_SUPPLY("vdd_ldo6", NULL),
+     REGULATOR_SUPPLY("vdd_ldo6", NULL),
 	//REGULATOR_SUPPLY("vddio vdac", NULL),
 	REGULATOR_SUPPLY("avdd_vdac", NULL)
 };
@@ -172,21 +172,21 @@ static struct regulator_consumer_supply tps658621_ldo6_supply[] = {
 /* HDMI voltage rail : AVDD_HDMI -> LDO7
 */
 static struct regulator_consumer_supply tps658621_ldo7_supply[] = {
-	//REGULATOR_SUPPLY("vdd_ldo7", NULL),
+	REGULATOR_SUPPLY("vdd_ldo7", NULL),
 	REGULATOR_SUPPLY("avdd_hdmi", NULL)
 };
 
 /* PLLHD voltage rail (HDMI) : AVDD_HDMI_PLL -> LDO8
 */
 static struct regulator_consumer_supply tps658621_ldo8_supply[] = { /* AVDD_HDMI_PLL */
-	//REGULATOR_SUPPLY("vdd_ldo8", NULL),
+	REGULATOR_SUPPLY("vdd_ldo8", NULL),
 	REGULATOR_SUPPLY("avdd_hdmi_pll", NULL),  //PLLHD 
 };
 
 /* DDR_RX voltage rail : VDDIO_RX_DDR(2.7-3.3) -> LDO9
 */
 static struct regulator_consumer_supply tps658621_ldo9_supply[] = {
-	//REGULATOR_SUPPLY("vdd_ldo9", NULL),
+	REGULATOR_SUPPLY("vdd_ldo9", NULL),
 	REGULATOR_SUPPLY("vdd_ddr_rx", NULL),
 	REGULATOR_SUPPLY("vddio_vi", NULL),
 };
@@ -314,7 +314,7 @@ static struct regulator_init_data soc_data
 	static struct regulator_init_data ldo_tps74201_data  
 	= FIXED_REGULATOR_INIT(ldo_tps74201 , 1500, 0, 0 ); // 1500 (VDD1.5, enabled by PMU_GPIO[0] (0=enabled) - Turn it off as soon as we boot
 static struct regulator_init_data buck_tps62290_data 
-	= FIXED_REGULATOR_INIT(buck_tps62290, 1050, 1, 1 ); // 1050 (VDD1.05, AVDD_PEX ... enabled by PMU_GPIO[2] (1=enabled)
+	= FIXED_REGULATOR_INIT(buck_tps62290, 1050, 0, 0 ); // 1050 (VDD1.05, AVDD_PEX ... enabled by PMU_GPIO[2] (1=enabled)
 static struct regulator_init_data ldo_tps72012_data  
 	= FIXED_REGULATOR_INIT(ldo_tps72012 , 1200, 0, 0 ); // 1200 (VDD1.2, VCORE_WIFI ...) enabled by PMU_GPIO[1] (1=enabled)
 
@@ -438,7 +438,7 @@ static struct tps6586x_platform_data tps_platform = {
 static struct i2c_board_info __initdata smba1007_regulators[] = {
 	{
 		I2C_BOARD_INFO("tps6586x", 0x34),
-		.irq = INT_EXTERNAL_PMU,
+	//	.irq = INT_EXTERNAL_PMU,
 		.platform_data = &tps_platform,
 	},
 };
