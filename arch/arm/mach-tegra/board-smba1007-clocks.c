@@ -204,7 +204,7 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
 //	{ CDEV2,   NULL,	26000000,  false}, 	/* probably used as USB clock - perhaps 24mhz ?*/	
 	{ CDEV2,   NULL,	0,  false}, 	/* probably used as USB clock - perhaps 24mhz ?*/	
 
-	
+#if 0 	
    { "i2c1_i2c", "pll_p_out3", 72000000, true}, /* tegra-i2c.0 */
     { "i2c2_i2c", "pll_p_out3", 72000000, true}, /* tegra-i2c.1 */
     { "i2c3_i2c", "pll_p_out3", 72000000, true}, /* tegra-i2c.2 */
@@ -214,6 +214,7 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
     { "i2c2", "clk_m", 3000000, false}, /* tegra-i2c.1 */
     { "i2c3", "clk_m", 12000000, false}, /* tegra-i2c.2 */
     { "dvc", "clk_m", 3000000, false}, /* tegra-i2c.3 */
+#endif
 
 	{ "apbdma",		"pclk",			108000000,	true}, 	/* tegra-dma */
 	{ "uarta",		"pll_p",		216000000,	true},		/* tegra_uart.0 uart.0 */

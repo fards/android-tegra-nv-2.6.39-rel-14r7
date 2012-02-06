@@ -164,7 +164,7 @@ int __init smba1007_usb_register_devices(void)
 	platform_device_register(&tegra_otg_device);
 
 	platform_device_register(&tegra_udc_device);
-	// platform_device_register(&tegra_ehci1_device);
+    platform_device_register(&tegra_ehci1_device);
 
 	tegra_ehci3_device.dev.platform_data = &tegra_ehci_pdata[1];
 	platform_device_register(&tegra_ehci3_device);
