@@ -120,7 +120,7 @@ static struct tegra_ehci_platform_data smba1007_ehci2_ulpi_platform_data = {
 static struct usb_phy_plat_data tegra_usb_phy_pdata[] = {
         [0] = {
                         .instance = 0,
-                       // .vbus_irq = TPS6586X_INT_BASE + TPS6586X_INT_USB_DET,
+                       .vbus_irq = TPS6586X_INT_BASE + TPS6586X_INT_USB_DET,
                         .vbus_gpio = TEGRA_GPIO_PB0,
         },
         [1] = {

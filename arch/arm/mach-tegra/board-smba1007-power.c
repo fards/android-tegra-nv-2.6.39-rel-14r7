@@ -285,7 +285,7 @@ static struct regulator_init_data sm1_data
 static struct regulator_init_data sm2_data  		 
 	= ADJ_REGULATOR_INIT(sm2, 3000, 4550, 1, 1); // 3700
 static struct regulator_init_data ldo0_data 		 
-	= ADJ_REGULATOR_INIT(ldo0,1250, 3300, 0, 0); // 3300
+	= ADJ_REGULATOR_INIT(ldo0,1500, 3300, 0, 0); // 3300
 static struct regulator_init_data ldo1_data 		 
 	= ADJ_REGULATOR_INIT(ldo1, 725, 1500, 1, 1); // 1100  V-1V2
 static struct regulator_init_data ldo2_data 		 
@@ -636,7 +636,7 @@ static int tegra_reboot_notify(struct notifier_block *nb,
 	case SYS_HALT:
 	case SYS_POWER_OFF:
 		/* USB power rail must be enabled during boot or we won't reboot*/
-		reg_on("avdd_usb");
+		//reg_on("avdd_usb");
 
 		return NOTIFY_OK;
 	}
