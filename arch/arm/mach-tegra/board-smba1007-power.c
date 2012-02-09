@@ -314,7 +314,7 @@ static struct regulator_init_data soc_data
 	static struct regulator_init_data ldo_tps74201_data  
 	= FIXED_REGULATOR_INIT(ldo_tps74201 , 1500, 0, 0 ); // 1500 (VDD1.5, enabled by PMU_GPIO[0] (0=enabled) - Turn it off as soon as we boot
 static struct regulator_init_data buck_tps62290_data 
-	= FIXED_REGULATOR_INIT(buck_tps62290, 1050, 0, 0 ); // 1050 (VDD1.05, AVDD_PEX ... enabled by PMU_GPIO[2] (1=enabled)
+	= FIXED_REGULATOR_INIT(buck_tps62290, 1050, 1, 1 ); // 1050 (VDD1.05, AVDD_PEX ... enabled by PMU_GPIO[2] (1=enabled)
 static struct regulator_init_data ldo_tps72012_data  
 	= FIXED_REGULATOR_INIT(ldo_tps72012 , 1200, 0, 0 ); // 1200 (VDD1.2, VCORE_WIFI ...) enabled by PMU_GPIO[1] (1=enabled)
 
@@ -438,7 +438,7 @@ static struct tps6586x_platform_data tps_platform = {
 static struct i2c_board_info __initdata smba1007_regulators[] = {
 	{
 		I2C_BOARD_INFO("tps6586x", 0x34),
-	//	.irq = INT_EXTERNAL_PMU,
+		.irq = INT_EXTERNAL_PMU,
 		.platform_data = &tps_platform,
 	},
 };
@@ -636,7 +636,7 @@ static int tegra_reboot_notify(struct notifier_block *nb,
 	case SYS_HALT:
 	case SYS_POWER_OFF:
 		/* USB power rail must be enabled during boot or we won't reboot*/
-		//reg_on("avdd_usb");
+		reg_on("avdd_usb");
 
 		return NOTIFY_OK;
 	}
@@ -705,14 +705,14 @@ static struct platform_device *smba1007_power_devices[] __initdata = {
 int __init smba1007_power_register_devices(void)
 {
 	int err;
-	//void __iomem *pmc = IO_ADDRESS(TEGRA_PMC_BASE);
-	//u32 pmc_ctrl;
+	void __iomem *pmc = IO_ADDRESS(TEGRA_PMC_BASE);
+	u32 pmc_ctrl;
 
 	/* configure the power management controller to trigger PMU
 	 * interrupts when low
 	 */
-	//pmc_ctrl = readl(pmc + PMC_CTRL);
-	//writel(pmc_ctrl | PMC_CTRL_INTR_LOW, pmc + PMC_CTRL);
+	pmc_ctrl = readl(pmc + PMC_CTRL);
+	writel(pmc_ctrl | PMC_CTRL_INTR_LOW, pmc + PMC_CTRL);
 
 	err = i2c_register_board_info(4, smba1007_regulators, 1);
 	if (err < 0) 
