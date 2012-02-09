@@ -633,3 +633,4 @@ static void __exit tegra_otg_exit(void)
 	platform_driver_unregister(&tegra_otg_driver);
 }
 module_exit(tegra_otg_exit);
+

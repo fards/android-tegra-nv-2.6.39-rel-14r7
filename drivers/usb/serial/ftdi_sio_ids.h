@@ -714,7 +714,7 @@
 /* Interbiometrics USB I/O Board */
 /* Developed for Interbiometrics by Rudolf Gugler */
 #define INTERBIOMETRICS_VID              0x1209
-#define INTERBIOMETRICS_IOBOARD_PID      0x1007
+#define INTERBIOMETRICS_IOBOARD_PID      0x1002
 #define INTERBIOMETRICS_MINI_IOBOARD_PID 0x1006
 
 /*

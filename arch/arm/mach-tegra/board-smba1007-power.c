@@ -416,7 +416,7 @@ static struct tps6586x_subdev_info tps_devs[] = {
 	TPS_ADJ_REG(LDO_7, &ldo7_data),
 	TPS_ADJ_REG(LDO_8, &ldo8_data),
 	TPS_ADJ_REG(LDO_9, &ldo9_data),
-	//TPS_ADJ_REG(LDO_RTC, &rtc_data),
+	TPS_ADJ_REG(LDO_RTC, &rtc_data),
 	//TPS_ADJ_REG(LDO_SOC, &soc_data),
 	//TPS_GPIO_FIX_REG(0, &ldo_tps74201_cfg),
 	//TPS_GPIO_FIX_REG(1, &buck_tps62290_cfg),

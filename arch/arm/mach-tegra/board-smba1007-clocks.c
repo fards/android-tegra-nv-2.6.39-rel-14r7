@@ -258,7 +258,7 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
 	
 	{ "vcp",		"clk_m",		 12000000,	false},		/* tegra_avp */	
 	{ "bsea",		"clk_m",		 12000000,	false},		/* tegra_avp */	
-    { "vde", "pll_p", 240000000, false}, /* tegra-avp */
+    { "vde", "pll_p", 266400000, false}, /* tegra-avp */
 	
 	{ "bsev",		"clk_m",		 12000000,	false},		/* tegra_aes */	
 
