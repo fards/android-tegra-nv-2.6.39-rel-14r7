@@ -456,7 +456,7 @@ CONFIG_ALIGNMENT_TRAP=y
 #
 CONFIG_ZBOOT_ROM_TEXT=0x0
 CONFIG_ZBOOT_ROM_BSS=0x0
-CONFIG_CMDLINE="panic=10 mem=512M@0M nvmem=64M@512M vmalloc=192M video=tegrafb console=ttyS0,115200n8 usbcore.old_scheme_first=1 cpuid=200102 devicetype=1007 bspversion=0202100907 btmac=424a62131a00 tegraboot=nand mtdparts=tegra_nand:16384K@14592K(misc),16384K@84608K(recovery),16384K@101504K(boot),253696K@118400K(system),151168K@372608K(cache),4096K@9984K(bootbmp),4096K@46720K(kbmp),32768K@51328K(logodata)"
+CONFIG_CMDLINE="panic=10 mem=512M@0M video=tegrafb console=ttyUSB0,115200n8 androidboot.console=ttyUSB0 cpuid=200102 devicetype=1007 bspversion=0202100907 btmac=424a62131a00 tegraboot=nand mtdparts=tegra_nand:16384K@14592K(misc),16384K@84608K(recovery),16384K@101504K(boot),253696K@118400K(system),151168K@372608K(cache),4096K@9984K(bootbmp),4096K@46720K(kbmp),32768K@51328K(logodata)"
 CONFIG_CMDLINE_FORCE=y
 # CONFIG_XIP_KERNEL is not set
 # CONFIG_KEXEC is not set
