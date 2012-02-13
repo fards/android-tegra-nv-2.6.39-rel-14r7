@@ -194,14 +194,14 @@ static struct tegra_fb_data smba1007_fb_data = {
 
 #if defined(SMBA1007_1920x1080HDMI)
 
-/* Frame buffer size assuming 16bpp color and 2 pages for page flipping */
-#define SMBA1007_FB_HDMI_SIZE TEGRA_ROUND_ALLOC(1920*1080*(16/8)*2)
+/* Frame buffer size assuming 32bpp color and 2 pages for page flipping */
+#define SMBA1007_FB_HDMI_SIZE TEGRA_ROUND_ALLOC(1920*1080*(32/8)*2)
 
 static struct tegra_fb_data smba1007_hdmi_fb_data = {
 	.win		= 0,
 	.xres		= 1920,
 	.yres		= 1080,
-	.bits_per_pixel	= 16,
+	.bits_per_pixel	= 32,
 };
 
 #else
@@ -221,7 +221,7 @@ static struct tegra_dc_out smba1007_disp1_out = {
 
 	.align		= TEGRA_DC_ALIGN_MSB,
 	.order		= TEGRA_DC_ORDER_RED_BLUE,
-	.depth    = 18,
+	.depth    = 32,
 
         /* Enable dithering. Tegra also supports error
                diffusion, but when the active region is less

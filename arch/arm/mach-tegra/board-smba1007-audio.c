@@ -70,13 +70,13 @@ static struct tegra_audio_platform_data tegra_audio_pdata[] = {
 	[0] = {
 		.i2s_master		= true,		/* CODEC is slave for audio */
 		.dma_on			= true,  	/* use dma by default */
-#ifdef SMBA1007_48KHZ_AUDIO						
-		.i2s_master_clk = 48000,
-		.i2s_clk_rate 	= 12288000,
-#else
+//#ifdef SMBA1002_48KHZ_AUDIO						
+//		.i2s_master_clk = 48000,
+//		.i2s_clk_rate 	= 12288000,
+//#else
 		.i2s_master_clk = 44100,
-		.i2s_clk_rate 	= 11289600,
-#endif
+		.i2s_clk_rate 	= 26000000,
+//#endif
 		.dap_clk	  	= "cdev1",
 		.audio_sync_clk = "audio_2x",
 		.mode			= I2S_BIT_FORMAT_I2S,
