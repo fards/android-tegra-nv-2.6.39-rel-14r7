@@ -84,7 +84,8 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
     { "pll_c_out1", "pll_c", 		0,  true}, /* must be always on - system clock */
 
 	{ "sclk",		"pll_p_out2",	0,	true},		/* must be always on */
-//{ "avp.sclk",   	NULL,		108000000,      false},         /* must be always on */
+    { "avp.sclk",   	NULL,		0,  false},         /* must be always on */
+    { "cop",    "sclk",             0,  false},         /* must be always on */
 	{ "hclk",		"sclk",			0,	true},		/* must be always on */
 	{ "pclk",		"hclk",			0,	true},		/* must be always on */
 	/* pll_a and pll_a_out0 are clock sources for audio interfaces */
@@ -115,12 +116,21 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
 	{ "csite",		"pll_p",		0 ,	true},		/* csite - coresite */ /* always on */
 	{ "timer",		"clk_m",		0,	true},		/* timer */ /* always on - no init req */
 	{ "rtc",		"clk_32k",		0,	true},		/* rtc-tegra : must be always on */
+    { "kfuse",      "clk_m",    	0,  false}, /* kfuse-tegra */ /* always on - no init req */
 
+	{ "3d",     	"pll_c",    	0,  false},		/* tegra_grhost, gr3d */
+	{ "2d",     	"pll_c",    	0,  false},		/* tegra_grhost, gr2d */
+	{ "epp",    	"pll_c",    	0, 	false}, 	/* tegra_grhost */	
+    { "mpe", 		"pll_c", 		0, false}, /* tegra_grhost */
+	{ "host1x",		"pll_p",		0,	false},		/* tegra_grhost */
 	{ "vi",     	"pll_c",   		 0,  true},		/* tegra_camera */
 	{ "vi_sensor",	"pll_c",		 0,	true},		/* tegra_camera */
 	{ "csi",		"pll_p_out3",	 0,	true},		/* tegra_camera */
 	{ "isp",		"clk_m",		 0,	true},		/* tegra_camera */
 	{ "csus",		"clk_m",		 0,	true},		/* tegra_camera */
+	{ "pex",		"clk_m",		 0,	false},		/* pcie controller */
+	{ "afi",		"clk_m",		 0,	false},		/* pcie controller */
+	{ "pcie_xclk",	"clk_m",		 0,	false},		/* pcie controller */
 		
 
         { "i2s1",       "pll_a_out0",     	0,  	true},             /* i2s.0 */
@@ -147,9 +157,12 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
 //        { CDEV1,   NULL /*"pll_a_out0"*/,11289600,  false},             /* used as audio CODEC MCLK */
         { CDEV1,   NULL /*"pll_a_out0"*/,0,  true},             /* used as audio CODEC MCLK */
 #       endif
-
-//	{ CDEV2,   NULL,	26000000,  false}, 	/* probably used as USB clock - perhaps 24mhz ?*/	
+	
 	{ CDEV2,   NULL,	0,  false}, 	/* probably used as USB clock - perhaps 24mhz ?*/	
+    { "i2c1", "clk_m", 0, false}, /* tegra-i2c.0 */
+    { "i2c2", "clk_m", 0, false}, /* tegra-i2c.1 */
+    { "i2c3", "clk_m", 0, false}, /* tegra-i2c.2 */
+    { "dvc", "clk_m",  0, false}, /* tegra-i2c.3 */
 	{ "apbdma",		"pclk",			0,	true}, 	/* tegra-dma */
 	{ "uarta",		"pll_p",		216000000,	true},		/* tegra_uart.0 uart.0 */
 	{ "uartb", 	 	"pll_p",  	  	216000000,	false},		/* tegra_uart.1 uart.1 */
@@ -157,19 +170,53 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
 	{ "uartd",		"pll_p",		216000000,	false},		/* tegra_uart.3 uart.3 */
 	{ "uarte",		"pll_p",		216000000,	false},		/* tegra_uart.4 uart.4 */
 
-
-	
-//#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,38)	
-//	{ "dsia",		"pll_d",		  5000000,	false},		/* tegra_dc.0, tegra_dc.1 */
-//#else
-//	{ "dsia",		"pll_d_out0",	  2500000,	false},		/* tegra_dc.0, tegra_dc.1 - bug on kernel 2.6.36*/
+	{ "disp1",  	"pll_p",    	0, 	false},		/* tegradc.0 */
+	{ "disp2",  	"pll_p",    	0, 	false},		/* tegradc.1 */	
+	{ "dsia",		"pll_d_out0",	 0,	false},		/* tegra_dc.0, tegra_dc.1 - bug on kernel 2.6.36*/
 //#endif
-
+	{ "hdmi",		"clk_m",		 0,	false},		/* tegra_dc.0, tegra_dc.1 */
 	
+	{ "spi",		"clk_m",		 0,	false},
+	{ "xio",		"clk_m",		 0,	false},
+	{ "twc",		"clk_m",		 0,	false},
+	
+	{ "sbc1",		"clk_m",		 0,	false}, 	/* tegra_spi_slave.0 */
+	{ "sbc2",		"clk_m",		 0,	false}, 	/* tegra_spi_slave.1 */
+	{ "sbc3",		"clk_m",		 0,	false}, 	/* tegra_spi_slave.2 */
+	{ "sbc4",		"clk_m",		 0,	false}, 	/* tegra_spi_slave.3 */
+	
+	{ "ide",		"clk_m",		 0,	false},
 	{ "ndflash",	"pll_p",		0,	true},		/* tegra_nand -> should start disabled, but if we do, then nand stops working */
 		
+	{ "vfir",		"clk_m",		 0,	false},
+
+    { "sdmmc1", "pll_p", 0, true}, /* sdhci-tegra.0 */
+    { "sdmmc2", "pll_m", 0, false}, /* sdhci-tegra.1 */
+    { "sdmmc3", "pll_p", 0, false}, /* sdhci-tegra.2 */
+    { "sdmmc4", "pll_p", 0, false}, /* sdhci-tegra.3 */
+
+	{ "la",			"clk_m",		 0,	false},			
+
+	{ "owr",		"clk_m",		 0,	false},		/* tegra_w1 */
+	
+	{ "vcp",		"clk_m",		 0,	false},		/* tegra_avp */	
+	{ "bsea",		"clk_m",		 0,	false},		/* tegra_avp */	
+    { "vde", 		"pll_p",		 0, false}, /* tegra-avp */
+	
+	{ "bsev",		"clk_m",		 0,	false},		/* tegra_aes */	
+
+	{ "nor",		"clk_m",		 0,	false},			
+	{ "mipi",		"clk_m",		 0,	false},			
+	{ "cve",		"clk_m",		 0,	false},			
+	{ "tvo",		"clk_m",		 0,	false},			
+	{ "tvdac",		"clk_m",		 0,	false},			
+
+    { "usbd",		"clk_m", 		 0, true}, /* fsl-tegra-udc , utmip-pad , tegra_ehci.0 , tegra_otg */
+	{ "usb2",		"clk_m",		 0,	false},		/* tegra_ehci.1 */
+    { "usb3", 		"clk_m", 		 0, true}, /* tegra_ehci.2 */
 	{ "pwm",    	"clk_m",   		 0,  true},		/* tegra-pwm.0 tegra-pwm.1 tegra-pwm.2 tegra-pwm.3*/
-	{ "blink",		"clk_32k",			0,	true},		/* used for bluetooth */
+	{ "kbc",		"clk_32k",		 0,	false},		/* tegra-kbc */
+	{ "blink",		"clk_32k",		 0,	true},		/* used for bluetooth */
 	{ NULL,		NULL,		0,		0},
 };
 
