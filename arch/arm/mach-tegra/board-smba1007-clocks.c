@@ -100,6 +100,9 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
         { "pll_a_out0", 	"pll_a",         73728000,      true},          /* always on - i2s audio */
 #       endif
 #endif
+    { "pll_e", "clk_m", 			0, true},  /*unknown*/
+    { "pll_d", "clk_m", 			0, true}, /* hdmi clock */
+    { "pll_d_out0", "pll_d", 		0, true}, /* hdmi clock */
 	{ "clk_d",		"clk_m",		0,	true},
 
 	/* pll_u is a clock source for the USB bus */
@@ -113,6 +116,7 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
 	{ "timer",		"clk_m",		0,	true},		/* timer */ /* always on - no init req */
 	{ "rtc",		"clk_32k",		0,	true},		/* rtc-tegra : must be always on */
 
+	{ "vi",     	"pll_c",   		 0,  true},		/* tegra_camera */
 	{ "vi_sensor",	"pll_c",		 0,	true},		/* tegra_camera */
 	{ "csi",		"pll_p_out3",	 0,	true},		/* tegra_camera */
 	{ "isp",		"clk_m",		 0,	true},		/* tegra_camera */
@@ -147,7 +151,7 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
 //	{ CDEV2,   NULL,	26000000,  false}, 	/* probably used as USB clock - perhaps 24mhz ?*/	
 	{ CDEV2,   NULL,	0,  false}, 	/* probably used as USB clock - perhaps 24mhz ?*/	
 	{ "apbdma",		"pclk",			0,	true}, 	/* tegra-dma */
-	{ "uarta",		"pll_p",		0,	true},		/* tegra_uart.0 uart.0 */
+	{ "uarta",		"pll_p",		216000000,	true},		/* tegra_uart.0 uart.0 */
 	
 //#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,38)	
 //	{ "dsia",		"pll_d",		  5000000,	false},		/* tegra_dc.0, tegra_dc.1 */
