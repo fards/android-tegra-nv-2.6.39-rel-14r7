@@ -152,6 +152,12 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
 	{ CDEV2,   NULL,	0,  false}, 	/* probably used as USB clock - perhaps 24mhz ?*/	
 	{ "apbdma",		"pclk",			0,	true}, 	/* tegra-dma */
 	{ "uarta",		"pll_p",		216000000,	true},		/* tegra_uart.0 uart.0 */
+	{ "uartb", 	 	"pll_p",  	  	216000000,	false},		/* tegra_uart.1 uart.1 */
+	{ "uartc",		"pll_p",		216000000,	false},		/* tegra_uart.2 uart.2 */
+	{ "uartd",		"pll_p",		216000000,	false},		/* tegra_uart.3 uart.3 */
+	{ "uarte",		"pll_p",		216000000,	false},		/* tegra_uart.4 uart.4 */
+
+
 	
 //#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,38)	
 //	{ "dsia",		"pll_d",		  5000000,	false},		/* tegra_dc.0, tegra_dc.1 */
