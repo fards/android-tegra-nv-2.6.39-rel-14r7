@@ -107,7 +107,7 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
 	{ "clk_d",		"clk_m",		0,	true},
 
 	/* pll_u is a clock source for the USB bus */
-	{ "pll_u",  	"clk_m",    	0,  true},		/* USB ulpi clock */
+	{ "pll_u",  	"clk_m",    	0,  false},		/* USB ulpi clock */
 
         /* pll_x */
     { "pll_x", "clk_m",				0, true}, /* */
@@ -164,11 +164,11 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
     { "i2c3", "clk_m", 0, false}, /* tegra-i2c.2 */
     { "dvc", "clk_m",  0, false}, /* tegra-i2c.3 */
 	{ "apbdma",		"pclk",			0,	true}, 	/* tegra-dma */
-	{ "uarta",		"pll_p",		216000000,	true},		/* tegra_uart.0 uart.0 */
-	{ "uartb", 	 	"pll_p",  	  	216000000,	false},		/* tegra_uart.1 uart.1 */
-	{ "uartc",		"pll_p",		216000000,	false},		/* tegra_uart.2 uart.2 */
-	{ "uartd",		"pll_p",		216000000,	false},		/* tegra_uart.3 uart.3 */
-	{ "uarte",		"pll_p",		216000000,	false},		/* tegra_uart.4 uart.4 */
+	{ "uarta",		"pll_p",		0,	true},		/* tegra_uart.0 uart.0 */
+	{ "uartb", 	 	"pll_p",  	  	0,	false},		/* tegra_uart.1 uart.1 */
+	{ "uartc",		"pll_p",		0,	true},		/* tegra_uart.2 uart.2 */
+	{ "uartd",		"pll_p",		0,	false},		/* tegra_uart.3 uart.3 */
+	{ "uarte",		"pll_p",		0,	false},		/* tegra_uart.4 uart.4 */
 
 	{ "disp1",  	"pll_p",    	0, 	false},		/* tegradc.0 */
 	{ "disp2",  	"pll_p",    	0, 	false},		/* tegradc.1 */	
@@ -215,8 +215,8 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
 	{ "usb2",		"clk_m",		 0,	false},		/* tegra_ehci.1 */
     { "usb3", 		"clk_m", 		 0, true}, /* tegra_ehci.2 */
 	{ "pwm",    	"clk_m",   		 0,  true},		/* tegra-pwm.0 tegra-pwm.1 tegra-pwm.2 tegra-pwm.3*/
-	{ "kbc",		"clk_32k",		 0,	false},		/* tegra-kbc */
-	{ "blink",		"clk_32k",		 0,	true},		/* used for bluetooth */
+	{ "kbc",		"clk_32k",			32768,	false},		/* tegra-kbc */
+	{ "blink",		"clk_32k",			32768,	true},		/* used for bluetooth */
 	{ NULL,		NULL,		0,		0},
 };
 
