@@ -171,8 +171,6 @@ obj-${CONFIG_TEGRA_BB_XMM_POWER2}       += baseband-xmm-power2.o
 
 # smba1007 arch drivers
 obj-${CONFIG_MACH_SMBA1007}              += board-smba1007-aes.o
-#obj-${CONFIG_MACH_SMBA1007}              += board-smba1007-audio.o
-#obj-${CONFIG_MACH_SMBA1007}              += board-smba1007-jack.o
 obj-${CONFIG_MACH_SMBA1007}		+= board-smba1007-audio.o
 obj-${CONFIG_MACH_SMBA1007}              += board-smba1007-bootinfo.o
 obj-${CONFIG_MACH_SMBA1007}              += board-smba1007-bt.o
@@ -187,7 +185,7 @@ obj-${CONFIG_MACH_SMBA1007}              += board-smba1007-memory.o
 obj-${CONFIG_MACH_SMBA1007}              += board-smba1007-nand.o
 obj-${CONFIG_MACH_SMBA1007}              += board-smba1007-pinmux.o
 obj-${CONFIG_MACH_SMBA1007}              += board-smba1007-power.o
-#obj-${CONFIG_MACH_SMBA1007}              += board-smba1007-sdhci.o
+obj-${CONFIG_MACH_SMBA1007}              += board-smba1007-sdhci.o
 obj-${CONFIG_MACH_SMBA1007}              += board-smba1007-sensors.o
 obj-${CONFIG_MACH_SMBA1007}              += board-smba1007-spi.o
 obj-${CONFIG_MACH_SMBA1007}              += board-smba1007-touch.o
@@ -197,4 +195,3 @@ obj-${CONFIG_MACH_SMBA1007}              += board-smba1007-wake.o
 obj-${CONFIG_MACH_SMBA1007}              += board-smba1007-wdt.o
 #obj-${CONFIG_MACH_SMBA1007}              += board-smba1007-wlan.o
 obj-${CONFIG_MACH_SMBA1007}              += board-smba1007.o
-obj-${CONFIG_MACH_SMBA1007}              += board-smba1007-sdhci.o
