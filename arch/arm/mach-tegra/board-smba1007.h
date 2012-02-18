@@ -86,8 +86,8 @@
 #define	SMBA1007_ENABLE_VDD_VID	TEGRA_GPIO_PD1	/* 1=enabled.  Powers HDMI. Wait 500uS to let it stabilize before returning */
 
 // TODO: Find whether there are any definitions for these?
-#define SMBA1007_SDIO0_CD		TEGRA_GPIO_PI5
-#define SMBA1007_SDIO0_POWER	TEGRA_GPIO_PD0	/* SDIO0 and SDIO2 power */
+//#define SMBA1007_SDIO0_CD		TEGRA_GPIO_PI5
+//#define SMBA1007_SDIO0_POWER	TEGRA_GPIO_PD0	/* SDIO0 and SDIO2 power */
 
 #define SMBA1007_SDHC_CD		TEGRA_GPIO_PI5
 #define SMBA1007_SDHC_WP		-1	/*1=Write Protected */
@@ -157,7 +157,7 @@ extern int smba1007_wlan_pm_register_devices(void);
 extern void smba1007_setup_bluesleep(void);
 extern void smba1007_bt_rfkill(void);
 extern int smba1007_nand_register_devices(void);
-extern int smba1007_camera_register_devices(void);
+//extern int smba1007_camera_register_devices(void);
 
 /* Autocalculate framebuffer sizes */
 

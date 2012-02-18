@@ -62,6 +62,10 @@ static struct platform_device smba1007_wifi_device = {
 };
 
 
+static unsigned int smba1007_wlan_status(struct device *dev)
+{
+	return smba1007_wlan_cd;
+}
 
 static int smba1007_wifi_status_register(
 		void (*callback)(int card_present, void *dev_id),
@@ -88,10 +92,10 @@ static struct embedded_sdio_data embedded_sdio_data0 = {
         },
 };
 
-static unsigned int smba1007_wifi_status(struct device *dev)
+/*static unsigned int smba1007_wifi_status(struct device *dev)
 {
 	return smba1007_wlan_cd;
-}
+}*/
 struct tegra_sdhci_platform_data smba1007_wlan_data = {
 //        .clk_id = NULL,
 //        .force_hs = 0,
@@ -99,7 +103,7 @@ struct tegra_sdhci_platform_data smba1007_wlan_data = {
         	.register_status_notify = smba1007_wifi_status_register,
 		.embedded_sdio = &embedded_sdio_data0,
 		.built_in = 1,
-		.status = smba1007_wifi_status,
+		.status = smba1007_wlan_status,
 	},
 	.cd_gpio = -1,
 	.wp_gpio = -1,
