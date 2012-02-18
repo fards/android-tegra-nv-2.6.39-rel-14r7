@@ -22,8 +22,6 @@
 #define SMBA1007_BT_RESET 		TEGRA_GPIO_PU0 	/* 0= reset asserted */
 
 /* GPS and Magnetic sensor share the same enabling IO line */
-#define SMBA1007_GPSMAG_DISABLE  	TEGRA_GPIO_PV3 	/* 0= disabled */
-#define SMBA1007_3G_DISABLE		TEGRA_GPIO_PJ2 /* 0 = disabled */
 #define SMBA1007_KEY_VOLUMEUP 		TEGRA_GPIO_PD4 	/* 0=pressed */
 #define SMBA1007_KEY_VOLUMEDOWN 	TEGRA_GPIO_PV4 	/* 0=pressed */
 #define SMBA1007_KEY_POWER 		TEGRA_GPIO_PV2 	/* 0=pressed */
@@ -33,9 +31,6 @@
 /* #define SMBA1007_EMC_ELPIDA50NM	*/
 /* #define SMBA1007_EMC_ELPIDA40NM	*/
 
-
-#define SMBA1007_CAMERA_POWER 	TEGRA_GPIO_PBB5 /* 1=powered on */
-#define SMBA1007_CAMERA_ROTATION	TEGRA_GPIO_PX7
 
 #define SMBA1007_NAND_WPN		TEGRA_GPIO_PC7	/* NAND flash write protect: 0=writeprotected */
 
@@ -61,7 +56,7 @@
 //#define SMBA1007_GPU_MEM_SIZE 	(3*SZ_32M)		/* Memory reserved for GPU */
 
 #define SMBA1007_FB1_MEM_SIZE 	SZ_8M			/* Memory reserved for Framebuffer 1: LCD */
-#define SMBA1007_FB2_MEM_SIZE 	SZ_8M			/* Memory reserved for Framebuffer 2: HDMI out */
+#define SMBA1007_FB2_MEM_SIZE 	SZ_4M			/* Memory reserved for Framebuffer 2: HDMI out */
 
 #define DYNAMIC_GPU_MEM 1						/* use dynamic memory for GPU */
 
@@ -129,9 +124,9 @@
 /* The switch used to indicate rotation lock */
 //#define SW_ROTATION_LOCK 	(SW_MAX-1)
 
-extern void smba1007_gps_mag_poweron(void);
-extern void smba1007_gps_mag_poweroff(void);
-extern void smba1007_gps_mag_init(void);
+//extern void smba1007_gps_mag_poweron(void);
+//extern void smba1007_gps_mag_poweroff(void);
+//extern void smba1007_gps_mag_init(void);
 extern int smba1007_bt_wifi_gpio_set(bool on);
 extern int smba1007_bt_wifi_gpio_init(void);
 

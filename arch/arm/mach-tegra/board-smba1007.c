@@ -327,7 +327,7 @@ static int __init get_cfg_from_tags(void)
 		
 		/* Until we find out if the bootloader supports the workaround required to implement
 		   LP0, disable it */
-		//tegra_lp0_vec_start = tegra_lp0_vec_size = 0;
+		tegra_lp0_vec_start = tegra_lp0_vec_size = 0;
 
 	}
 	
@@ -665,9 +665,6 @@ static void __init tegra_smba1007_init(void)
 	/* Register touchscreen devices */
 	smba1007_touch_register_devices();
 	
-	/* Register SDHCI devices */
-	smba1007_sdhci_register_devices();
-
 	/* Register accelerometer device */
 	smba1007_sensors_register_devices();
 	
@@ -690,6 +687,9 @@ static void __init tegra_smba1007_init(void)
 	/* Register NAND flash devices */
 	smba1007_nand_register_devices();
 	
+	
+	/* Register SDHCI devices */
+	smba1007_sdhci_register_devices();
 	
 	tegra_release_bootloader_fb();
 #ifdef CONFIG_TEGRA_WDT_RECOVERY

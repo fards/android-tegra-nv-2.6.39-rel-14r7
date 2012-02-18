@@ -54,7 +54,7 @@ static struct wifi_platform_data smba1007_wifi_control = {
 
 
 static struct platform_device smba1007_wifi_device = {
-        .name           = "bcm4329_wlan",
+        .name           = "bcmdhd_wlan",
         .id             = 1,
         .dev            = {
                 .platform_data = &smba1007_wifi_control,
@@ -138,7 +138,8 @@ static int smba1007_wifi_power(int on)
 
 static int smba1007_wifi_reset(int on)
 {
-        pr_debug("%s: do nothing\n", __func__);
+      gpio_set_value(SMBA1007_WLAN_RESET, !on);
+ 	   pr_debug("%s: %d\n", __func__, on);
         return 0;
 }
 
