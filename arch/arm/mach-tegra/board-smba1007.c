@@ -37,6 +37,10 @@
 #include <asm/mach/arch.h>
 #include <asm/mach/time.h>
 #include <asm/setup.h>
+#include <linux/mfd/tps6586x.h>
+#include "fuse.h"
+
+
 
 #include <mach/io.h>
 #include <mach/w1.h>
@@ -637,6 +641,7 @@ static void __init tegra_smba1007_init(void)
 	
 	/* Register the USB device */
 	smba1007_usb_register_devices();
+
 
 	/* Register UART devices */
 	smba1007_uart_register_devices();

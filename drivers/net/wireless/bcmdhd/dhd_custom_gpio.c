@@ -130,9 +130,9 @@ dhd_customer_gpio_wlan_ctrl(int onoff)
 			bcm_wlan_power_off(2);
 #endif /* CUSTOMER_HW */
 #ifdef CUSTOMER_HW2
-	//		msleep(50);
+			msleep(50);
 			wifi_set_power(0, 0);
-		  msleep(100);
+		  msleep(50);
 		  wifi_set_power(1, 0);
 #endif
 			WL_ERROR(("=========== WLAN placed in RESET ========\n"));
@@ -255,7 +255,7 @@ const struct cntry_locales_custom translate_custom_table[] = {
 */
 void get_customized_country_code(char *country_iso_code, wl_country_t *cspec)
 {
-#if defined(CUSTOMER_HW2) && (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 39))
+//#if defined(CUSTOMER_HW2) && (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 39))
 
 	struct cntry_locales_custom *cloc_ptr;
 
@@ -268,30 +268,6 @@ void get_customized_country_code(char *country_iso_code, wl_country_t *cspec)
 		cspec->rev = cloc_ptr->custom_locale_rev;
 	}
 	return;
-#else
-	int size, i;
 
-	size = ARRAYSIZE(translate_custom_table);
-
-	if (cspec == 0)
-		 return;
-
-	if (size == 0)
-		 return;
-
-	for (i = 0; i < size; i++) {
-		if (strcmp(country_iso_code, translate_custom_table[i].iso_abbrev) == 0) {
-			memcpy(cspec->ccode,
-				translate_custom_table[i].custom_locale, WLC_CNTRY_BUF_SZ);
-			cspec->rev = translate_custom_table[i].custom_locale_rev;
-			return;
-		}
-	}
-#ifdef EXAMPLE_TABLE
-	/* if no country code matched return first universal code from translate_custom_table */
-	memcpy(cspec->ccode, translate_custom_table[0].custom_locale, WLC_CNTRY_BUF_SZ);
-	cspec->rev = translate_custom_table[0].custom_locale_rev;
-#endif /* EXMAPLE_TABLE */
-	return;
-#endif /* defined(CUSTOMER_HW2) && (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 39)) */
+//#endif /* defined(CUSTOMER_HW2) && (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 39)) */
 }

@@ -63,12 +63,12 @@
 static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
 	/* name			parent				rate	enabled */
 	/* always on clocks */
-	
+	{ "pll_m",		NULL,			0,	true},		/* always on - memory clocks */	
 	/* 32khz system clock */
-	{ "clk_32k",	NULL,				32768,	true},		/* always on */
+	{ "clk_32k",	NULL,			32768,	true},		/* always on */
 
 	/* Master clock */
-	{ "clk_m",		NULL,		 	 		0,	true},	 	/* must be always on - Frequency will be autodetected */
+	{ "clk_m",		NULL,		 	  0,	true},	 	/* must be always on - Frequency will be autodetected */
 	
 	/* pll_s generates the master clock */
 	{ "pll_s",		"clk_32k",		 0,	true},		/* must be always on */
@@ -77,7 +77,7 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
     { "pll_p_out2", "pll_p", 		0, true}, /* must be always on - usb perhaps ? unused ?*/
 	{ "pll_p_out3",	"pll_p",		0,	true},		/* must be always on - i2c, camera */
 	{ "pll_p_out4",	"pll_p",		0,	true},		/* must be always on - USB ulpi */
-	{ "pll_m",		"clk_m",		0,	true},		/* always on - memory clocks */	
+
 	{ "pll_m_out1",	"pll_m",		0,	true},		/* always on - unused ?*/
 	{ "emc",		"pll_m",		0,	true},		/* always on */
 	{ "pll_c",		"clk_m",		0,	true},		/* always on - graphics and camera clocks */
@@ -116,8 +116,7 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
 	{ "csite",		"pll_p",		0 ,	true},		/* csite - coresite */ /* always on */
 	{ "timer",		"clk_m",		0,	true},		/* timer */ /* always on - no init req */
 	{ "rtc",		"clk_32k",		0,	true},		/* rtc-tegra : must be always on */
-    { "kfuse",      "clk_m",    	0,  false}, /* kfuse-tegra */ /* always on - no init req */
-
+    { "kfuse",      "clk_m",    	0,  true}, /* kfuse-tegra */ /* always on - no init req */
 	{ "3d",     	"pll_c",    	0,  false},		/* tegra_grhost, gr3d */
 	{ "2d",     	"pll_c",    	0,  false},		/* tegra_grhost, gr2d */
 	{ "epp",    	"pll_c",    	0, 	false}, 	/* tegra_grhost */	
@@ -131,7 +130,7 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
 	{ "pex",		"clk_m",		 0,	false},		/* pcie controller */
 	{ "afi",		"clk_m",		 0,	false},		/* pcie controller */
 	{ "pcie_xclk",	"clk_m",		 0,	false},		/* pcie controller */
-		
+	{ "stat_mon",   "clk_m",		 0, true}, /*enabled by bootloader*/	
 
         { "i2s1",       "pll_a_out0",     	0,  	true},             /* i2s.0 */
         { "i2s2",       "pll_a_out0",       0,      true},         /* i2s.1 */

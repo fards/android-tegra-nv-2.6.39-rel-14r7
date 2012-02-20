@@ -76,7 +76,7 @@ hub-less systems.
 #include "gpio-names.h"
 #include "devices.h"
 
-#ifdef CONFIG_USB_SUPPORT
+//#ifdef CONFIG_USB_SUPPORT
 
 static struct tegra_utmip_config utmi_phy_config[] = {
 	[0] = {
@@ -111,7 +111,7 @@ static struct tegra_ehci_platform_data tegra_ehci_pdata[] = {
 		.phy_config = &utmi_phy_config[1],
 		.operating_mode = TEGRA_USB_HOST,
 		.power_down_on_bus_suspend = 1,
-	//	.hotplug = 0,
+		.hotplug = 0,
 	},
 };
 
@@ -177,7 +177,7 @@ static void tegra_usb_otg_host_unregister(struct platform_device *pdev)
 	   is plugged into the Tegra USB port, then we will 
 	   detect the power it supplies and go into gadget 
 	   mode */
-//	gpio_direction_output(SMBA1007_USB0_VBUS, 0); 
+	gpio_direction_output(SMBA1007_USB0_VBUS, 0); 
 
 	/* Leave some time for stabilization purposes - This 
 	   should unregister all attached devices, as they
@@ -285,11 +285,11 @@ static struct attribute_group usb_attr_group = {
 	.attrs	= usb_sysfs_entries,
 }; 
 
-#endif
+//#endif
 
 int __init smba1007_usb_register_devices(void)
 {
-#ifdef CONFIG_USB_SUPPORT
+//#ifdef CONFIG_USB_SUPPORT
 	int ret;
 	
 	tegra_ehci1_device.dev.platform_data = &tegra_ehci_pdata[0];
@@ -321,7 +321,6 @@ int __init smba1007_usb_register_devices(void)
 	
 	/* Attach an attribute to the already registered usbbus to let the user switch usb modes */
 	return sysfs_create_group(usb_kobj, &usb_attr_group); 
-#else
-	return 0;
-#endif	
+
+//#endif	
 }

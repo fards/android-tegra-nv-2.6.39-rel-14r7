@@ -17,19 +17,23 @@
 #ifndef _MACH_TEGRA_BOARD_SMBA1007_H
 #define _MACH_TEGRA_BOARD_SMBA1007_H
 
-#define TPS6586X_INT_BASE	TEGRA_NR_IRQS
-
-#define SMBA1007_BT_RESET 		TEGRA_GPIO_PU0 	/* 0= reset asserted */
-
+// Input
 /* GPS and Magnetic sensor share the same enabling IO line */
 #define SMBA1007_KEY_VOLUMEUP 		TEGRA_GPIO_PD4 	/* 0=pressed */
 #define SMBA1007_KEY_VOLUMEDOWN 	TEGRA_GPIO_PV4 	/* 0=pressed */
 #define SMBA1007_KEY_POWER 		TEGRA_GPIO_PV2 	/* 0=pressed */
 //#define SMBA1007_KEY_BACK		TEGRA_GPIO_PH0	/* 0=pressed */
 
-/* #define SMBA1007_EMC_SAMSUNG		*/
-/* #define SMBA1007_EMC_ELPIDA50NM	*/
-/* #define SMBA1007_EMC_ELPIDA40NM	*/
+#define SMBA1007_HDMI_HPD		TEGRA_GPIO_PN7 /* 1=HDMI plug detected */
+#define SMBA1007_TS_IRQ		TEGRA_GPIO_PJ7
+#define SMBA1007_HP_DETECT		TEGRA_GPIO_PW2 	/* HeadPhone detect for audio codec: 1=Hedphone plugged */
+#define SMBA1007_TEMP_ALERT		TEGRA_GPIO_PN6
+#define	SMBA1007_ACCEL_INT		TEGRA_GPIO_PJ0
+#define	SMBA1007_ECOMP_INT		TEGRA_GPIO_PU1
+#define	SMBA1007_BT_IRQ		TEGRA_GPIO_PU6
+#define	SMBA1007_INT_LIGHTSENS	TEGRA_GPIO_PV5
+#define	SMBA1007_ADAPTER_DET	TEGRA_GPIO_PH2
+#define	SMBA1007_CAP_INT		TEGRA_GPIO_PV6
 
 
 #define SMBA1007_NAND_WPN		TEGRA_GPIO_PC7	/* NAND flash write protect: 0=writeprotected */
@@ -39,9 +43,44 @@
 #define SMBA1007_EN_VDD_PANEL	TEGRA_GPIO_PC6 
 #define SMBA1007_BL_VDD			TEGRA_GPIO_PW0
 #define SMBA1007_BL_PWM			TEGRA_GPIO_PU3 /* PWM */
-#define SMBA1007_HDMI_ENB		TEGRA_GPIO_PV5 /* unconfirmed */ // Does smba1007 have HDMI enbl?
-#define SMBA1007_HDMI_HPD		TEGRA_GPIO_PN7 /* 1=HDMI plug detected */
+#define	SMBA1007_ENABLE_VDD_VID	TEGRA_GPIO_PD1	/* 1=enabled.  Powers HDMI. Wait 500uS to let it stabilize before returning */
+#define SMBA1007_SDHC_CD		TEGRA_GPIO_PI5
+#define SMBA1007_SDHC_WP		-1		/*1=Write Protected */
+#define SMBA1007_SDHC_POWER		TEGRA_GPIO_PD0
+#define SMBA1007_WLAN_POWER 	TEGRA_GPIO_PK5
+#define SMBA1007_WLAN_RESET 	TEGRA_GPIO_PK6
+#define SMBA1007_BT_RST		TEGRA_GPIO_PU0
+#define SMBA1007_LOW_BATT		TEGRA_GPIO_PW3 /*(0=low battery)*/
+#define SMBA1007_IN_S3		TEGRA_GPIO_PAA7 /*1 = in S3 */
+#define SMBA1007_BT_RESET 		TEGRA_GPIO_PU0 	/* 0= reset asserted */
+#define SMBA1007_TS_RESET		TEGRA_GPIO_PH1
+#define SMBA1007_TS_POWER		TEGRA_GPIO_PK2
+#define SMBA1007_NVEC_REQ		TEGRA_GPIO_PD0	/* Set to 0 to send a command to the NVidia Embedded controller */
+						// Possible conflict: PD0 is actually VDDIO_SD?	
+#define	SMBA1007_CHARGE_LED_SW	TEGRA_GPIO_PH3
+#define	SMBA1007_LED_CPU_NORMAL	TEGRA_GPIO_PI3		// Yellow
+#define	SMBA1007_LED_CPU_BUSY	TEGRA_GPIO_PI4		// Red
+#define	SMBA1007_EMMC_VDDIO_EN	TEGRA_GPIO_PI6
+#define	SMBA1007_CHARGE_EN		TEGRA_GPIO_PK7
+#define	SMBA1007_LED_BATFULL	TEGRA_GPIO_PU2
+#define	SMBA1007_BT_WAKEUP		TEGRA_GPIO_PU5
+#define	SMBA1007_LED_CHARGE		TEGRA_GPIO_PV1
+#define	SMBA1007_INT_MIC_EN		TEGRA_GPIO_PX0
 
+/* Conflicts:
+ * These are conflicts between previous and current GPIO research:
+ * ---
+ * #define SMBA1007_HDMI_ENB		TEGRA_GPIO_PV5 // unconfirmed  Does adam have HDMI enbl?
+ * PV5 is light sensor interrupt line...
+ * ---
+ * #define SMBA1007_USB0_VBUS          TEGRA_GPIO_PB0  // 1= VBUS usb0
+ * #define SMBA1007_USB1_RESET         TEGRA_GPIO_PV1  // 0= reset 
+ * PB0 is the 3G W_DISABLE line, PV1 is LED_CHARGE
+ * ---
+ */
+
+#define SMBA1007_WAKE_KEY_POWER  	TEGRA_WAKE_GPIO_PV2
+#define SMBA1007_WAKE_KEY_RESUME 	TEGRA_WAKE_GPIO_PV2
 #define SMBA1007_BL_PWM_ID		0				/* PWM0 controls backlight */
 
 #define SMBA1007_FB_PAGES		2				/* At least, 2 video pages */
@@ -79,6 +118,8 @@
 
 #define ALC5623_GPIO_BASE	(TEGRA_NR_GPIOS + 16)
 #define ALC5623_GP0		(ALC5623_GPIO_BASE)
+
+#define TPS6586X_INT_BASE	TEGRA_NR_IRQS
 
 #define PMU_IRQ_BASE		(TEGRA_NR_IRQS)
 #define PMU_IRQ_RTC_ALM1 	(TPS6586X_INT_BASE + TPS6586X_INT_RTC_ALM1)
