@@ -62,12 +62,11 @@ static struct platform_device smba1007_wifi_device = {
 };
 
 
-/*
-static unsigned int smba1007_wlan_status(struct device *dev)
+/* 2.6.36 version has a hook to check card status. Use it */
+static unsigned int smba1002_wlan_status(struct device *dev)
 {
-	return smba1007_wlan_cd;
+	return smba1002_wlan_cd;
 }
-*/
 
 static int smba1007_wifi_status_register(
 		void (*callback)(int card_present, void *dev_id),
@@ -94,11 +93,7 @@ static struct embedded_sdio_data embedded_sdio_data0 = {
         },
 };
 
-static unsigned int smba1007_wlan_status(struct device *dev)
-{
-	return smba1007_wlan_cd;
-}
-struct tegra_sdhci_platform_data smba1007_wlan_data = {
+struct tegra_sdhci_platform_data smba1002_wlan_data = {
 //        .clk_id = NULL,
 //        .force_hs = 0,
 	.mmc_data = {
@@ -144,8 +139,7 @@ static int smba1007_wifi_power(int on)
 
 static int smba1007_wifi_reset(int on)
 {
-      gpio_set_value(SMBA1007_WLAN_RESET, !on);
- 	   pr_debug("%s: %d\n", __func__, on);
+        pr_debug("%s: do nothing\n", __func__);
         return 0;
 }
 

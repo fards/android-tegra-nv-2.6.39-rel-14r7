@@ -177,7 +177,7 @@ static void tegra_usb_otg_host_unregister(struct platform_device *pdev)
 	   is plugged into the Tegra USB port, then we will 
 	   detect the power it supplies and go into gadget 
 	   mode */
-	gpio_direction_output(SMBA1007_USB0_VBUS, 0); 
+//	gpio_direction_output(SMBA1007_USB0_VBUS, 0); 
 
 	/* Leave some time for stabilization purposes - This 
 	   should unregister all attached devices, as they
@@ -299,10 +299,10 @@ int __init smba1007_usb_register_devices(void)
 #endif
 
 	/* If in host mode, set VBUS to 1 */
-	gpio_request(SMBA1007_USB0_VBUS, "USB0 VBUS"); /* VBUS switch, perhaps ? -- Tied to what? -- should require +5v ... */
+//	gpio_request(SMBA1007_USB0_VBUS, "USB0 VBUS"); /* VBUS switch, perhaps ? -- Tied to what? -- should require +5v ... */
 	
 	/* 0 = Gadget */
-	gpio_direction_output(SMBA1007_USB0_VBUS, 0 ); /* Gadget */
+//	gpio_direction_output(SMBA1007_USB0_VBUS, 0 ); /* Gadget */
 	
 	ret = platform_add_devices(smba1007_usb_devices, ARRAY_SIZE(smba1007_usb_devices));
 	if (ret)

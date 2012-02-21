@@ -88,19 +88,9 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
     { "cop",    "sclk",             0,  false},         /* must be always on */
 	{ "hclk",		"sclk",			0,	true},		/* must be always on */
 	{ "pclk",		"hclk",			0,	true},		/* must be always on */
-	/* pll_a and pll_a_out0 are clock sources for audio interfaces */
-#ifdef ALC5623_IS_MASTER
-	{ "pll_a",		"pll_p_out1",	 73728000,	true},		/* always on - audio clocks */
-	{ "pll_a_out0",	"pll_a",		 73728000,	true},		/* always on - i2s audio */
-#else
-#       ifdef SMBA1007_48KHZ_AUDIO
-        { "pll_a",              "pll_p_out1",    73728000,      true},          /* always on - audio clocks */
-        { "pll_a_out0", 	"pll_a",         73728000,      true},          /* always on - i2s audio */
-#       else
-        { "pll_a",              "pll_p_out1",    56448000,      true},          /* always on - audio clocks */
-        { "pll_a_out0", 	"pll_a",         73728000,      true},          /* always on - i2s audio */
-#       endif
-#endif
+
+        { "pll_a",         "pll_p_out1",    0,      true},          /* always on - audio clocks */
+        { "pll_a_out0", 	"pll_a",         0,      true},          /* always on - i2s audio */
     { "pll_e", "clk_m", 			0, true},  /*unknown*/
     { "pll_d", "clk_m", 			0, true}, /* hdmi clock */
     { "pll_d_out0", "pll_d", 		0, true}, /* hdmi clock */
@@ -120,9 +110,9 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
 	{ "3d",     	"pll_c",    	0,  false},		/* tegra_grhost, gr3d */
 	{ "2d",     	"pll_c",    	0,  false},		/* tegra_grhost, gr2d */
 	{ "epp",    	"pll_c",    	0, 	false}, 	/* tegra_grhost */	
-    { "mpe", 		"pll_c", 		0, false}, /* tegra_grhost */
-	{ "host1x",		"pll_p",		0,	false},		/* tegra_grhost */
-	{ "vi",     	"pll_c",   		 0,  true},		/* tegra_camera */
+    { "mpe", 	"pll_c", 		0,  false}, /* tegra_grhost */
+	{ "host1x",	"pll_p",		0,  false},		/* tegra_grhost */
+	{ "vi",     	"pll_c",   	 0,  true},		/* tegra_camera */
 	{ "vi_sensor",	"pll_c",		 0,	true},		/* tegra_camera */
 	{ "csi",		"pll_p_out3",	 0,	true},		/* tegra_camera */
 	{ "isp",		"clk_m",		 0,	true},		/* tegra_camera */
@@ -140,33 +130,20 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
         { "spdif_out",  "pll_a_out0",       0,  	true},
 
 	
-	/* cdev[1-2] take the configuration (clock parents) from the pinmux config, 
-	   That is why we are setting it to NULL */
-//#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,38)
-#define CDEV1 "cdev1"
-#define CDEV2 "cdev2"
-/*#else
-#define CDEV1 "clk_dev1"
-#define CDEV2 "clk_dev2"
-#endif*/
-#       ifdef SMBA1007_48KHZ_AUDIO
-//        { CDEV1,   NULL /*"pll_a_out0"*/,12288000,  false},             /* used as audio CODEC MCLK */
-        { CDEV1,   NULL /*"pll_a_out0"*/,0,  true},             /* used as audio CODEC MCLK */
-#       else
-//        { CDEV1,   NULL /*"pll_a_out0"*/,11289600,  false},             /* used as audio CODEC MCLK */
-        { CDEV1,   NULL /*"pll_a_out0"*/,0,  true},             /* used as audio CODEC MCLK */
-#       endif
-	
-	{ CDEV2,   NULL,	0,  false}, 	/* probably used as USB clock - perhaps 24mhz ?*/	
+
+
+    { "cdev1",   NULL, 0,  true},             /* used as audio CODEC MCLK */
+	{ "cdev2",   NULL,	0,  true}, 	/* probably used as USB clock - perhaps 24mhz ?*/	
+ 
     { "i2c1", "clk_m", 0, false}, /* tegra-i2c.0 */
     { "i2c2", "clk_m", 0, false}, /* tegra-i2c.1 */
     { "i2c3", "clk_m", 0, false}, /* tegra-i2c.2 */
     { "dvc", "clk_m",  0, false}, /* tegra-i2c.3 */
-	{ "apbdma",		"pclk",			0,	true}, 	/* tegra-dma */
+	{ "apbdma",	"pclk",		0,	true}, 	/* tegra-dma */
 	{ "uarta",		"pll_p",		0,	true},		/* tegra_uart.0 uart.0 */
-	{ "uartb", 	 	"pll_p",  	  	0,	false},		/* tegra_uart.1 uart.1 */
-	{ "uartc",		"pll_p",		0,	true},		/* tegra_uart.2 uart.2 */
-	{ "uartd",		"pll_p",		0,	false},		/* tegra_uart.3 uart.3 */
+	{ "uartb", 	"pll_p",  	  	216000000,	false},		/* tegra_uart.1 uart.1 */
+	{ "uartc",		"pll_p",		216000000,	false},		/* tegra_uart.2 uart.2 */
+	{ "uartd",		"pll_p",		216000000,	false},		/* tegra_uart.3 uart.3 */
 	{ "uarte",		"pll_p",		0,	false},		/* tegra_uart.4 uart.4 */
 
 	{ "disp1",  	"pll_p",    	0, 	false},		/* tegradc.0 */
@@ -210,12 +187,12 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
 	{ "tvo",		"clk_m",		 0,	false},			
 	{ "tvdac",		"clk_m",		 0,	false},			
 
-    { "usbd",		"clk_m", 		 0, true}, /* fsl-tegra-udc , utmip-pad , tegra_ehci.0 , tegra_otg */
+    { "usbd",		"clk_m", 		 0, false}, /* fsl-tegra-udc , utmip-pad , tegra_ehci.0 , tegra_otg */
 	{ "usb2",		"clk_m",		 0,	false},		/* tegra_ehci.1 */
-    { "usb3", 		"clk_m", 		 0, true}, /* tegra_ehci.2 */
+    { "usb3", 	"clk_m", 		 0, false}, /* tegra_ehci.2 */
 	{ "pwm",    	"clk_m",   		 0,  true},		/* tegra-pwm.0 tegra-pwm.1 tegra-pwm.2 tegra-pwm.3*/
 	{ "kbc",		"clk_32k",			32768,	false},		/* tegra-kbc */
-	{ "blink",		"clk_32k",			32768,	true},		/* used for bluetooth */
+	{ "blink",		"clk_32k",			32768,	false},		/* used for bluetooth */
 	{ NULL,		NULL,		0,		0},
 };
 

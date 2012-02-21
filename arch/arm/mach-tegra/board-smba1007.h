@@ -57,6 +57,7 @@
 #define SMBA1007_TS_POWER		TEGRA_GPIO_PK2
 #define SMBA1007_NVEC_REQ		TEGRA_GPIO_PD0	/* Set to 0 to send a command to the NVidia Embedded controller */
 						// Possible conflict: PD0 is actually VDDIO_SD?	
+#define	SMBA1007_LED_BATLOW		TEGRA_GPIO_PC3
 #define	SMBA1007_CHARGE_LED_SW	TEGRA_GPIO_PH3
 #define	SMBA1007_LED_CPU_NORMAL	TEGRA_GPIO_PI3		// Yellow
 #define	SMBA1007_LED_CPU_BUSY	TEGRA_GPIO_PI4		// Red
@@ -124,43 +125,27 @@
 #define PMU_IRQ_BASE		(TEGRA_NR_IRQS)
 #define PMU_IRQ_RTC_ALM1 	(TPS6586X_INT_BASE + TPS6586X_INT_RTC_ALM1)
 
-#define	SMBA1007_ENABLE_VDD_VID	TEGRA_GPIO_PD1	/* 1=enabled.  Powers HDMI. Wait 500uS to let it stabilize before returning */
+
 
 // TODO: Find whether there are any definitions for these?
 #define SMBA1007_SDIO0_CD		TEGRA_GPIO_PI5
 #define SMBA1007_SDIO0_POWER	TEGRA_GPIO_PD0	/* SDIO0 and SDIO2 power */
 
-#define SMBA1007_SDHC_CD		TEGRA_GPIO_PI5
-#define SMBA1007_SDHC_WP		-1	/*1=Write Protected */
-#define SMBA1007_SDHC_POWER	TEGRA_GPIO_PD0
 
-#define SMBA1007_TS_IRQ		TEGRA_GPIO_PJ7
-#define SMBA1007_TS_RESET	TEGRA_GPIO_PH1
-#define SMBA1007_TS_POWER	TEGRA_GPIO_PK2
-//#define SMBA1007_TS_DISABLE	TEGRA_GPIO_PAA6 /* 0=enabled */
+
+
+
+//#define ADAM_TS_DISABLE	TEGRA_GPIO_PAA6 /* 0=enabled */
 
 //#define SMBA1007_FB_NONROTATE TEGRA_GPIO_PH1 /*1 = screen rotation locked */
 
-#define SMBA1007_WLAN_POWER 	TEGRA_GPIO_PK5
-#define SMBA1007_WLAN_RESET 	TEGRA_GPIO_PK6
 
-#define SMBA1007_BT_RST		TEGRA_GPIO_PU0
 
-#define SMBA1007_LOW_BATT	TEGRA_GPIO_PW3 /*(0=low battery)*/
-#define SMBA1007_IN_S3		TEGRA_GPIO_PAA7 /*1 = in S3 */
 
-#define SMBA1007_USB0_VBUS		TEGRA_GPIO_PB0		/* 1= VBUS usb0 */
-#define SMBA1007_USB1_RESET		TEGRA_GPIO_PV1	/* 0= reset */
 
-#define SMBA1007_HP_DETECT	TEGRA_GPIO_PW2 	/* HeadPhone detect for audio codec: 1=Hedphone plugged */
-
-#define SMBA1007_NVEC_REQ	TEGRA_GPIO_PD0	/* Set to 0 to send a command to the NVidia Embedded controller */
 #define SMBA1007_NVEC_I2C_ADDR 0x8a 			/* I2C address of Tegra, when acting as I2C slave */
 
-#define SMBA1007_WAKE_KEY_POWER  TEGRA_WAKE_GPIO_PV2
-#define SMBA1007_WAKE_KEY_RESUME TEGRA_WAKE_GPIO_PV2
 
-#define SMBA1007_TEMP_ALERT	TEGRA_GPIO_PN6
 
 /* The switch used to indicate rotation lock */
 //#define SW_ROTATION_LOCK 	(SW_MAX-1)
