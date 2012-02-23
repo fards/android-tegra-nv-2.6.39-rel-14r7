@@ -189,10 +189,10 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
 
     { "usbd",		"clk_m", 		 0, false}, /* fsl-tegra-udc , utmip-pad , tegra_ehci.0 , tegra_otg */
 	{ "usb2",		"clk_m",		 0,	false},		/* tegra_ehci.1 */
-    { "usb3", 	"clk_m", 		 0, false}, /* tegra_ehci.2 */
-	{ "pwm",    	"clk_m",   		 0,  true},		/* tegra-pwm.0 tegra-pwm.1 tegra-pwm.2 tegra-pwm.3*/
-	{ "kbc",		"clk_32k",			32768,	false},		/* tegra-kbc */
-	{ "blink",		"clk_32k",			32768,	true},		/* used for bluetooth */
+    { "usb3", 		"clk_m", 		 0, false}, /* tegra_ehci.2 */
+	{ "pwm",    	"clk_m",   		93385,  true},		/* tegra-pwm.0 tegra-pwm.1 tegra-pwm.2 tegra-pwm.3*/
+	{ "kbc",		"clk_32k",		32768,	false},		/* tegra-kbc */
+	{ "blink",		"clk_32k",		32768,	true},		/* used for bluetooth */
 	{ NULL,		NULL,		0,		0},
 };
 

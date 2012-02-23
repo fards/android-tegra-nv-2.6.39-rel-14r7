@@ -51,8 +51,8 @@ static struct platform_device *smba1007_uart_devices[] __initdata = {
 	&tegra_uarta_device,
 	&tegra_uartb_device,
 	&tegra_uartc_device,
-	&tegra_uartd_device,
-	&tegra_uarte_device,
+//	&tegra_uartd_device,
+//	&tegra_uarte_device,
 };
 
 int __init smba1007_uart_register_devices(void)

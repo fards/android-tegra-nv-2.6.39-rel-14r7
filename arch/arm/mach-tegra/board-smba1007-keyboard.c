@@ -98,7 +98,7 @@ static struct platform_device smba1007_keys_device = {
 		.platform_data = &smba1007_keys_platform_data,
 	},
 };
-
+/*
 static struct gpio_led smba1007_gpio_leds[] = {
 	{
                 .name   = "cpu",
@@ -128,7 +128,7 @@ static struct platform_device smba1007_leds_gpio = {
                 .platform_data = &smba1007_led_data,
         },
 };
-
+*/
 static struct platform_device *smba1007_pmu_devices[] __initdata = {
 	&smba1007_keys_device,
 	//&smba1007_leds_gpio,

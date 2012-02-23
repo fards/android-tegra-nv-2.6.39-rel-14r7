@@ -279,17 +279,17 @@ static struct regulator_consumer_supply fixed_vdd_aon_supply[] = {
 
 	
 static struct regulator_init_data sm0_data  		 
-	= ADJ_REGULATOR_INIT(sm0,  725, 1500, 1, 1); // 1200
+	= ADJ_REGULATOR_INIT(sm0,  725, 1500, 1, 1); // 1275
 static struct regulator_init_data sm1_data  		 
 	= ADJ_REGULATOR_INIT(sm1,  725, 1500, 1, 1); // 1000 (min was 1100)
 static struct regulator_init_data sm2_data  		 
 	= ADJ_REGULATOR_INIT(sm2, 3000, 4550, 1, 1); // 3700
 static struct regulator_init_data ldo0_data 		 
-	= ADJ_REGULATOR_INIT(ldo0,1500, 3300, 0, 0); // 3300
+	= ADJ_REGULATOR_INIT(ldo0,1200, 3300, 0, 0); // 1200
 static struct regulator_init_data ldo1_data 		 
 	= ADJ_REGULATOR_INIT(ldo1, 725, 1500, 1, 1); // 1100  V-1V2
 static struct regulator_init_data ldo2_data 		 
-	= ADJ_REGULATOR_INIT(ldo2, 725, 1500, 1, 1); // 1200  V-RTC
+	= ADJ_REGULATOR_INIT(ldo2, 725, 1500, 1, 1); // 1275  V-RTC
 static struct regulator_init_data ldo3_data 		 
 	= ADJ_REGULATOR_INIT(ldo3,1250, 3300, 0, 0); // 3300 
 static struct regulator_init_data ldo4_data 		 

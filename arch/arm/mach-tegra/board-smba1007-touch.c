@@ -32,7 +32,7 @@
 #include "gpio-names.h"
 
 struct at168_i2c_ts_platform_data at168_pdata = {
-	//.gpio_reset = SMBA1007_TS_RESET,
+	.gpio_reset = SMBA1007_TS_RESET,
 	.gpio_power = SMBA1007_TS_IRQ,
 };
 
