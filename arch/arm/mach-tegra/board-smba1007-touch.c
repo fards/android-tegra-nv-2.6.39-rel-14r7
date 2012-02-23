@@ -32,8 +32,8 @@
 #include "gpio-names.h"
 
 struct at168_i2c_ts_platform_data at168_pdata = {
-	.gpio_reset = SMBA1007_TS_RESET,
-	.gpio_power = SMBA1007_TS_POWER,
+	//.gpio_reset = SMBA1007_TS_RESET,
+	.gpio_power = SMBA1007_TS_IRQ,
 };
 
 static struct i2c_board_info __initdata smba1007_i2c_bus0_touch_info_at168[] = {
@@ -46,7 +46,9 @@ static struct i2c_board_info __initdata smba1007_i2c_bus0_touch_info_at168[] = {
 
 
 int __init smba1007_touch_register_devices(void)
-{
+{	 	tegra_gpio_enable(TEGRA_GPIO_PJ7);
+  		gpio_request(TEGRA_GPIO_PJ7, "at168_touch");
+  		gpio_direction_input(TEGRA_GPIO_PJ7);
 	i2c_register_board_info(0, smba1007_i2c_bus0_touch_info_at168, 1);
 
 	return 0;
