@@ -125,21 +125,19 @@
 #define PMU_IRQ_BASE		(TEGRA_NR_IRQS)
 #define PMU_IRQ_RTC_ALM1 	(TPS6586X_INT_BASE + TPS6586X_INT_RTC_ALM1)
 
-
+#define	SMBA1007_ENABLE_VDD_VID	TEGRA_GPIO_PD1	/* 1=enabled.  Powers HDMI. Wait 500uS to let it stabilize before returning */
 
 // TODO: Find whether there are any definitions for these?
-#define SMBA1007_SDIO0_CD		TEGRA_GPIO_PI5
-#define SMBA1007_SDIO0_POWER	TEGRA_GPIO_PD0	/* SDIO0 and SDIO2 power */
+//#define SMBA1007_SDIO0_CD		TEGRA_GPIO_PI5
+//#define SMBA1007_SDIO0_POWER	TEGRA_GPIO_PD0	/* SDIO0 and SDIO2 power */
 
-
-
-
+#define SMBA1007_SDHC_CD		TEGRA_GPIO_PI5
+#define SMBA1007_SDHC_WP		-1	/*1=Write Protected */
+#define SMBA1007_SDHC_POWER	TEGRA_GPIO_PD0
 
 //#define ADAM_TS_DISABLE	TEGRA_GPIO_PAA6 /* 0=enabled */
 
 //#define SMBA1007_FB_NONROTATE TEGRA_GPIO_PH1 /*1 = screen rotation locked */
-
-
 
 
 
@@ -163,6 +161,7 @@ extern void smba1007_pinmux_init(void);
 extern void smba1007_clks_init(void);
 
 extern int smba1007_usb_register_devices(void);
+//extern int smba1007_usb_init(void);
 extern int smba1007_audio_register_devices(void);
 extern int smba1007_jack_register_devices(void);
 extern int smba1007_gpu_register_devices(void);

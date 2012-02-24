@@ -56,6 +56,7 @@
 #include <mach/system.h>
 #include <mach/nvmap.h>
 
+#include <linux/usb/f_accessory.h>
 #include "board.h"
 #include "board-smba1007.h"
 #include "clock.h"
@@ -65,6 +66,8 @@
 #include "wakeups-t2.h"
 #include "wdt-recovery.h"
 
+#define PMC_CTRL                0x0
+#define PMC_CTRL_INTR_LOW       (1 << 17)
 
 /* NVidia bootloader tags */
 #define ATAG_NVIDIA		0x41000801
@@ -641,7 +644,7 @@ static void __init tegra_smba1007_init(void)
 	
 	/* Register the USB device */
 	smba1007_usb_register_devices();
-
+    //smba1007_usb_init();
 
 	/* Register UART devices */
 	smba1007_uart_register_devices();
