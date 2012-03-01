@@ -84,14 +84,14 @@ static struct platform_pwm_backlight_data smba1007_backlight_data = {
 	.max_brightness	= 255,
 //	.dft_brightness	= 224,
 	.dft_brightness	= 200,
-	.pwm_period_ns	= 1000000,
+	.pwm_period_ns	= 5000000,
 	.init		= smba1007_backlight_init,
 	.exit		= smba1007_backlight_exit,
 	.notify		= smba1007_backlight_notify,
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,38)
+
 	/* Only toggle backlight on fb blank notifications for disp1 */
 	.check_fb	= smba1007_disp1_check_fb,
-#endif
+
 };
 
 static struct platform_device smba1007_panel_bl_driver = {
@@ -128,6 +128,7 @@ static int smba1007_hdmi_enable(void)
 	smba1007_hdmi_reg = regulator_get(NULL, "avdd_hdmi");
 	if (IS_ERR_OR_NULL(smba1007_hdmi_reg)) {
 //		gpio_set_value(SMBA1007_HDMI_ENB, 0);
+		smba1007_hdmi_reg = NULL;
 		return PTR_ERR(smba1007_hdmi_reg);
 	}
 
@@ -171,7 +172,7 @@ static int smba1007_hdmi_disable(void)
 
 static struct tegra_dc_mode smba1007_panel_modes[] = {
 	{
-		.pclk = 42430000,
+		.pclk = 68419300,
 		.h_ref_to_sync = 4,
 		.v_ref_to_sync = 2,
 		.h_sync_width = 136,
@@ -199,9 +200,9 @@ static struct tegra_fb_data smba1007_fb_data = {
 
 static struct tegra_fb_data smba1007_hdmi_fb_data = {
 	.win		= 0,
-	.xres		= 1920,
-	.yres		= 1080,
-	.bits_per_pixel	= 16,
+	.xres		= 1024,
+	.yres		= 600,
+	.bits_per_pixel	= 32,
 };
 
 #else

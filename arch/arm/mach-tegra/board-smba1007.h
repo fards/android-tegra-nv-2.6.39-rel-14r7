@@ -30,7 +30,7 @@
 #define SMBA1007_TEMP_ALERT		TEGRA_GPIO_PN6
 #define	SMBA1007_ACCEL_INT		TEGRA_GPIO_PJ0
 #define	SMBA1007_ECOMP_INT		TEGRA_GPIO_PU1
-#define	SMBA1007_BT_IRQ		TEGRA_GPIO_PU6
+#define	SMBA1007_BT_IRQ			TEGRA_GPIO_PU6
 #define	SMBA1007_INT_LIGHTSENS	TEGRA_GPIO_PV5
 #define	SMBA1007_ADAPTER_DET	TEGRA_GPIO_PH2
 #define	SMBA1007_CAP_INT		TEGRA_GPIO_PV6
@@ -48,10 +48,10 @@
 #define SMBA1007_SDHC_WP		-1		/*1=Write Protected */
 #define SMBA1007_SDHC_POWER		TEGRA_GPIO_PD0
 #define SMBA1007_WLAN_POWER 	TEGRA_GPIO_PK5
-#define SMBA1007_WLAN_RESET 	TEGRA_GPIO_PK6
-#define SMBA1007_BT_RST		TEGRA_GPIO_PU0
+#define SMBA1007_WLAN_RESET 	TEGRA_GPIO_PU2
+#define SMBA1007_BT_RST			TEGRA_GPIO_PU0
 #define SMBA1007_LOW_BATT		TEGRA_GPIO_PW3 /*(0=low battery)*/
-#define SMBA1007_IN_S3		TEGRA_GPIO_PAA7 /*1 = in S3 */
+#define SMBA1007_IN_S3			TEGRA_GPIO_PAA7 /*1 = in S3 */
 #define SMBA1007_BT_RESET 		TEGRA_GPIO_PU0 	/* 0= reset asserted */
 #define SMBA1007_TS_RESET		TEGRA_GPIO_PH1
 #define SMBA1007_TS_POWER		TEGRA_GPIO_PK2
@@ -63,22 +63,15 @@
 #define	SMBA1007_LED_CPU_BUSY	TEGRA_GPIO_PI4		// Red
 #define	SMBA1007_EMMC_VDDIO_EN	TEGRA_GPIO_PI6
 #define	SMBA1007_CHARGE_EN		TEGRA_GPIO_PK7
-#define	SMBA1007_LED_BATFULL	TEGRA_GPIO_PU2
+//#define	SMBA1007_LED_BATFULL	TEGRA_GPIO_PU2
 #define	SMBA1007_BT_WAKEUP		TEGRA_GPIO_PU5
-#define	SMBA1007_LED_CHARGE		TEGRA_GPIO_PV1
+//#define	SMBA1007_LED_CHARGE		TEGRA_GPIO_PV1
 #define	SMBA1007_INT_MIC_EN		TEGRA_GPIO_PX0
 
-/* Conflicts:
- * These are conflicts between previous and current GPIO research:
- * ---
- * #define SMBA1007_HDMI_ENB		TEGRA_GPIO_PV5 // unconfirmed  Does adam have HDMI enbl?
- * PV5 is light sensor interrupt line...
- * ---
- * #define SMBA1007_USB0_VBUS          TEGRA_GPIO_PB0  // 1= VBUS usb0
- * #define SMBA1007_USB1_RESET         TEGRA_GPIO_PV1  // 0= reset 
- * PB0 is the 3G W_DISABLE line, PV1 is LED_CHARGE
- * ---
- */
+
+ #define SMBA1007_USB0_VBUS          TEGRA_GPIO_PB0  // 1= VBUS usb0
+ #define SMBA1007_USB1_RESET         TEGRA_GPIO_PV1  // 0= reset 
+ 
 
 #define SMBA1007_WAKE_KEY_POWER  	TEGRA_WAKE_GPIO_PV2
 #define SMBA1007_WAKE_KEY_RESUME 	TEGRA_WAKE_GPIO_PV2
@@ -87,7 +80,7 @@
 #define SMBA1007_FB_PAGES		2				/* At least, 2 video pages */
 #define SMBA1007_FB_HDMI_PAGES	2				/* At least, 2 video pages for HDMI */
 
-// smba1007 memory is 2xSZ_512M
+// smba1007 memory is 1xSZ_512M
 #define SMBA1007_MEM_SIZE 		SZ_512M			/* Total memory */
 #define SMBA1007_MEM_BANKS		1
 
