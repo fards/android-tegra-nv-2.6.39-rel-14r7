@@ -4333,7 +4333,7 @@ int net_os_set_packet_filter(struct net_device *dev, int val)
 	return ret;
 }
 
-
+/*
 int
 dhd_dev_init_ioctl_ret(struct net_device *dev)
 {
@@ -4341,7 +4341,7 @@ dhd_dev_init_ioctl_ret(struct net_device *dev)
 
         return dhd_preinit_ioctls(&dhd->pub);
 }
-
+*/
 void
 dhd_dev_init_ioctl(struct net_device *dev)
 {

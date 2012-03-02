@@ -166,10 +166,10 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
 		
 	{ "vfir",		"clk_m",		 0,	false},
 
-    { "sdmmc1", "pll_p", 0, true}, /* sdhci-tegra.0 */
-    { "sdmmc2", "pll_m", 0, false}, /* sdhci-tegra.1 */
-    { "sdmmc3", "pll_p", 0, false}, /* sdhci-tegra.2 */
-    { "sdmmc4", "pll_p", 0, false}, /* sdhci-tegra.3 */
+    { "sdmmc1", "pll_p", 48000000, false}, /* sdhci-tegra.0 */
+    { "sdmmc2", "pll_p", 52000000, false}, /* sdhci-tegra.1 */
+    { "sdmmc3", "pll_p", 52000000, false}, /* sdhci-tegra.2 */
+    { "sdmmc4", "pll_p", 52000000, false}, /* sdhci-tegra.3 */
 
 	{ "la",			"clk_m",		 0,	false},			
 

@@ -63,10 +63,10 @@ static struct platform_device smba1007_wifi_device = {
 
 
 /* 2.6.36 version has a hook to check card status. Use it */
-/*static unsigned int smba1007_wlan_status(struct device *dev)
+static unsigned int smba1007_wlan_status(struct device *dev)
 {
 	return smba1007_wlan_cd;
-}*/
+}
 
 static int smba1007_wifi_status_register(
 		void (*callback)(int card_present, void *dev_id),
@@ -93,12 +93,6 @@ static struct embedded_sdio_data embedded_sdio_data0 = {
         },
 };
 
-
-static unsigned int smba1007_wifi_status(struct device *dev)
-{
-	return smba1007_wlan_cd;
-}
-
 struct tegra_sdhci_platform_data smba1007_wlan_data = {
 //        .clk_id = NULL,
 //        .force_hs = 0,
@@ -106,12 +100,12 @@ struct tegra_sdhci_platform_data smba1007_wlan_data = {
         	.register_status_notify = smba1007_wifi_status_register,
 		.embedded_sdio = &embedded_sdio_data0,
 		.built_in = 1,
-		.status = smba1007_wifi_status,
+		.status = smba1007_wlan_status,
 	},
 	.cd_gpio = -1,
 	.wp_gpio = -1,
 	.power_gpio = -1,
-//	.has_no_vreg = 1,
+	.has_no_vreg = 1,
 };
 
 /* Used to set the virtual CD of wifi adapter */
@@ -132,16 +126,15 @@ int smba1007_wifi_set_carddetect(int val)
 	return 0;
 }
 
-static int smba1007_wifi_power_state;
 static int smba1007_wifi_power(int on)
 {
         pr_debug("%s: %d\n", __func__, on);
-		mdelay(100);
+	//mdelay(100);
 		smba1007_bt_wifi_gpio_set(on);
-		mdelay(100);
+	//	mdelay(100);
         gpio_set_value(SMBA1007_WLAN_RESET, on);
         mdelay(200);
-		smba1007_wifi_power_state = on;
+
         return 0;
 }
 
@@ -199,7 +192,7 @@ static int __init smba1007_wifi_init(void)
         tegra_gpio_enable(SMBA1007_WLAN_RESET);
 
 	gpio_request(SMBA1007_WLAN_RESET, "wifi_reset");
-        gpio_direction_output(SMBA1007_WLAN_POWER, 0);
+        gpio_direction_output(SMBA1007_WLAN_RESET, 0);
 
         platform_device_register(&smba1007_wifi_device);
 

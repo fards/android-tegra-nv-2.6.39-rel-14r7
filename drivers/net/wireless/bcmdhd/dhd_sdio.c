@@ -3060,13 +3060,13 @@ dhd_bus_stop(struct dhd_bus *bus, bool enforce_mutex)
 	/* Reset some F2 state stuff */
 	bus->rxskip = FALSE;
 	bus->tx_seq = bus->rx_seq = 0;
-	
- /* Set to a safe default.  It gets updated when we
-* receive a packet from the fw but when we reset,
-* we need a safe default to be able to send the
-* initial mac address.
-  */
-bus->tx_max = 4; 
+
+	/* Set to a safe default.  It gets updated when we
+	 * receive a packet from the fw but when we reset,
+	 * we need a safe default to be able to send the
+	 * initial mac address.
+	 */
+	bus->tx_max = 4;
 
 	if (enforce_mutex)
 		dhd_os_sdunlock(bus->dhd);
