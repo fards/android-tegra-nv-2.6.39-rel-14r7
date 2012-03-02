@@ -375,7 +375,7 @@ int dhd_idletime = DHD_IDLETIME_TICKS;
 module_param(dhd_idletime, int, 0);
 
 /* Use polling */
-uint dhd_poll = TRUE;
+uint dhd_poll = FALSE;
 module_param(dhd_poll, uint, 0);
 
 /* Use interrupts */
@@ -4396,17 +4396,23 @@ int net_os_send_hang_message(struct net_device *dev)
 {
 	dhd_info_t *dhd = *(dhd_info_t **)netdev_priv(dev);
 	int ret = 0;
+	int need_unlock = 0;
 
 	if (dhd) {
 		if (!dhd->pub.hang_was_sent) {
 			dhd->pub.hang_was_sent = 1;
+			if (!rtnl_is_locked()) {
+				need_unlock = 1;
+				rtnl_lock();
+			}
+			dev_close(dev);
+			if (need_unlock)
+				rtnl_unlock();
 #if defined(CONFIG_WIRELESS_EXT)
 			ret = wl_iw_send_priv_event(dev, "HANG");
 #endif
 #if defined(WL_CFG80211)
 			ret = wl_cfg80211_hang(dev, WLAN_REASON_UNSPECIFIED);
-			dev_close(dev);
-			dev_open(dev);
 #endif
 		}
 	}
