@@ -40,7 +40,7 @@ static void *wlan_status_cb_devid = NULL;
 static int smba1007_wlan_cd = 0; /* WIFI virtual 'card detect' status */
 
 static int smba1007_wifi_status_register(void (*callback)(int , void *), void *);
-static struct clk *wifi_32k_clk;
+//static struct clk *wifi_32k_clk;
 
 static int smba1007_wifi_reset(int on);
 static int smba1007_wifi_power(int on);
@@ -134,6 +134,8 @@ static int smba1007_wifi_power(int on)
 	//	mdelay(100);
         gpio_set_value(SMBA1007_WLAN_RESET, on);
         mdelay(200);
+
+       
 
         return 0;
 }

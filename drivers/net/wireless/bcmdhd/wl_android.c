@@ -112,6 +112,7 @@ typedef struct android_wifi_priv_cmd {
 void dhd_customer_gpio_wlan_ctrl(int onoff);
 uint dhd_dev_reset(struct net_device *dev, uint8 flag);
 void dhd_dev_init_ioctl(struct net_device *dev);
+int dhd_dev_init_ioctl_ret(struct net_device *dev);
 #ifdef WL_CFG80211
 int wl_cfg80211_get_p2p_dev_addr(struct net_device *net, struct ether_addr *p2pdev_addr);
 int wl_cfg80211_set_btcoex_dhcp(struct net_device *dev, char *command);
@@ -350,7 +351,9 @@ static int wl_android_get_p2p_dev_addr(struct net_device *ndev, char *command, i
 int wl_android_wifi_on(struct net_device *dev)
 {
 	int ret = 0;
+	int retry = 1;
 
+onretry:
 	printk("%s in\n", __FUNCTION__);
 	if (!dev) {
 		DHD_ERROR(("%s: dev is null\n", __FUNCTION__));
@@ -364,16 +367,17 @@ int wl_android_wifi_on(struct net_device *dev)
 		ret = dhd_dev_reset(dev, FALSE);
 		sdioh_start(NULL, 1);
 		if (!ret)
-			dhd_dev_init_ioctl(dev);
+			ret = dhd_dev_init_ioctl_ret(dev);
 		g_wifi_on = 1;
 	}
 	dhd_net_if_unlock(dev);
 ////////////////////////////////// Adam Patch /////////////////////////////////////
-/*	if (ret == -EIO && retry < 5) {
+	if (ret == -EIO && retry < 5) {
 		wl_android_wifi_off(dev);
+		msleep(1000);
 		printk("I/O Error on wifi, power down and try again. Attempt %d/5\n", retry);
 		goto onretry;
-	}*/
+	}
 ////////////////////////////////////////////////////////////////////////////////////
 	return ret;
 }
