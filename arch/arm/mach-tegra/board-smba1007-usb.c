@@ -298,10 +298,10 @@ int __init smba1007_usb_register_devices(void)
 #endif
 
 	/* If in host mode, set VBUS to 1 */
-//	gpio_request(SMBA1007_USB0_VBUS, "USB0 VBUS"); /* VBUS switch, perhaps ? -- Tied to what? -- should require +5v ... */
+	gpio_request(SMBA1007_USB0_VBUS, "USB0 VBUS"); /* VBUS switch, perhaps ? -- Tied to what? -- should require +5v ... */
 	
 	/* 0 = Gadget */
-//	gpio_direction_output(SMBA1007_USB0_VBUS, 0 ); /* Gadget */
+	gpio_direction_output(SMBA1007_USB0_VBUS, 0 ); /* Gadget */
 	
 	ret = platform_add_devices(smba1007_usb_devices, ARRAY_SIZE(smba1007_usb_devices));
 	if (ret)
