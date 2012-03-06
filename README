@@ -1,4 +1,20 @@
-	Linux kernel release 2.6.xx <http://kernel.org/>
+This project will no longer release PUBLIC builds..
+
+After several months of working on my own, and requesting help in building ICS for the Hannspad, I received none at all. 
+Instead I met with a constant barrage of snide and stupid comments, criticism and negativity from people who had no intention of lifting a finger to help.
+
+So now it is ceased..
+The Aplha #5 rom works for an aosp build. 
+
+If you decide to use this, then make sure that I receive credit, as its my work you are using here.. 
+
+
+fards
+
+
+
+
+Linux kernel release 2.6.xx <http://kernel.org/>
 
 These are the release notes for Linux version 2.6.  Read them carefully,
 as they tell you what this is all about, explain how to install the
