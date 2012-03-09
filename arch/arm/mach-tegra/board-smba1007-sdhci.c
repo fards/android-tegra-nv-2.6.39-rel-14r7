@@ -34,9 +34,10 @@
 #include "devices.h"
 #include "board-smba1007.h"
 
+#define SMBA1007_WLAN_WOW	TEGRA_GPIO_PS0
 
-static void (*wlan_status_cb)(int card_present, void *dev_id) = NULL;
-static void *wlan_status_cb_devid = NULL;
+static void (*wlan_status_cb)(int card_present, void *dev_id);
+static void *wlan_status_cb_devid;
 static int smba1007_wlan_cd = 0; /* WIFI virtual 'card detect' status */
 
 static int smba1007_wifi_status_register(void (*callback)(int , void *), void *);
@@ -52,15 +53,37 @@ static struct wifi_platform_data smba1007_wifi_control = {
         .set_carddetect = smba1007_wifi_set_carddetect,
 };
 
+static struct resource wifi_resource[] = {
+	[0] = {
+		.name  = "bcm4329_wlan_irq",
+		.start = TEGRA_GPIO_TO_IRQ(TEGRA_GPIO_PS0),
+		.end   = TEGRA_GPIO_TO_IRQ(TEGRA_GPIO_PS0),
+		.flags = IORESOURCE_IRQ | IORESOURCE_IRQ_HIGHLEVEL | IORESOURCE_IRQ_SHAREABLE,
+	},
+};
 
 static struct platform_device smba1007_wifi_device = {
         .name           = "bcmdhd_wlan",
         .id             = 1,
+	.num_resources  = 1,
+	.resource	= wifi_resource,
         .dev            = {
         .platform_data = &smba1007_wifi_control,
         },
 };
 
+static struct resource sdhci_resource0[] = {
+	[0] = {
+		.start	= INT_SDMMC1,
+		.end	= INT_SDMMC1,
+		.flags	= IORESOURCE_IRQ,
+	},
+	[1] = {
+		.start	= TEGRA_SDMMC1_BASE,
+		.end	= TEGRA_SDMMC1_BASE + TEGRA_SDMMC1_SIZE-1,
+		.flags	= IORESOURCE_MEM,
+	},
+};
 
 /* 2.6.36 version has a hook to check card status. Use it */
 static unsigned int smba1007_wlan_status(struct device *dev)
@@ -151,10 +174,9 @@ static int smba1007_wifi_reset(int on)
 
 
 static struct tegra_sdhci_platform_data tegra_sdhci_platform_data2 = {
-	.cd_gpio = -1,
-	.wp_gpio = -1,
-	.power_gpio = -1,
-	.has_no_vreg = 1,
+	.cd_gpio = TEGRA_GPIO_PI5,
+	.wp_gpio = TEGRA_GPIO_PH1,
+	.power_gpio = TEGRA_GPIO_PT3,
 };
 
 static struct tegra_sdhci_platform_data tegra_sdhci_platform_data3 = {
@@ -189,19 +211,29 @@ static struct platform_device *smba1007_sdhci_devices[] __initdata = {
 
 static int __init smba1007_wifi_init(void)
 {
-	// Init the power GPIO if it isn't already
-	smba1007_bt_wifi_gpio_init();
-        tegra_gpio_enable(SMBA1007_WLAN_RESET);
+        int gpio_pwr, gpio_rst;
 
-	gpio_request(SMBA1007_WLAN_RESET, "wifi_reset");
-        gpio_direction_output(SMBA1007_WLAN_RESET, 0);
+//	if (!machine_is_harmony())
+	//	return 0;
 
-        platform_device_register(&smba1007_wifi_device);
+        /* WLAN - Power up (low) and Reset (low) */
+        gpio_pwr = gpio_request(TEGRA_GPIO_PK5, "wlan_power");
+        gpio_rst = gpio_request(TEGRA_GPIO_PK6, "wlan_reset");
+        if (gpio_pwr < 0 || gpio_rst < 0)
+                pr_warning("Unable to get gpio for WLAN Power and Reset\n");
+        else {
 
-        device_init_wakeup(&smba1007_wifi_device.dev, 1);
-        device_set_wakeup_enable(&smba1007_wifi_device.dev, 0);
+		tegra_gpio_enable(TEGRA_GPIO_PK5);
+		tegra_gpio_enable(TEGRA_GPIO_PK6);
+                /* toggle in this order as per spec */
+                gpio_direction_output(TEGRA_GPIO_PK5, 0);
+                gpio_direction_output(TEGRA_GPIO_PK6, 0);
+		udelay(5);
+                gpio_direction_output(TEGRA_GPIO_PK5, 1);
+                gpio_direction_output(TEGRA_GPIO_PK6, 1);
+        }
 
-        return 0;
+	return 0;
 }
 
 

@@ -53,6 +53,7 @@
 #define SMBA1007_LOW_BATT		TEGRA_GPIO_PW3 /*(0=low battery)*/
 #define SMBA1007_IN_S3			TEGRA_GPIO_PAA7 /*1 = in S3 */
 #define SMBA1007_BT_RESET 		TEGRA_GPIO_PU0 	/* 0= reset asserted */
+#define SMBA1007_BT_SHUTDOWN    TEGRA_GPIO_PX1
 #define SMBA1007_TS_RESET		TEGRA_GPIO_PH1
 #define SMBA1007_TS_POWER		TEGRA_GPIO_PK2
 #define SMBA1007_NVEC_REQ		TEGRA_GPIO_PD0	/* Set to 0 to send a command to the NVidia Embedded controller */
