@@ -2290,7 +2290,7 @@ static struct clk_mux_sel mux_pllp_plld_pllc_clkm[] = {
 static struct clk_mux_sel mux_pllp_pllc_audio_clkm_clk32[] = {
 	{.input = &tegra_pll_p,     .value = 0},
 	{.input = &tegra_pll_c,     .value = 1},
-//	{.input = &tegra_clk_audio,     .value = 2},
+	{.input = &tegra_clk_audio,     .value = 2},
 	{.input = &tegra_clk_m,     .value = 3},
 	{.input = &tegra_clk_32k,   .value = 4},
 	{ 0, 0},
