@@ -227,10 +227,10 @@ static struct tegra_dc_out smba1007_disp1_out = {
         /* Enable dithering. Tegra also supports error
                diffusion, but when the active region is less
                than 640 pixels wide. */
-       .dither         = TEGRA_DC_ERRDIFF_DITHER,
-
-	.height 	= 136, /* mm */
-	.width 		= 217, /* mm */
+       .dither          = TEGRA_DC_ORDERED_DITHER,
+	   .depth			= 18,				//Pulled from mrdeadlocked
+	   .height 			= 136, /* mm */
+	   .width 			= 217, /* mm */
 	
 	.modes	 	= smba1007_panel_modes,
 	.n_modes 	= ARRAY_SIZE(smba1007_panel_modes),

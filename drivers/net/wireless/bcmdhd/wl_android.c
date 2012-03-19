@@ -347,7 +347,6 @@ static int wl_android_get_p2p_dev_addr(struct net_device *ndev, char *command, i
 /**
  * Global function definitions (declared in wl_android.h)
  */
-
 int wl_android_wifi_on(struct net_device *dev)
 {
 	int ret = 0;
@@ -374,7 +373,6 @@ onretry:
 ////////////////////////////////// Adam Patch /////////////////////////////////////
 	if (ret == -EIO && retry < 5) {
 		wl_android_wifi_off(dev);
-		msleep(1000);
 		printk("I/O Error on wifi, power down and try again. Attempt %d/5\n", retry);
 		goto onretry;
 	}
