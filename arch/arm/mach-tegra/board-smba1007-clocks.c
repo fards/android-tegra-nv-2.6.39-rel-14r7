@@ -63,7 +63,7 @@
 static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
 	/* name			parent				rate	enabled */
 	/* always on clocks */
-	{ "pll_m",		NULL,			0,	false},		/* always on - memory clocks */	
+	{ "pll_m",		NULL,			0,	true},		/* always on - memory clocks */	
 	/* 32khz system clock */
 	{ "clk_32k",	NULL,			32768,	true},		/* always on */
 
@@ -192,7 +192,7 @@ static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
     { "usb3", 		"clk_m", 		 0, false}, /* tegra_ehci.2 */
 	{ "pwm",    	"clk_m",   		0,  true},		/* tegra-pwm.0 tegra-pwm.1 tegra-pwm.2 tegra-pwm.3*/
 	{ "kbc",		"clk_32k",		32768,	false},		/* tegra-kbc */
-	{ "blink",		"clk_32k",		32768,	false},		/* used for bluetooth */
+	{ "blink",		"clk_32k",		32768,	true},		/* used for bluetooth */
 	{ NULL,		NULL,		0,		0},
 };
 
