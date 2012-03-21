@@ -63,7 +63,7 @@
 static __initdata struct tegra_clk_init_table smba1007_clk_init_table[] = {
 	/* name			parent				rate	enabled */
 	/* always on clocks */
-	{ "pll_m",		NULL,			0,	true},		/* always on - memory clocks */	
+	{ "pll_m",		NULL,			0,	false},		/* always on - memory clocks */	
 	/* 32khz system clock */
 	{ "clk_32k",	NULL,			32768,	true},		/* always on */
 
