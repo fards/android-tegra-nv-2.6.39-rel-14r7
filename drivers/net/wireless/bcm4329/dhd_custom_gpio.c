@@ -115,8 +115,8 @@ dhd_customer_gpio_wlan_ctrl(int onoff)
 #endif /* CUSTOMER_HW */
 #ifdef CUSTOMER_HW2
 			  wifi_set_power(0, 0);
-		//	  msleep(100);
-		//	  wifi_set_power(1, 0);
+			  msleep(100);
+			  wifi_set_power(1, 0);
 #endif
 			WL_ERROR(("=========== WLAN placed in RESET ========\n"));
 		break;
