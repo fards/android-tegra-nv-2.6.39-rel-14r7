@@ -2,7 +2,9 @@
 # Makefile for RTC class/drivers.
 #
 
-ccflags-$(CONFIG_RTC_DEBUG)	:= -DDEBUG
+ifeq ($(CONFIG_RTC_DEBUG),y)
+	EXTRA_CFLAGS		+= -DDEBUG
+endif
 
 obj-$(CONFIG_RTC_LIB)		+= rtc-lib.o
 obj-$(CONFIG_RTC_HCTOSYS)	+= hctosys.o
@@ -72,6 +74,7 @@ obj-$(CONFIG_RTC_DRV_MV)	+= rtc-mv.o
 obj-$(CONFIG_RTC_DRV_NUC900)	+= rtc-nuc900.o
 obj-$(CONFIG_RTC_DRV_OMAP)	+= rtc-omap.o
 obj-$(CONFIG_RTC_DRV_PCAP)	+= rtc-pcap.o
+
 obj-$(CONFIG_RTC_DRV_PCF8563)	+= rtc-pcf8563.o
 obj-$(CONFIG_RTC_DRV_PCF8583)	+= rtc-pcf8583.o
 obj-$(CONFIG_RTC_DRV_PCF2123)	+= rtc-pcf2123.o

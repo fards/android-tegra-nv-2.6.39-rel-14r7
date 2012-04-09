@@ -117,7 +117,7 @@
 #define TPS6586X_INT_BASE	TEGRA_NR_IRQS
 
 #define PMU_IRQ_BASE		(TEGRA_NR_IRQS)
-#define PMU_IRQ_RTC_ALM1 	(TPS6586X_INT_BASE + TPS6586X_INT_RTC_ALM1)
+#define PMU_IRQ_RTC_ALM1 	(PMU_IRQ_BASE + TPS6586X_INT_RTC_ALM1)
 
 #define	SMBA1007_ENABLE_VDD_VID	TEGRA_GPIO_PD1	/* 1=enabled.  Powers HDMI. Wait 500uS to let it stabilize before returning */
 
